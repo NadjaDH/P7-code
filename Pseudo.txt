@@ -1,0 +1,78 @@
+PSEUDOCODE 
+1. Create a python file (flask).
+ 2. Create a templates folder. 
+    Homepage.html
+        Create a list of rooms
+            the rooms should be clickable
+                when clicked a overview will be shown (see prototype)
+        Create a map on the right of where the rooms are located
+    Bookingpage.html
+        Create a table
+    Contact and Information.html (?)
+        Add text with contact info for librarians + technicians
+        Add text with group room usage information
+    layout.html?
+    style.css
+3. Define data structures to represent group rooms and their availability class “GroupRoom: def”
+    room_number
+    is_avaliable
+    booking status
+    check-in-time (relevant?)
+    check-out-time (relevant?)
+4. Initializing a list of the group rooms “NumberOfGroupRooms = []”
+5. A function to check the availability of group rooms
+6. A function to display whether the specific group rooms are available or not
+7. A function to book a group room
+    for room in group_room
+        if wroom.wroom.number == …
+8. A function to release a booked group room
+9. A function to display “check in” and “check out”
+10. Physical check-in and check-out, but has to be displayed on the web solution
+11. Function to “override” a booking (librarian only)
+12.  Function to cancel a booking
+13. Put the map overview in HTML
+14. Faker dataset (to show the web solution’s functionality)
+
+
+
+Lidt tips til hvordan man skulle bære sig an:
+
+1. Set Up Your Development Environment:
+Install Python and a web framework like Flask.
+Set up a virtual environment to manage your project's dependencies.
+
+2. Define the Data Model:
+Determine what data you need to track for each room. This might include room names, room numbers, capacity, current occupancy, and availability status.
+Create a database schema or define data structures to represent this information.
+
+3. Create the Database: (OPTIONAL***)
+Set up a database to store room data. You can use SQLite for simplicity during development or choose a more robust database system like PostgreSQL or MySQL.
+Create tables to store room information.
+
+4. Develop the Web Application:
+Use Flask or Django to create routes and views for your web application.
+Implement views to display a list of rooms and their availability status.
+Create forms to add, update, or delete room records.
+
+5. Implement Room Availability Logic:
+Write code to track room availability.
+Implement logic to update room availability based on reservations or other factors.
+Ensure that room availability is updated in real-time or periodically, depending on your requirements.
+
+6. User Authentication (Optional):
+Implement user authentication if you want to restrict access to certain features of the application, such as adding or modifying room data.
+
+7. User Interface (UI):
+Design a user-friendly interface that displays room availability information clearly.
+Use HTML, CSS, and possibly JavaScript to create the user interface.
+
+8. Testing:
+Thoroughly test your web application to ensure that it accurately tracks and displays room availability.
+Test different scenarios, such as room reservations, updates, and deletions.
+
+9. Deployment:
+Deploy your web application on a web server or cloud hosting platform, so it can be accessed by users.
+
+10. Documentation:
+Document your code, including explanations of how to use the application and any setup or configuration instructions.
+
