@@ -684,26 +684,29 @@ only screen and (min-device-pixel-ratio:1.5) {
 
 
 /* styling af navigation bar*/
+
+/* */
 .navbar {
     list-style-type: none;
     margin: 0;
     padding: 0;
-    overflow: hidden;
-    background-color: #333;
+    overflow: hidden;/
 }
 
 .navbar li {
     float: left;
+    /* Float links side by side */
 }
 
 .navbar li a {
     display: block;
-    color: white;
+    color: rgb(0, 0, 0);
+    /* White text color */
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
 }
 
 .navbar li a:hover {
-    background-color: #111;
+    background-color: #947575;
 }
