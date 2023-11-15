@@ -6,3 +6,8 @@ def home():
 
 if __name__ == '__main__':
     app.run()
+
+def GroupRoom
+    room_number
+    is_avaliable
+    booking_status
