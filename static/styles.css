@@ -684,8 +684,6 @@ only screen and (min-device-pixel-ratio:1.5) {
 
 
 /* styling af navigation bar*/
-
-/* */
 .navbar {
     list-style-type: none;
     margin: 0;
@@ -701,12 +699,45 @@ only screen and (min-device-pixel-ratio:1.5) {
 .navbar li a {
     display: block;
     color: rgb(0, 0, 0);
-    /* White text color */
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
+    position: relative;
+}
+
+.navbar li a::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 25%;
+    bottom: 25%;
+    border-right: 2px solid black;
+    height: 50%;
+
+}
+
+.navbar li:last-child a::after {
+    border-right: none;
+    /* Fjerner border på sidste element */
 }
 
 .navbar li a:hover {
-    background-color: #947575;
+    background-color: #ab9e9e;
+}
+
+/* styling the table overview on the homepage */
+.overview {
+    width: 30%;
+    position: relative;
+    bottom: -100px;
+    left: 20px;
+    height: 150px;
+}
+
+.overview td,
+overview th {
+    border: 1px solid black;
+    border-collapse: collapse;
+    /*background-color: rgb(44, 102, 44);*/
+    /* hvis vi skal have en background color på tabellen */
 }
