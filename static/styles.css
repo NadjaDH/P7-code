@@ -697,6 +697,7 @@ only screen and (min-device-pixel-ratio:1.5) {
 }
 
 .navbar li a {
+    /* styling af links i navigation bar */
     display: block;
     color: rgb(0, 0, 0);
     text-align: center;
@@ -706,7 +707,9 @@ only screen and (min-device-pixel-ratio:1.5) {
 }
 
 .navbar li a::after {
+    /* styling af border på navigation bar */
     content: "";
+    /* Tilføjer border til hvert element */
     position: absolute;
     right: 0;
     top: 25%;
@@ -725,6 +728,8 @@ only screen and (min-device-pixel-ratio:1.5) {
     background-color: #ab9e9e;
 }
 
+/* end of styling af navigation bar */
+
 /* styling the table overview on the homepage */
 .overview {
     width: 30%;
@@ -742,6 +747,9 @@ overview th {
     /* hvis vi skal have en background color på tabellen */
 }
 
+/*end of styling the table overview on the homepage */
+
+/* Styling of the booking button on the booking page */
 .BookButton {
     background-color: #0476aa;
     border: 2px solid black;
@@ -769,3 +777,5 @@ overview th {
     background-color: #cccccc;
     color: #666666;
 }
+
+/* end of styling of the booking button on the booking page */
