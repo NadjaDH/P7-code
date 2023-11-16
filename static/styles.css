@@ -764,3 +764,8 @@ overview th {
     background-color: #ab9e9e;
     color: white;
 }
+
+.BookButton:disabled {
+    background-color: #cccccc;
+    color: #666666;
+}

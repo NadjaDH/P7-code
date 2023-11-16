@@ -4,6 +4,18 @@
 <head>
     <title>Home</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script>
+        function displayCheckbox() {
+            var checkbox = document.getElementById("myCheckbox");
+            var button = document.querySelector(".BookButton");
+
+            if (checkbox.checked == true) {
+                button.disabled = false;
+            } else {
+                button.disabled = true;
+            }
+        }
+    </script>
 </head>
 
 <body>
@@ -11,12 +23,11 @@
         <li><a class="active" href="{{ url_for('home') }}">Home</a></li>
         <li><a href="{{ url_for('booking') }}">Book Room</a></li>
         <li><a href="#contact">Contact</a></li>
-        <li><a href="{{ url_for('information') }}">information</a></li>
+        <li><a href="{{ url_for('information') }}">Information</a></li>
     </ul>
     <h1>Room Booking</h1>
-    <button class="BookButton" type="button" onclick="BookFunction()">BOOK</button>
-
-
+    <button class="BookButton" type="button" disabled>BOOK</button>
+    <input type="checkbox" id="myCheckbox" onclick="displayCheckbox()">
 </body>
 
 </html>
