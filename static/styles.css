@@ -741,3 +741,26 @@ overview th {
     /*background-color: rgb(44, 102, 44);*/
     /* hvis vi skal have en background color på tabellen */
 }
+
+.BookButton {
+    background-color: #0476aa;
+    border: 2px solid black;
+    color: rgb(0, 0, 0);
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    font-weight: bold;
+    transition-duration: 0.4s;
+    width: 350px;
+    height: 100px;
+    position: relative;
+    top: 250px;
+    left: 800px;
+}
+
+.BookButton:hover {
+    background-color: #ab9e9e;
+    color: white;
+}
