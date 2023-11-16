@@ -755,25 +755,39 @@ overview th {
     border: 2px solid black;
     color: rgb(0, 0, 0);
     padding: 15px 32px;
+    /* Gør at knappen er 15px fra toppen og bunden og 32px fra venstre og højre side */
     text-align: center;
+    /* Gør at teksten er centreret */
     text-decoration: none;
+    /* Fjerner understregning på teksten */
     display: inline-block;
+    /* Gør at knappen er på samme linje som som det stående ved siden af (Skal måske fjernes) */
     font-size: 16px;
+    /* Gør at teksten er 16px stor */
     font-weight: bold;
+    /* Gør at teksten er bold */
     transition-duration: 0.4s;
+    /* Gør bare at der er en delay på når man hover med musen over knappen*/
     width: 350px;
+    /* Gør at knappen er 350px bred */
     height: 100px;
+    /* Gør at knappen er 100px høj */
     position: relative;
+    /* ikke helt sikker, men den gør at positionen er relativ til den omkringliggende tekst */
     top: 250px;
+    /* Gør at knappen er 250px fra toppen af siden */
     left: 800px;
+    /* Gør at knappen er 800px fra venstre side af siden */
 }
 
 .BookButton:hover {
+    /* hover effekt på knappen */
     background-color: #ab9e9e;
     color: white;
 }
 
 .BookButton:disabled {
+    /* hvordan knappen ser ud når den er disabled */
     background-color: #cccccc;
     color: #666666;
 }
