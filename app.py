@@ -11,7 +11,7 @@ def booking():
 
 @app.route('/information')
 def information():
-    return render_template("information.html")
+    return render_template("Information.html")
 
 if __name__ == '__main__':
     app.run()
