@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lan="en">
+<html lang="en">
 
 <head>
     <title>Home</title>
@@ -36,6 +36,38 @@
             <td><a href="{{ url_for('booking') }}">Book</a></td>
         </tr>
     </table>
+
+    <style type="text/css">
+        
+        .container img
+        {
+            margin: 20px;
+            cursor: zoom-in;
+            transition: transform 1s ease;
+        }
+        
+        input[type=checkbox]
+        {
+            display: none;
+        }
+
+        input[type=checkbox]:checked ~ label > img
+
+        {
+            transform: scale(1.5);
+            cursor: zoom-out;
+        }
+    </style>
+
+    <center>
+        <div class="container">
+            <input type="checkbox" name="" id="zoom_img"/>
+            
+            <label for="zoom_img">
+                <img src="kroghstræde3map.png" alt="Map">
+            </label>
+        </div>
+    </center>
 
 </body>
 
