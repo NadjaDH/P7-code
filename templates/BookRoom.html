@@ -15,6 +15,9 @@
                 button.disabled = true; // Else disable the button
             }
         }
+        function displayAlert() {
+            alert("Room Booked!");
+        }
     </script>
 </head>
 
@@ -26,7 +29,8 @@
         <li><a href="{{ url_for('information') }}">Information</a></li>
     </ul>
     <h1>Room Booking</h1>
-    <button class="BookButton" type="button" disabled>BOOK</button> <!-- Disable the button by default -->
+    <button class="BookButton" type="button" disabled onclick="displayAlert()">BOOK</button>
+    <!-- Disable the button by default -->
     <input type="checkbox" id="myCheckbox" onclick="displayCheckbox()"> <!-- Checkbox to enable the button -->
 </body>
 
