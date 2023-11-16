@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
     <script>
         function displayCheckbox() {
-            var checkbox = document.getElementById("myCheckbox"); // Get the checkbox
+            var checkbox = document.getElementById("randomCheckbox"); // Get the checkbox
             var button = document.querySelector(".BookButton"); // Get the button
 
             if (checkbox.checked == true) { // If the checkbox is checked, enable the button
@@ -15,7 +15,7 @@
                 button.disabled = true; // Else disable the button
             }
         }
-        function displayAlert() {
+        function displayAlert() { // Display an alert when the button is clicked
             alert("Room Booked!");
         }
     </script>
@@ -31,7 +31,7 @@
     <h1>Room Booking</h1>
     <button class="BookButton" type="button" disabled onclick="displayAlert()">BOOK</button>
     <!-- Disable the button by default -->
-    <input type="checkbox" id="myCheckbox" onclick="displayCheckbox()"> <!-- Checkbox to enable the button -->
+    <input type="checkbox" id="randomCheckbox" onclick="displayCheckbox()"> <!-- Checkbox to enable the button -->
 </body>
 
 </html>
