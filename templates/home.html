@@ -39,12 +39,20 @@
 
     <style type="text/css">
         /* det her kan du bare smide ind i css filen, uden style tags*/
+        
+        .container
+        {
+            text-align: right; /* Align the container to the right */
+            margin-top: 10px; /* Add some top margin */
+        }
+
         .container img {
             /*Image zoom styles*/
             /* Style for the container holding the image */
             margin: 20px;
             cursor: zoom-in;
-            transition: transform 1s ease;
+            transition: transform 1s ease; /* Set transition of zoom in to 1 sec */
+            width: 80%; /* Set the width to 80% of the container */
         }
 
         input[type=checkbox] {
