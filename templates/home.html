@@ -38,22 +38,18 @@
     </table>
 
     <style type="text/css">
-        
-        .container img
-        {
+        /* det her kan du bare smide ind i css filen, uden style tags*/
+        .container img {
             margin: 20px;
             cursor: zoom-in;
             transition: transform 1s ease;
         }
-        
-        input[type=checkbox]
-        {
+
+        input[type=checkbox] {
             display: none;
         }
 
-        input[type=checkbox]:checked ~ label > img
-
-        {
+        input[type=checkbox]:checked~label>img {
             transform: scale(1.5);
             cursor: zoom-out;
         }
@@ -61,10 +57,11 @@
 
     <center>
         <div class="container">
-            <input type="checkbox" name="" id="zoom_img"/>
-            
+            <input type="checkbox" name="" id="zoom_img" />
+
             <label for="zoom_img">
-                <img src="kroghstræde3map.png" alt="Map">
+                <img src="{{ url_for('static', filename='images/kroghstræde3map.png') }}" alt="Map">
+                <!--Jeg flyttede filen over i mappen static/images og satte så den url ind-->
             </label>
         </div>
     </center>
