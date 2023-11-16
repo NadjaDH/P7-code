@@ -9,6 +9,10 @@ def home():
 def booking():
     return render_template("BookRoom.html")
 
+@app.route('/information')
+def information():
+    return render_template("information.html")
+
 if __name__ == '__main__':
     app.run()
 
