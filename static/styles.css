@@ -185,9 +185,9 @@ h6,
 h1,
 .h1 {
     font-size: 30px;
-    margin-bottom: 31px;
-    margin-top: 7px;
-    text-align: inherit
+    position: relative;
+    left: 45px;
+    top: 45px;
 }
 
 h2,
@@ -755,6 +755,8 @@ only screen and (min-device-pixel-ratio:1.5) {
     overflow: hidden;
     background-color: #e3e8ec;
     width: 50%;
+    position: relative;
+    top: 100px;
 }
 
 .tab button {
@@ -763,7 +765,8 @@ only screen and (min-device-pixel-ratio:1.5) {
     border-radius: 4px;
     padding: 14px 16px;
     transition: 0.3s;
-    position: static;
+    position: relative;
+    left: 50px;
 }
 
 .tab button:hover {
@@ -771,33 +774,40 @@ only screen and (min-device-pixel-ratio:1.5) {
 }
 
 .tab button.active {
+    border-bottom: none;
     background-color: #211a52;
+    color: white;
+    height: 45px;
 }
 
 /*Style of the content(table) in the tabs*/
 .tabcontent {
     /*Makes the content hidden when no day is selected*/
     display: none;
-    padding: 6px 12px;
-    width: 50%;
+    padding-bottom: 40px;
+    width: 35%;
+    position: relative;
+    left: 45px;
+    top: 95px;
 }
 
 table,
 th,
 td {
     border: 1px solid black;
+    border-top: none;
     border-collapse: collapse;
-    width: 60%;
+    width: 100%;
     text-align: center;
     vertical-align: middle;
 }
 
 th {
     height: 50px;
-    background-color: #0476aa;
+    background-color: #211a52;
     font-size: medium;
     font-weight: bold;
-    color: black;
+    color: white;
 }
 
 td {
