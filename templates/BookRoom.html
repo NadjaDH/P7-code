@@ -1,9 +1,28 @@
 <!DOCTYPE html>
-<html lan="en">
+<html lang="en">
 
 <head>
     <title>Home</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <!--Javascript for tab bar-->
+    <script>
+        function OpenDay(evt, day) {
+            var i, tabcontent, tablinks;
+            
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+
+            document.getElementById(day).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+    </script>
 </head>
 
 <body>
@@ -16,6 +35,58 @@
     <h1>Room Booking</h1>
     <button class="BookButton" type="button" onclick="someFunction()">BOOK</button>
 
+    <!--Create links to change the page in the tab bar-->
+    <div class="tab">
+        <button class="tablinks" onclick="OpenDay(event, 'Monday')">Mon</button>
+        <button class="tablinks" onclick="OpenDay(event, 'Tuesday')">Tue</button>
+        <button class="tablinks" onclick="OpenDay(event, 'Wednesday')">Wed</button>
+        <button class="tablinks" onclick="OpenDay(event, 'Thursday')">Thu</button>
+        <button class="tablinks" onclick="OpenDay(event, 'Friday')">Fri</button>
+    </div>
+
+    <!--The content of the tabs-->
+    <div id="Monday" class="tabcontent">
+        <table class="tableAvailability">
+            <th>Time</th>
+            <th>Availability</th>
+            <tr>
+                <td>07:00 - 08:00</td>
+                <td>Reserved</td>
+            </tr>
+            <tr>
+                <td>08:00 - 09:00</td>
+                <td>Reserved</td>
+            </tr>
+            <tr>
+                <td>09:00 - 10:00</td>
+                <td>Reserved</td>
+            </tr>
+            <tr>
+                <td>10:00 - 11:00</td>
+                <td>Reserved</td>
+            </tr>
+            <tr>
+                <td>11:00 - 12:00</td>
+                <td>Reserved</td>
+            </tr>
+            <tr>
+                <td>12:00 - 13:00</td>
+                <td>Reserved</td>
+            </tr>
+            <tr>
+                <td>13:00 - 14:00</td>
+                <td>Reserved</td>
+            </tr>
+            <tr>
+                <td>14:00 - 15:00</td>
+                <td>Reserved</td>
+            </tr>
+            <tr>
+                <td>15:00 - 16:00</td>
+                <td>Reserved</td>
+            </tr>
+        </table>
+    </div>
 
 </body>
 

@@ -48,6 +48,7 @@ fieldset,
 form,
 label,
 legend,
+tab,
 table,
 tbody,
 tfoot,
@@ -273,16 +274,6 @@ table {
 
 body {
     background: #e3e8ec
-}
-
-.tab,
-.columned a,
-.twoColumned a {
-    color: #211a52
-}
-
-.tab h2 {
-    color: inherit
 }
 
 .columned a:hover,
@@ -763,4 +754,37 @@ overview th {
 .BookButton:hover {
     background-color: #ab9e9e;
     color: white;
+}
+
+.tab {
+    overflow: hidden;
+    border: 1px solid black;
+    border-radius: 4px;
+    background-color: #e3e8ec;
+    float: left;
+}
+
+.tab button {
+    background-color: #ab9e9e;
+    float: inherit;
+    border: 1px solid black;
+    border-radius: 4px;
+    padding: 14px 16px;
+    transition: 0.3s;
+}
+
+.tab button:hover {
+    background-color: #aeabc5;
+}
+
+.tab button.active {
+    background-color: #211a52;
+}
+
+.tabcontent {
+    display: inline-block;
+    float: left;
+    padding: 6px 12px;
+    border: 1px solid black;
+    border-top: none;
 }
