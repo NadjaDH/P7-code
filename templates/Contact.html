@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Contact</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Contact IT Support</h1>
+        <p>If you require IT support, please call the following number:</p>
+        <p id="contact-number">+45 9940 2020</p>
+        <button class="contact-button" onclick="callITSupport()">Call IT Support</button>
+    </div>
+
+    <script>
+        function callITSupport() {
+            alert("Calling IT Support: +45 9940 2020");
+        }
+    </script>
+</body>
+
+</html>
