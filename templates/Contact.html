@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lan="en">
+
+<head>
+    <title>Contact</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+
+<body>
+    <ul class="navbar">
+        <li><a href="{{ url_for('home') }}">Home</a></li>
+        <li><a href="{{ url_for('booking') }}">Book Room</a></li>
+        <li><a class="active" href="{{ url_for('contact') }}">Contact</a></li>
+        <li><a href="{{ url_for('information') }}">information</a></li>
+    </ul>
+    <h1>Contact</h1>
+
+    <p> 
+        For any questions about group rooms or the <br>
+        use hereof, contact the library. <br>
+        Opening hours are monday - friday 9-16. <br><br>
+        If you need help with the website, contact <br>
+        technical support. <br><br>
+
+        <b> Library                                         Technical support </b> <br> <br>
+
+        Room XXXX                                           Room XXXX <br><br>
+        E-mail XXXX                                         E-mail XXXX <br><br>
+        Phone XXXX                                          Phone XXXX <br><br>
+    </p>
+
+</body>
+
+</html>

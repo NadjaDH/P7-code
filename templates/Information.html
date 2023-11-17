@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lan="en">
+
+<head>
+    <title>Information</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+
+<body>
+    <ul class="navbar">
+        <li><a href="{{ url_for('home') }}">Home</a></li>
+        <li><a href="{{ url_for('booking') }}">Book Room</a></li>
+        <li><a href="{{ url_for('contact') }}">Contact</a></li>
+        <li><a class="active" href="{{ url_for('information') }}">Information</a></li>
+    </ul>
+    <h1>Information</h1>
+
+    <p>
+        paragraph text
+        <a href="{{ url_for('') }}">unassigned link</a> <br>
+
+        paragraph text
+        <a href="{{ url_for('https://www.w3schools.com/tags/tag_html.asp') }}">//www.w3schools.com/tags/tag_html.asp</a>
+    </p>
+
+    <p style="display:inline-block;">  <!--inlines the icon. source: https://www.shecodes.io/athena/1613-how-to-place-image-and-text-on-the-same-line-in-html-->
+        <img src="img/example.png"> <!--insert icon-->
+        paragraph text <br><br><br>
+
+        information om grupperum
+    </p>
+</body>
+
+</html>
