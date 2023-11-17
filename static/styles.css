@@ -48,6 +48,7 @@ fieldset,
 form,
 label,
 legend,
+tab,
 table,
 tbody,
 tfoot,
@@ -89,12 +90,6 @@ section {
 
 body {
     line-height: 1
-}
-
-table {
-    border: 1px solid black;
-    border-collapse: collapse;
-    border-spacing: 0
 }
 
 html,
@@ -266,23 +261,8 @@ p {
     content: 'y'
 }
 
-table {
-    width: 60%;
-    margin-bottom: 10px
-}
-
 body {
     background: #e3e8ec
-}
-
-.tab,
-.columned a,
-.twoColumned a {
-    color: #211a52
-}
-
-.tab h2 {
-    color: inherit
 }
 
 .columned a:hover,
@@ -728,28 +708,6 @@ only screen and (min-device-pixel-ratio:1.5) {
     background-color: #ab9e9e;
 }
 
-/* end of styling af navigation bar */
-
-/* styling the table overview on the homepage */
-.overview {
-    width: 30%;
-    position: relative;
-    bottom: -100px;
-    left: 20px;
-    height: 150px;
-}
-
-.overview td,
-overview th {
-    border: 1px solid black;
-    border-collapse: collapse;
-    /*background-color: rgb(44, 102, 44);*/
-    /* hvis vi skal have en background color på tabellen */
-}
-
-/*end of styling the table overview on the homepage */
-
-/* Styling of the booking button on the booking page */
 .BookButton {
     background-color: #0476aa;
     border: 2px solid black;
@@ -793,3 +751,72 @@ overview th {
 }
 
 /* end of styling of the booking button on the booking page */
+.tab {
+    overflow: hidden;
+    background-color: #e3e8ec;
+    width: 50%;
+}
+
+.tab button {
+    background-color: #ab9e9e;
+    border: 1px solid black;
+    border-radius: 4px;
+    padding: 14px 16px;
+    transition: 0.3s;
+    position: static;
+}
+
+.tab button:hover {
+    background-color: #aeabc5;
+}
+
+.tab button.active {
+    background-color: #211a52;
+}
+
+/*Style of the content(table) in the tabs*/
+.tabcontent {
+    /*Makes the content hidden when no day is selected*/
+    display: none;
+    padding: 6px 12px;
+    width: 50%;
+}
+
+table,
+th,
+td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    width: 60%;
+    text-align: center;
+    vertical-align: middle;
+}
+
+th {
+    height: 50px;
+    background-color: #0476aa;
+    font-size: medium;
+    font-weight: bold;
+    color: black;
+}
+
+td {
+    height: 30px;
+}
+
+/*Targets the width of the first and second column in the table*/
+td:nth-child(1) {
+    width: 40%;
+}
+
+th:nth-child(1) {
+    width: 40%;
+}
+
+td:nth-child(2) {
+    width: 70%;
+}
+
+th:nth-child(2) {
+    width: 70%;
+}
