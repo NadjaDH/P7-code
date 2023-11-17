@@ -842,6 +842,9 @@ th:nth-child(2) {
     border: none;
     outline: none;
     transition: 0.4s;
+    position: relative;
+    top: 75px;
+    left: 45px;
   }
   
   /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
@@ -856,4 +859,7 @@ th:nth-child(2) {
     display: none;
     overflow: hidden;
     width: 46.7%;
+    position: relative;
+    top: 75px;
+    left: 45px;
   }
