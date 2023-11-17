@@ -769,3 +769,27 @@ overview th {
     background-color: #cccccc;
     color: #666666;
 }
+
+.container
+        {
+            text-align: right; /* Align the container to the right */
+            margin-top: -400px; /* Add some top margin */
+        }
+
+        .container img {
+            /*Image zoom styles*/
+            /* Style for the container holding the image */
+            margin: 300px;
+            cursor: zoom-in;
+            transition: transform 1s ease; /* Set transition of zoom in to 1 sec */
+            width: 40%; /* Set the width of the container */
+        }
+
+        input[type=checkbox] {
+            display: none;
+        }
+
+        input[type=checkbox]:checked~label>img {
+            transform: scale(1.5);
+            cursor: zoom-out;
+        }
