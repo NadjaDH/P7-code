@@ -5,20 +5,30 @@
     <title>Home</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
     <script>
+
         function displayCheckbox() {
             // Get all checkboxes
             var checkboxes = document.querySelectorAll('input[type="checkbox"]');
 
             // Check if any checkbox is checked
-            var anyChecked = Array.from(checkboxes).some(checkbox => checkbox.checked);
+            var checkedCount = Array.from(checkboxes).filter(checkbox => checkbox.checked).length;
 
             // Get the button
-            var button = document.getElementById('checkbox');
+            var button = document.getElementById('bookButton');
 
             // Enable or disable the button based on whether any checkbox is checked
-            button.disabled = !anyChecked;
+            button.disabled = checkedCount === 0 || checkedCount > 2;
         }
 
+        function displayAlert() {
+            alert("Room booked!");
+            // get the checked checkbox
+
+            // send some data to the server
+
+
+
+        }
         // javascript for tabbar
         function OpenDay(evt, day) {
             var i, tabcontent, tablinks;
@@ -47,7 +57,7 @@
         <li><a href="{{ url_for('information') }}">Information</a></li>
     </ul>
     <h1>Room Booking</h1>
-    <button class="BookButton" type="button" disabled onclick="displayAlert()">BOOK</button>
+    <button class="BookButton" type="button" id="bookButton" disabled onclick="displayAlert()">BOOK</button>
     <!-- Disable the button by default -->
 
     <!--Create links to change the page in the tab bar-->
@@ -71,7 +81,7 @@
             </tr>
             <tr>
                 <td>08:00 - 09:00</td>
-                <td><input type="checkbox" onclick="displayCheckbox()"></td>
+                <td><input type="checkbox" data-timeslot="2023-11-13T08:00" onclick="displayCheckbox()"></td>
             </tr>
             <tr>
                 <td>09:00 - 10:00</td>
@@ -275,7 +285,6 @@
             </tr>
         </table>
     </div>
-
 </body>
 
 </html>
