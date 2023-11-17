@@ -845,4 +845,5 @@ th:nth-child(2) {
     background-color: white;
     display: none;
     overflow: hidden;
+    width: 46.7%;
   }
