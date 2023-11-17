@@ -7,34 +7,11 @@
 </head>
 
 <body>
-<<<<<<< HEAD
-    <h1>Home</h1>
-    <table>
-        <tr>
-            <td>Room 4.124</td>
-            <td>Book</td>
-        </tr>
-        <tr>
-            <td>Room 4.125</td>
-            <td>Book</td>
-        </tr>
-        <tr>
-            <td>Room 4.126</td>
-            <td>Book</td>
-        </tr>
-        <td>Room 4.127</td>
-        <td>Book</td>
-        <tr>
-            <td>Room 4.128</td>
-            <td>Book</td>
-        </tr>
-    </table>
-=======
     <ul class="navbar">
         <li><a href="{{ url_for('home') }}">Home</a></li>
         <li><a href="{{ url_for('booking') }}">Book Room</a></li>
         <li><a href="#contact">Contact</a></li>
-        <li><a href="#information">information</a></li>
+        <li><a href="{{ url_for('information') }}">Information</a></li>
     </ul>
     <h1>Home</h1>
     <table class="overview">
@@ -50,15 +27,16 @@
             <td>Room 4.126</td>
             <td><a href="{{ url_for('booking') }}">Book</a></td>
         </tr>
-        <td>Room 4.127</td>
-        <td><a href="{{ url_for('booking') }}">Book</a></td>
+        <tr>
+            <td>Room 4.127</td>
+            <td><a href="{{ url_for('booking') }}">Book</a></td>
+        </tr>
         <tr>
             <td>Room 4.128</td>
             <td><a href="{{ url_for('booking') }}">Book</a></td>
         </tr>
     </table>
 
->>>>>>> Test
 </body>
 
 </html>

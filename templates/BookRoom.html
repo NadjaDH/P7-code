@@ -4,6 +4,21 @@
 <head>
     <title>Home</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script>
+        function displayCheckbox() {
+            var checkbox = document.getElementById("randomCheckbox"); // Get the checkbox
+            var button = document.querySelector(".BookButton"); // Get the button
+
+            if (checkbox.checked == true) { // If the checkbox is checked, enable the button
+                button.disabled = false;
+            } else {
+                button.disabled = true; // Else disable the button
+            }
+        }
+        function displayAlert() { // Display an alert when the button is clicked
+            alert("Room Booked!");
+        }
+    </script>
 </head>
 
 <body>
@@ -11,10 +26,12 @@
         <li><a class="active" href="{{ url_for('home') }}">Home</a></li>
         <li><a href="{{ url_for('booking') }}">Book Room</a></li>
         <li><a href="#contact">Contact</a></li>
-        <li><a href="#information">information</a></li>
+        <li><a href="{{ url_for('information') }}">Information</a></li>
     </ul>
-    <h1>Home</h1>
-
+    <h1>Room Booking</h1>
+    <button class="BookButton" type="button" disabled onclick="displayAlert()">BOOK</button>
+    <!-- Disable the button by default -->
+    <input type="checkbox" id="randomCheckbox" onclick="displayCheckbox()"> <!-- Checkbox to enable the button -->
 </body>
 
 </html>
