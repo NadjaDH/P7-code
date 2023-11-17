@@ -4,6 +4,7 @@
 <head>
     <title>Home</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+
 </head>
 
 <body>
@@ -14,21 +15,72 @@
         <li><a href="{{ url_for('information') }}">Information</a></li>
     </ul>
     <h1>Home</h1>
-    <button class="accordion">Section 1</button>
+    <!--
+    <button class="accordion" id="4118">Room 4.118</button>
+    <div class="panel">
+        <p>
+            <table style="width:65%">
+            <tr>
+              <th>Name</th>
+              <th>Telephone</th>
+              <th>Telephone</th>
+            </tr>
+            <tr>
+              <td>Bill Gates</td>
+              <td>555 77 854</td>
+              <td>555 77 855</td>
+            </tr>
+          </table>
+          Current Status: Available--> <!-- TODO: Her skal vi implementere en availability status funktion -->
+         <!-- <br> Next Booking: Tue 10:00 --><!-- TODO: Her skal vi implementere en 'next booking' funktion-->
+          <!--<br> 
+        </p>
+    </div>
+
+    <button class="accordion" id="4119">Room 4.119</button>
+    <div class="panel">
+      <div style="width: 20%; height: 20px; background: red;"></div>
+      <div style="width: 20%; height: 20px; background: rgb(242, 255, 0);"></div>
+      <div style="width: 20%; height: 20px; background: green;"></div>
+    </div>
+
+    <button class="accordion" id="4120">Room 4.120</button>
     <div class="panel">
         <p>Lorem ipsum...</p>
     </div>
 
-    <button class="accordion">Section 2</button>
+    <button class="accordion" id="4121">Room 4.121</button>
     <div class="panel">
         <p>Lorem ipsum...</p>
-    </div>
-
-    <button class="accordion">Section 3</button>
+    </div> 
+    -->
+    {% for room in room_info %}
+    <button class="accordion">Room {{ room.room }}</button>
     <div class="panel">
-        <p>Lorem ipsum...</p>
+        <p>Status: {{ "Available" if room.status else "Reserved" }}</p>
     </div>
-
+    {% endfor %}
+   
+    <script> // Dette er JS for at accordion fungerer
+        var acc = document.getElementsByClassName("accordion");
+    var i;
+    
+    for (i = 0; i < acc.length; i++) {
+      acc[i].addEventListener("click", function() {
+        /* Toggle between adding and removing the "active" class,
+        to highlight the button that controls the panel */
+        this.classList.toggle("active");
+    
+        /* Toggle between hiding and showing the active panel */
+        var panel = this.nextElementSibling;
+        if (panel.style.display === "block") {
+          panel.style.display = "none";
+        } else {
+          panel.style.display = "block";
+        }
+      } );
+    }
+    </script>
 </body>
 
 </html>

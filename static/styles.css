@@ -623,7 +623,7 @@ only screen and (min-device-pixel-ratio:1.5) {
         height: auto !important
     }
 }
-
+/* styling af accordion begynd */ /*
 .accordion {
     list-style: none;
     border-top: 1px solid #ddd;
@@ -680,8 +680,8 @@ only screen and (min-device-pixel-ratio:1.5) {
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
     padding-top: 1rem
-}
-
+} */
+/* styling af accordion slut */
 
 /* styling af navigation bar*/
 .navbar {
@@ -800,7 +800,7 @@ overview th {
     color: #444;
     cursor: pointer;
     padding: 18px;
-    width: 100%;
+    width: 50%;
     text-align: left;
     border: none;
     outline: none;
