@@ -4,6 +4,11 @@
 <head>
     <title>Home</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+     <!--link to cssSheet-->
+     <link rel="stylesheet" href="/static/Style_Dropdown.css">
+
+     <!--Iconlist link-->
+     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <script>
         function displayCheckbox() {
             var checkbox = document.getElementById("randomCheckbox"); // Get the checkbox
@@ -32,6 +37,18 @@
     <button class="BookButton" type="button" disabled onclick="displayAlert()">BOOK</button>
     <!-- Disable the button by default -->
     <input type="checkbox" id="randomCheckbox" onclick="displayCheckbox()"> <!-- Checkbox to enable the button -->
+
+    
+   <div class="dropdown">
+        <button onclick="myFunction()" class="dropbtn">Dropdown</button>
+        <div id="myDropdown" class="dropdown-content">
+            <a href="#">Option 01</a>
+            <a href="#">Option 02</a>
+            <a href="#">Option 03</a>
+
+        </div>
+   </div>
+
 </body>
 
 </html>
