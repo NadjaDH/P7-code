@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-
-  html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,li,fieldset,form,label,legend,table,tbody,tfoot,thead,tr,th,td,aside,canvas,details,figure,footer,header,hgroup,menu,nav,section {
-=======
 html,
 body,
 div,
@@ -69,7 +65,6 @@ hgroup,
 menu,
 nav,
 section {
->>>>>>> Test
     margin: 0;
     padding: 0;
     border: 0;
@@ -78,9 +73,6 @@ section {
     vertical-align: baseline;
 }
 
-<<<<<<< HEAD
-article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section {
-=======
 article,
 aside,
 details,
@@ -92,7 +84,6 @@ hgroup,
 menu,
 nav,
 section {
->>>>>>> Test
     display: block
 }
 
@@ -101,13 +92,6 @@ body {
 }
 
 table {
-<<<<<<< HEAD
-    border-collapse: collapse; 
-    border-spacing: 0
-}
-
-html,body {
-=======
     border: 1px solid black;
     border-collapse: collapse;
     border-spacing: 0
@@ -115,7 +99,6 @@ html,body {
 
 html,
 body {
->>>>>>> Test
     margin: 0;
     word-break: break-word;
     height: 100%
@@ -146,19 +129,12 @@ html {
 }
 
 body {
-<<<<<<< HEAD
-    font-family: "Helvetica",sans-serif;
-=======
     font-family: "Helvetica", sans-serif;
->>>>>>> Test
     font-size: 12px;
     line-height: 140%;
     color: #354450;
 }
 
-<<<<<<< HEAD
-h1,.h1,h2,.h2,h3,.h3,h4,.h4,h5,.h5,h6,.h6 {
-=======
 h1,
 .h1,
 h2,
@@ -171,33 +147,12 @@ h5,
 .h5,
 h6,
 .h6 {
->>>>>>> Test
     text-transform: uppercase;
     line-height: 100%;
     letter-spacing: 1px;
     font-weight: normal
 }
 
-<<<<<<< HEAD
-h1,.h1,h2,.h2 {
-    font-family: "DIN Next W01 Bold","Helvetica",sans-serif;
-    letter-spacing: 2px
-}
-
-h1,.h1,h2,.h2,h3,.h3 {
-    color: #211a52
-}
-
-.color .h1,.color .h2,.color .h3 {
-    color: #fff !important
-}
-
-h3,.h3,h4,.h4,h5,.h5,h6,.h6 {
-    font-family: "DIN Next W01 Regular","Helvetica",sans-serif
-}
-
-h1,.h1 {
-=======
 h1,
 .h1,
 h2,
@@ -234,26 +189,18 @@ h6,
 
 h1,
 .h1 {
->>>>>>> Test
     font-size: 30px;
     margin-bottom: 31px;
     margin-top: 7px;
     text-align: inherit
 }
 
-<<<<<<< HEAD
-h2,.h2 {
-=======
 h2,
 .h2 {
->>>>>>> Test
     font-size: 14px;
     margin-bottom: 13px
 }
 
-<<<<<<< HEAD
-h3,.h3,h4,.h4,h5,.h5,h6,.h6 {
-=======
 h3,
 .h3,
 h4,
@@ -262,7 +209,6 @@ h5,
 .h5,
 h6,
 .h6 {
->>>>>>> Test
     font-size: 12px;
     margin-bottom: 12px
 }
@@ -273,11 +219,7 @@ p {
 }
 
 .navigationTitle {
-<<<<<<< HEAD
-    font-family: "DIN Next W01 Bold","Helvetica",sans-serif;
-=======
     font-family: "DIN Next W01 Bold", "Helvetica", sans-serif;
->>>>>>> Test
     text-transform: uppercase;
     letter-spacing: 3px;
     font-weight: normal;
@@ -307,11 +249,7 @@ p {
     font-style: normal;
     font-weight: normal;
     font-size: 12px;
-<<<<<<< HEAD
-    font-family: "DIN Next W01 Regular","Helvetica",sans-serif;
-=======
     font-family: "DIN Next W01 Regular", "Helvetica", sans-serif;
->>>>>>> Test
     text-transform: uppercase;
     margin: 6px auto 0;
     clear: both
@@ -337,13 +275,9 @@ body {
     background: #e3e8ec
 }
 
-<<<<<<< HEAD
-.tab,.columned a,.twoColumned a {
-=======
 .tab,
 .columned a,
 .twoColumned a {
->>>>>>> Test
     color: #211a52
 }
 
@@ -351,12 +285,8 @@ body {
     color: inherit
 }
 
-<<<<<<< HEAD
-.columned a:hover,.twoColumned a:hover {
-=======
 .columned a:hover,
 .twoColumned a:hover {
->>>>>>> Test
     color: #4306dd
 }
 
@@ -365,15 +295,11 @@ body {
     color: white
 }
 
-<<<<<<< HEAD
-.color a,.color h1,.color h2,.color h3,.color .leadin {
-=======
 .color a,
 .color h1,
 .color h2,
 .color h3,
 .color .leadin {
->>>>>>> Test
     color: inherit
 }
 
@@ -385,21 +311,6 @@ body {
     color: #999
 }
 
-<<<<<<< HEAD
-.smallButton:after,.smallButton,.pagination a {
-    color: #211a52
-}
-
-.smallButton:hover,.smallButton:hover:after,.pagination a:hover {
-    color: #4306dd
-}
-
-.color .smallButton:hover,.color .smallButton:hover:after,.color .pagination a:hover {
-    color: #aeabc5
-}
-
-.color .smallButton,.color .smallButton:after,.color .pagination a {
-=======
 .smallButton:after,
 .smallButton,
 .pagination a {
@@ -421,33 +332,20 @@ body {
 .color .smallButton,
 .color .smallButton:after,
 .color .pagination a {
->>>>>>> Test
     color: white
 }
 
 .color .fade:after {
-<<<<<<< HEAD
-    background: -moz-linear-gradient(top,rgba(33,26,82,0) 72%,rgba(33,26,82,1) 100%);
-    background: -webkit-gradient(linear,left top,left bottom,color-stop(72%,rgba(33,26,82,0)),color-stop(100%,rgba(33,26,82,1)));
-    background: -webkit-linear-gradient(top,rgba(33,26,82,0) 72%,rgba(33,26,82,1) 100%);
-    background: -o-linear-gradient(top,rgba(33,26,82,0) 72%,rgba(33,26,82,1) 100%);
-    background: -ms-linear-gradient(top,rgba(33,26,82,0) 72%,rgba(33,26,82,1) 100%);
-    background: linear-gradient(top,rgba(33,26,82,0) 72%,rgba(33,26,82,1) 100%)
-=======
     background: -moz-linear-gradient(top, rgba(33, 26, 82, 0) 72%, rgba(33, 26, 82, 1) 100%);
     background: -webkit-gradient(linear, left top, left bottom, color-stop(72%, rgba(33, 26, 82, 0)), color-stop(100%, rgba(33, 26, 82, 1)));
     background: -webkit-linear-gradient(top, rgba(33, 26, 82, 0) 72%, rgba(33, 26, 82, 1) 100%);
     background: -o-linear-gradient(top, rgba(33, 26, 82, 0) 72%, rgba(33, 26, 82, 1) 100%);
     background: -ms-linear-gradient(top, rgba(33, 26, 82, 0) 72%, rgba(33, 26, 82, 1) 100%);
     background: linear-gradient(top, rgba(33, 26, 82, 0) 72%, rgba(33, 26, 82, 1) 100%)
->>>>>>> Test
 }
 
 /* Overvej fancybox til billede at kort */
 /*! fancyBox v2.1.5 fancyapps.com | fancyapps.com/fancybox/#license */
-<<<<<<< HEAD
-.fancybox-wrap,.fancybox-skin,.fancybox-outer,.fancybox-inner,.fancybox-image,.fancybox-wrap iframe,.fancybox-wrap object,.fancybox-nav,.fancybox-nav span,.fancybox-tmp {
-=======
 .fancybox-wrap,
 .fancybox-skin,
 .fancybox-outer,
@@ -458,7 +356,6 @@ body {
 .fancybox-nav,
 .fancybox-nav span,
 .fancybox-tmp {
->>>>>>> Test
     padding: 0;
     margin: 0;
     border: 0;
@@ -488,14 +385,6 @@ body {
 }
 
 .fancybox-opened .fancybox-skin {
-<<<<<<< HEAD
-    -webkit-box-shadow: 0 10px 25px rgba(0,0,0,0.5);
-    -moz-box-shadow: 0 10px 25px rgba(0,0,0,0.5);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.5)
-}
-
-.fancybox-outer,.fancybox-inner {
-=======
     -webkit-box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
     -moz-box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5)
@@ -503,7 +392,6 @@ body {
 
 .fancybox-outer,
 .fancybox-inner {
->>>>>>> Test
     position: relative
 }
 
@@ -515,12 +403,8 @@ body {
     -webkit-overflow-scrolling: touch
 }
 
-<<<<<<< HEAD
-.fancybox-image,.fancybox-iframe {
-=======
 .fancybox-image,
 .fancybox-iframe {
->>>>>>> Test
     display: block;
     width: 100%;
     height: 100%
@@ -531,14 +415,10 @@ body {
     max-height: 100%
 }
 
-<<<<<<< HEAD
-#fancybox-loading,.fancybox-close,.fancybox-prev span,.fancybox-next span {
-=======
 #fancybox-loading,
 .fancybox-close,
 .fancybox-prev span,
 .fancybox-next span {
->>>>>>> Test
     background-image: url('fancybox_sprite.png')
 }
 
@@ -593,11 +473,7 @@ body {
 
 .fancybox-title {
     visibility: hidden;
-<<<<<<< HEAD
-    font: normal 13px/20px "Helvetica Neue",Helvetica,Arial,sans-serif;
-=======
     font: normal 13px/20px "Helvetica Neue", Helvetica, Arial, sans-serif;
->>>>>>> Test
     position: relative;
     text-shadow: none;
     z-index: 8050
@@ -621,11 +497,7 @@ body {
     margin-right: -100%;
     padding: 2px 20px;
     background: transparent;
-<<<<<<< HEAD
-    background: rgba(0,0,0,0.8);
-=======
     background: rgba(0, 0, 0, 0.8);
->>>>>>> Test
     -webkit-border-radius: 15px;
     -moz-border-radius: 15px;
     border-radius: 15px;
@@ -653,14 +525,6 @@ body {
     color: #fff;
     padding: 10px;
     background: #000;
-<<<<<<< HEAD
-    background: rgba(0,0,0,.8)
-}
-
-@media only screen and (-webkit-min-device-pixel-ratio: 1.5),only screen and (min--moz-device-pixel-ratio:1.5),only screen and (min-device-pixel-ratio:1.5) {
-    #fancybox-loading,.fancybox-close,.fancybox-prev span,.fancybox-next span {
-        background-image:url('fancybox_sprite@2x.png');
-=======
     background: rgba(0, 0, 0, .8)
 }
 
@@ -673,7 +537,6 @@ only screen and (min-device-pixel-ratio:1.5) {
     .fancybox-prev span,
     .fancybox-next span {
         background-image: url('fancybox_sprite@2x.png');
->>>>>>> Test
         background-size: 44px 152px
     }
 
@@ -754,12 +617,8 @@ only screen and (min-device-pixel-ratio:1.5) {
     height: 100%
 }
 
-<<<<<<< HEAD
-@media all and (-ms-high-contrast:none),(-ms-high-contrast:active) {
-=======
 @media all and (-ms-high-contrast:none),
 (-ms-high-contrast:active) {
->>>>>>> Test
     .flex-section .box {
         height: auto !important
     }
@@ -822,8 +681,6 @@ only screen and (min-device-pixel-ratio:1.5) {
     box-sizing: border-box;
     padding-top: 1rem
 }
-<<<<<<< HEAD
-=======
 
 
 /* styling af navigation bar*/
@@ -840,6 +697,7 @@ only screen and (min-device-pixel-ratio:1.5) {
 }
 
 .navbar li a {
+    /* styling af links i navigation bar */
     display: block;
     color: rgb(0, 0, 0);
     text-align: center;
@@ -849,7 +707,9 @@ only screen and (min-device-pixel-ratio:1.5) {
 }
 
 .navbar li a::after {
+    /* styling af border på navigation bar */
     content: "";
+    /* Tilføjer border til hvert element */
     position: absolute;
     right: 0;
     top: 25%;
@@ -868,6 +728,8 @@ only screen and (min-device-pixel-ratio:1.5) {
     background-color: #ab9e9e;
 }
 
+/* end of styling af navigation bar */
+
 /* styling the table overview on the homepage */
 .overview {
     width: 30%;
@@ -884,4 +746,100 @@ overview th {
     /*background-color: rgb(44, 102, 44);*/
     /* hvis vi skal have en background color på tabellen */
 }
->>>>>>> Test
+
+/*end of styling the table overview on the homepage */
+
+/* Styling of the booking button on the booking page */
+.BookButton {
+    background-color: #0476aa;
+    border: 2px solid black;
+    color: rgb(0, 0, 0);
+    padding: 15px 32px;
+    /* Gør at knappen er 15px fra toppen og bunden og 32px fra venstre og højre side */
+    text-align: center;
+    /* Gør at teksten er centreret */
+    text-decoration: none;
+    /* Fjerner understregning på teksten */
+    display: inline-block;
+    /* Gør at knappen er på samme linje som som det stående ved siden af (Skal måske fjernes) */
+    font-size: 16px;
+    /* Gør at teksten er 16px stor */
+    font-weight: bold;
+    /* Gør at teksten er bold */
+    transition-duration: 0.4s;
+    /* Gør bare at der er en delay på når man hover med musen over knappen*/
+    width: 350px;
+    /* Gør at knappen er 350px bred */
+    height: 100px;
+    /* Gør at knappen er 100px høj */
+    position: relative;
+    /* ikke helt sikker, men den gør at positionen er relativ til den omkringliggende tekst */
+    top: 250px;
+    /* Gør at knappen er 250px fra toppen af siden */
+    left: 800px;
+    /* Gør at knappen er 800px fra venstre side af siden */
+}
+
+.BookButton:hover {
+    /* hover effekt på knappen */
+    background-color: #ab9e9e;
+    color: white;
+}
+
+.BookButton:disabled {
+    /* hvordan knappen ser ud når den er disabled */
+    background-color: #cccccc;
+    color: #666666;
+}
+
+/* end of styling of the booking button on the booking page */
+
+/* Style the buttons that are used to open and close the accordion panel */
+.accordion {
+    background-color: #eee;
+    color: #444;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    text-align: left;
+    border: none;
+    outline: none;
+    transition: 0.4s;
+  }
+  
+  /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+  .active, .accordion:hover {
+    background-color: #ccc;
+  }
+  
+  /* Style the accordion panel. Note: hidden by default */
+  .panel {
+    padding: 0 18px;
+    background-color: white;
+    display: none;
+    overflow: hidden;
+  }
+  
+.container
+        {
+            text-align: right; /* Align the container to the right */
+            margin-top: -400px; /* Add some top margin */
+        }
+
+        .container img {
+            /*Image zoom styles*/
+            /* Style for the container holding the image */
+            margin: 300px;
+            cursor: zoom-in;
+            transition: transform 1s ease; /* Set transition of zoom in to 1 sec */
+            width: 40%; /* Set the width of the container */
+        }
+
+        input[type=checkbox] {
+            display: none;
+        }
+
+        input[type=checkbox]:checked~label>img {
+            transform: scale(1.5);
+            cursor: zoom-out;
+        }
