@@ -24,6 +24,7 @@
             alert("Room Booked!");
         }
     </script>
+   
 </head>
 
 <body>
@@ -45,9 +46,32 @@
             <a href="#">Option 01</a>
             <a href="#">Option 02</a>
             <a href="#">Option 03</a>
-
+            <a href="#">Option 03</a>
+            <a href="#">Option 03</a>
         </div>
    </div>
+   
+   <script>
+    /* When the user click on the button, 
+toggle between hiding and showing the dropdown content */
+function myFunction() {
+    document.getElementById("myDropdown").classList.toggle("show");
+}
+
+//close the dropdown menu
+window.onclick = function(event) {
+    if (!event.target.matches('.dropbtn')) {
+        var dropdowns = document.getElementsByClassName("dropdown-content");
+        var i;
+        for (i = 0; i < dropdowns.length; i++){
+        var openDropdown = dropdowns[i];
+        if (openDropdown.classList.contains('show')) {
+            openDropdown.classList.remove('show');
+        }
+        } 
+    }
+}
+   </script>
 
 </body>
 
