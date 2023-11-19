@@ -55,32 +55,37 @@
     </div> 
     -->
     {% for room in room_info %}
-    <button class="accordion">Room {{ room.room }}</button>
-    <div class="panel">
+      <button class="accordion"style="background-color: {{ '#bde7bd' if room.status else '##C0C0C0' }}">Room {{ room.room }}</button>
+      <div class="panel">
         <p>Status: {{ "Available" if room.status else "Reserved" }}</p>
-    </div>
+      </div>
     {% endfor %}
    
-    <script> // Dette er JS for at accordion fungerer
-        var acc = document.getElementsByClassName("accordion");
-    var i;
-    
-    for (i = 0; i < acc.length; i++) {
-      acc[i].addEventListener("click", function() {
-        /* Toggle between adding and removing the "active" class,
-        to highlight the button that controls the panel */
-        this.classList.toggle("active");
-    
-        /* Toggle between hiding and showing the active panel */
-        var panel = this.nextElementSibling;
-        if (panel.style.display === "block") {
-          panel.style.display = "none";
-        } else {
-          panel.style.display = "block";
-        }
-      } );
-    }
-    </script>
+  <script> // Dette er JS for at accordion fungerer
+    document.addEventListener('DOMContentLoaded', function() {
+        var accordions = document.querySelectorAll('.accordion');
+
+        // Add click event listeners to each accordion
+        accordions.forEach(function(accordion) {
+            accordion.addEventListener('click', function() {
+                // Check if the clicked accordion is already active
+                var isActive = this.classList.contains('active');
+
+                // Close all accordions
+                accordions.forEach(function(otherAccordion) {
+                    otherAccordion.classList.remove('active');
+                    otherAccordion.nextElementSibling.style.display = 'none';
+                });
+
+                // Toggle the active class and show/hide the panel
+                this.classList.toggle('active', !isActive);
+                var panel = this.nextElementSibling;
+                panel.style.display = isActive ? 'none' : 'block';
+            });
+        });
+    });
+</script>
+
 </body>
 
 </html>
