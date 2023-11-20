@@ -21,6 +21,10 @@ def booking():
 def information():
     return render_template("Information.html")
 
+@app.route('/generate-fake-data')
+def generate_fake_data():
+    return fake_group_room()
+
 def fake_group_room():
     fake_bookings = [fake.date_time() for _ in range(5)] #Generate 5 fake booking dates
     
@@ -40,4 +44,4 @@ def fake_group_room():
         conn.close() #  
 
     if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True) #debug=True means that the server will reload itself each time you make a change to the code
