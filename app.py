@@ -6,6 +6,8 @@ from faker import Faker
 app = Flask(__name__)
 fake = Faker()
 
+# Set up logging
+logging.basicConfig(level=logging.ERROR)  # Adjust the logging level as needed. This will help us in debugging issues and understanding the cause of any errors that occur during the fake booking generation process.
 @app.route('/')
 def home():
     room_data = accordion_function()
@@ -20,9 +22,8 @@ def booking():
 @app.route('/information')
 def information():
     return render_template("Information.html")
-
-@app.route('/generate-fake-data')
-def generate_fake_data():
+@app.route('/fake_booking')
+def fake_booking():
     return fake_group_room()
 
 def fake_group_room():
