@@ -6,8 +6,6 @@ from faker import Faker
 app = Flask(__name__)
 fake = Faker()
 
-# Set up logging
-logging.basicConfig(level=logging.ERROR)  # Adjust the logging level as needed. This will help us in debugging issues and understanding the cause of any errors that occur during the fake booking generation process.
 @app.route('/')
 def home():
     room_data = accordion_function()
@@ -22,12 +20,14 @@ def booking():
 @app.route('/information')
 def information():
     return render_template("Information.html")
+
 @app.route('/fake_booking')
 def fake_booking():
     return fake_group_room()
 
 def fake_group_room():
     fake_bookings = [fake.date_time() for _ in range(5)] #Generate 5 fake booking dates
+    print(fake_bookings)
     
     conn = sqlite3.connect('booking.db')
     cursor = conn.cursor() #cursor is a pointer to the database. It is used to execute SQL commands
@@ -44,5 +44,5 @@ def fake_group_room():
     finally: #close the connection to the database
         conn.close() #  
 
-    if __name__ == '__main__':
-    app.run(debug=True) #debug=True means that the server will reload itself each time you make a change to the code
+if __name__ == '__main__':
+    app.run(debug=True)
