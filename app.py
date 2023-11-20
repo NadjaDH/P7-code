@@ -1,6 +1,10 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 from accordion import accordion_function
+import sqlite3
+from faker import Faker
+
 app = Flask(__name__)
+fake = Faker()
 
 @app.route('/')
 def home():
@@ -17,10 +21,23 @@ def booking():
 def information():
     return render_template("Information.html")
 
-if __name__ == '__main__':
-    app.run()
+def fake_group_room():
+    fake_bookings = [fake.date_time() for _ in range(5)] #Generate 5 fake booking dates
+    
+    conn = sqlite3.connect('booking.db')
+    cursor = conn.cursor() #cursor is a pointer to the database. It is used to execute SQL commands
+    
+    try: #try to insert the fake bookings data into the database
+        for timeslot in fake_bookings: #for each fake booking date
+            cursor.execute("INSERT INTO bookings (timeslot) VALUES (?)", (timeslot,)) 
+        conn.commit() #commit the changes to the database 
+        return  'Fake bookings succesfully added'
+    except Exception as e: #if there is an error
+        print("Error adding fake bookings")
+        conn.rollback() #undo the changes
+        return 'Error adding the fake bookings'
+    finally: #close the connection to the database
+        conn.close() #  
 
-#def GroupRoom()
-   # room_number
-    #is_avaliable
-    #booking_status
+    if __name__ == '__main__':
+    app.run(debug=True)
