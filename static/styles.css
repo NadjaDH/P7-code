@@ -826,7 +826,7 @@ overview th {
             margin-top: -400px; /* Add some top margin */
         }
 
-        .container img {
+    .container img {
             /*Image zoom styles*/
             /* Style for the container holding the image */
             margin: 300px;
@@ -852,7 +852,7 @@ overview th {
             background-color: #f4f4f4;
         }
 
-        .container {
+    .container {
             max-width: 800px;
             margin: 50px auto;
             padding: 20px;
@@ -870,7 +870,7 @@ overview th {
             font-size: 18px;
         }
 
-        .contact-button {
+    .contact-button {
             display: block;
             margin: 20px auto;
             padding: 10px 20px;
@@ -882,3 +882,12 @@ overview th {
             border-radius: 5px;
             cursor: pointer;
         }
+
+
+.left_info {
+    float; none;
+}
+
+.right_info {
+    float: none;
+}
