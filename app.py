@@ -90,13 +90,23 @@ def is_timeslot_booked(timeslot, room, date):
         return True  # Assume the timeslot is booked in case of an error
     finally:
         conn.close()
+        
+def from_Timeslots_To_Booking (room, date, timeslots): #Define one booking as one booking only
+    if len(timeslots) > 0:
+        bookings = []
+        for timeslot in timeslots:
+            #check list of timeslots
+            bookings.append(timeslot) 
+        
 
+    
 def insert_booking(timeslots, room, date, BookID):
     conn = sqlite3.connect('booking.db')
     cursor = conn.cursor()
     # Check om brugerens antal bookings er lovlige (Hent users gyldige bookinger ..)
     try:
         # Omsæt timeslots til bookings
+        from_Timeslots_To_Booking( room, date, timeslots )
         # Check if the timeslot is already booked
         # (senere) Hent brugerens valide bookinger og check om brugeren samlet set overholder krav
         # Gem bookings i database
