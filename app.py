@@ -92,15 +92,19 @@ def is_timeslot_booked(timeslot, room, date):
         conn.close()
         
 def from_Timeslots_To_Booking (room, date, timeslots): #Define one booking as one booking only
+    bookings = []
     if len(timeslots) > 0:
-        bookings = []
         for timeslot in timeslots:
             #check list of timeslots
-            booking = [room, date, timeslot]
+            timeslotText = f"{timeslot}"
+            timeslotArray = timeslotText.split()
+            startTime = timeslotArray[0]
+            endTime = timeslotArray[2]
+            booking = [room, date, startTime, endTime]
             bookings.append(booking) 
         for booking in bookings:
-            print(f'bookings {booking}', booking)
-        
+            print(f'bookings {booking}')
+    return bookings
 
     
 def insert_booking(timeslots, room, date, BookID):
@@ -109,7 +113,7 @@ def insert_booking(timeslots, room, date, BookID):
     # Check om brugerens antal bookings er lovlige (Hent users gyldige bookinger ..)
     try:
         # Omsæt timeslots til bookings
-        from_Timeslots_To_Booking( room, date, timeslots )
+        bookings = from_Timeslots_To_Booking( room, date, timeslots )
         # Check if the timeslot is already booked
         # (senere) Hent brugerens valide bookinger og check om brugeren samlet set overholder krav
         # Gem bookings i database
