@@ -96,7 +96,8 @@ def from_Timeslots_To_Booking (room, date, timeslots): #Define one booking as on
         bookings = []
         for timeslot in timeslots:
             #check list of timeslots
-            bookings.append(room, date, timeslot) 
+            booking = [room, date, timeslot]
+            bookings.append(booking) 
         for booking in bookings:
             print(f'bookings {booking}', booking)
         
