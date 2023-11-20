@@ -853,7 +853,7 @@ overview th {
         }
 
     .container {
-            max-width: 800px;
+            max-width: 1700px;
             margin: 50px auto;
             padding: 20px;
             background-color: #fff;
@@ -870,24 +870,31 @@ overview th {
             font-size: 18px;
         }
 
-    .contact-button {
-            display: block;
-            margin: 20px auto;
-            padding: 10px 20px;
-            font-size: 16px;
-            background-color: #007BFF;
-            color: #fff;
-            text-decoration: none;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
 
 .left_info {
-    float; none;
+    float: left;
+    margin-left: 37%;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
 }
 
 .right_info {
-    float: none;
+    float: right;
+    margin-right: 37%;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    
+}
+
+.contact_text {
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+}
+
+.techlib {
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    font-weight: bold;
 }
