@@ -97,6 +97,8 @@ def from_Timeslots_To_Booking (room, date, timeslots): #Define one booking as on
         for timeslot in timeslots:
             #check list of timeslots
             bookings.append(timeslot) 
+        for booking in bookings:
+            raise ValueError(f'bookings {booking}')
         
 
     
@@ -105,6 +107,7 @@ def insert_booking(timeslots, room, date, BookID):
     cursor = conn.cursor()
     # Check om brugerens antal bookings er lovlige (Hent users gyldige bookinger ..)
     try:
+        print('hello {room}')
         # Omsæt timeslots til bookings
         from_Timeslots_To_Booking( room, date, timeslots )
         # Check if the timeslot is already booked
@@ -196,7 +199,7 @@ def submit_booking():
 
         for timeslot in timeslots:
             if is_timeslot_booked(timeslot, room, date):
-                return jsonify({'error': 'One or more selected timeslots are already booked'}), 400
+                return jsonify({'error': 'One or more selected timeslots are already booked xxxxx'}), 400
         # Insert the booking into the database if there are no double bookings
         insert_booking(timeslots, room, date, BookID)
 
