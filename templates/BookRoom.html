@@ -5,7 +5,7 @@
     <title>Home</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
     <script>
-
+        // javascript for checkbox
         function displayCheckbox() {
             // Get all checkboxes
             var checkboxes = document.querySelectorAll('input[type="checkbox"]');
@@ -21,16 +21,29 @@
         }
 
         function displayAlert() {
+            // Get all checkboxes
+            var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+            // Check if any checkbox is checked
+            var checkedCount = Array.from(checkboxes).filter(checkbox => checkbox.checked).length;
+            // Get current total from localStorage and convert it to a number
+            var totalChecked = Number(localStorage.getItem("checked")) || 0;
+            // Add checkedCount to the total
+            totalChecked += checkedCount;
+
+            // Store the new total in localStorage
+            localStorage.setItem("checked", totalChecked);
+            // Log the new total to the console
+            console.log(localStorage.getItem("checked"));
+            // Display the total on the webpage
+            var displayElement = document.getElementById("display");
+            displayElement.textContent = "Total number of bookings: " + totalChecked;
+
             alert("Room booked!");
-            // first get all the checkboxes
+            // To get the timeslots of the checked ones, you could add additional code here
 
-            // then filter the checked ones
-
-            //someehow get the timeslots of the checked ones
-
-            // send some data to the server to tell that the room is booked if the page is refreshed
-
+            // To send some data to the server to tell that the room is booked even if the page is refreshed, you could use AJAX or Fetch API
         }
+
         // javascript for tabbar
         function OpenDay(evt, day) {
             var i, tabcontent, tablinks;
@@ -53,8 +66,8 @@
 
 <body>
     <ul class="navbar">
-        <li><a class="active" href="{{ url_for('home') }}">Home</a></li>
-        <li><a href="{{ url_for('booking') }}">Book Room</a></li>
+        <li><a href="{{ url_for('home') }}">Home</a></li>
+        <li><a class="active" href="{{ url_for('booking') }}">Book Room</a></li>
         <li><a href="#contact">Contact</a></li>
         <li><a href="{{ url_for('information') }}">Information</a></li>
     </ul>
@@ -287,6 +300,7 @@
             </tr>
         </table>
     </div>
+    <div id="display"></div>
 </body>
 
 </html>

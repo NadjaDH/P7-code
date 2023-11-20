@@ -603,7 +603,9 @@ only screen and (min-device-pixel-ratio:1.5) {
         height: auto !important
     }
 }
-/* styling af accordion begynd */ /*
+
+/* styling af accordion begynd */
+/*
 .accordion {
     list-style: none;
     border-top: 1px solid #ddd;
@@ -842,17 +844,22 @@ th:nth-child(2) {
     border: none;
     outline: none;
     transition: 0.4s;
-  }
-  
-  /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
-  .active, .accordion:hover {
+}
+
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+.active,
+.accordion:hover {
     background-color: #ccc;
-  }
-  
-  /* Style the accordion panel. Note: hidden by default */
-  .panel {
+}
+
+/* Style the accordion panel. Note: hidden by default */
+.panel {
     padding: 0 18px;
     background-color: white;
     display: none;
     overflow: hidden;
-  }
+}
+
+.display {
+    left: 50px;
+}
