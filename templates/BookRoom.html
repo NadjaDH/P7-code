@@ -17,10 +17,10 @@
             var button = document.getElementById('bookButton');
 
             // Enable or disable the button based on whether any checkbox is checked
-            button.disabled = checkedCount === 0 || checkedCount > 4;
+            button.disabled = checkedCount === 0 || checkedCount > 2;
         }
 
-        function displayAlert() {
+        function displayAlert() { // This function is called when the button is clicked
             // Get all checkboxes
             var checkboxes = document.querySelectorAll('input[type="checkbox"]');
             // Check if any checkbox is checked
@@ -300,7 +300,7 @@
             </tr>
         </table>
     </div>
-
+    <div id="display"></div>
 </body>
 
 </html>
