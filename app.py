@@ -96,9 +96,9 @@ def from_Timeslots_To_Booking (room, date, timeslots): #Define one booking as on
         bookings = []
         for timeslot in timeslots:
             #check list of timeslots
-            bookings.append(timeslot) 
+            bookings.append(room, date, timeslot) 
         for booking in bookings:
-            raise ValueError(f'bookings {booking}')
+            print(f'bookings {booking}', booking)
         
 
     
@@ -107,7 +107,6 @@ def insert_booking(timeslots, room, date, BookID):
     cursor = conn.cursor()
     # Check om brugerens antal bookings er lovlige (Hent users gyldige bookinger ..)
     try:
-        print('hello {room}')
         # Omsæt timeslots til bookings
         from_Timeslots_To_Booking( room, date, timeslots )
         # Check if the timeslot is already booked
