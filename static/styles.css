@@ -71,7 +71,7 @@ section {
     border: 0;
     font-size: 100%;
     font: inherit;
-    vertical-align: baseline
+    vertical-align: baseline;
 }
 
 article,
@@ -127,7 +127,7 @@ body {
     font-family: "Helvetica", sans-serif;
     font-size: 12px;
     line-height: 140%;
-    color: #354450
+    color: #354450;
 }
 
 h1,
@@ -858,8 +858,29 @@ th:nth-child(2) {
     background-color: white;
     display: none;
     overflow: hidden;
-    width: 46.7%;
-    position: relative;
-    top: 75px;
-    left: 45px;
   }
+
+  
+.container
+        {
+            text-align: right; /* Align the container to the right */
+            margin-top: -400px; /* Add some top margin */
+        }
+
+        .container img {
+            /*Image zoom styles*/
+            /* Style for the container holding the image */
+            margin: 300px;
+            cursor: zoom-in;
+            transition: transform 1s ease; /* Set transition of zoom in to 1 sec */
+            width: 40%; /* Set the width of the container */
+        }
+
+        input[type=checkbox] {
+            display: none;
+        }
+
+        input[type=checkbox]:checked~label>img {
+            transform: scale(1.5);
+            cursor: zoom-out;
+        }

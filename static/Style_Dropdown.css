@@ -1,0 +1,43 @@
+/*Dropdown button*/
+.dropbtn {
+    background-color: #fff;
+    color: black;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+.dropbtn:hover, .dropbtn:focus{
+    background-color: rgb(151, 180, 200);
+
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+
+/* Links inside the dropdown */
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+/* Dropdown Content (options) are hidden by default */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+/* Changes color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #ddd;}
+
+/* Show the dropdown menu */
+.show {display:block;}

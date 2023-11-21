@@ -4,6 +4,9 @@
 <head>
     <title>Home</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+     <!--link to cssSheet-->
+     <link rel="stylesheet" href="/static/Style_Dropdown.css">
+
     <script>
         function displayCheckbox() {
             var checkbox = document.getElementById("randomCheckbox"); // Get the checkbox
@@ -37,6 +40,7 @@
             evt.currentTarget.className += " active";
         }
     </script>
+   
 </head>
 
 <body>
@@ -275,6 +279,44 @@
             </tr>
         </table>
     </div>
+    <input type="checkbox" id="randomCheckbox" onclick="displayCheckbox()"> <!-- Checkbox to enable the button -->
+
+    <!--Standard clickable dropdown-->
+    <div class="dropdown">
+        <button onclick="myFunction()" class="dropbtn">Select Group Room</button>
+   
+        <!--option of dropdown-->
+        <div id="myDropdown" class="dropdown-content">
+            <a href="#">Room 4.118</a>
+            <a href="#">Room 4.120</a>
+            <a href="#">Room 4.122</a>
+            <a href="#">Room 4.124</a>
+            <a href="#">Room 4.125</a>
+            <!--Add options of choice in the list-->
+        </div>
+   </div>
+   
+   <script>
+    /* When the user click on the button, 
+toggle between hiding and showing the dropdown content */
+function myFunction() {
+    document.getElementById("myDropdown").classList.toggle("show");
+}
+
+//close the dropdown menu
+window.onclick = function(event) {
+    if (!event.target.matches('.dropbtn')) {
+        var dropdowns = document.getElementsByClassName("dropdown-content");
+        var i;
+        for (i = 0; i < dropdowns.length; i++){
+        var openDropdown = dropdowns[i];
+        if (openDropdown.classList.contains('show')) {
+            openDropdown.classList.remove('show');
+        }
+        } 
+    }
+}
+   </script>
 
 </body>
 
