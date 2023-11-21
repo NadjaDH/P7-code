@@ -2,6 +2,8 @@ from flask import Flask, render_template, request, redirect, url_for
 from accordion import accordion_function
 import sqlite3
 from faker import Faker
+from dateutil.parser import parse
+
 
 app = Flask(__name__)
 fake = Faker()
@@ -25,36 +27,85 @@ def information():
 def fake_booking():
     return fake_group_room()
 
-@app.route('/submit_booking', methods=['POST']) #this function will be called when the user clicks the submit button on the form
+@app.route('/submit_booking', methods=['POST']) #This function is used to handle a POST request when a user submits a booking form. It takes the room number and timeslot from the form data, generates a fake booking ID and user ID, and inserts these into the bookings table in the database.
+@app.route('/submit_booking', methods=['POST'])
 def submit_booking():
-    if request.method == 'POST': #if the user has submitted the form
-        room_number = request.form.get('room') #get the room number from the form
+    if request.method == 'POST':
+        room_number = request.form.get('room')
+        timeslot = request.form.get('timeslot')
 
-        fake_datetime = fake.date_time_this_year() #generate a fake date and time for the booking in the current year.
+        fake_user_id = fake.random_int(min=1000, max=9999)  # Generate a fake user ID
 
-        conn = sqlite3.connect('booking.db') #connect to the database
-        cursor = conn.cursor() #cursor is a pointer to the database. It is used to execute SQL commands
+        fake_booking_id = fake.random_int(min=10000, max=99999)
+        
+        conn = sqlite3.connect('booking.db')
+        cursor = conn.cursor()
 
         try:
+            cursor.execute("INSERT INTO bookings (BookingID, UserID, RoomNO, Day, Time) VALUES (?, ?, ?, ?, ?)",
+               (fake_booking_id, fake_user_id, room_number, timeslot.strftime('%Y-%m-%d'), timeslot.strftime('%H:%M:%S')))
 
-def fake_group_room():
-    fake_bookings = [fake.date_time_this_year() for _ in range(5)] #Generate 5 fake booking dates
-    
-    conn = sqlite3.connect('booking.db')
-    cursor = conn.cursor() #cursor is a pointer to the database. It is used to execute SQL commands
-    
-    try: #try to insert the fake bookings data into the database
-        for room_number in [4118, 4119, 4120, 4121, 4122]:
-            for timeslot in fake_bookings: #for each fake booking date
-                cursor.execute("INSERT INTO bookings (timeslot) VALUES (?)", (timeslot,)) 
-            conn.commit() #commit the changes to the database 
-            return  'Fake bookings succesfully added'
-    except Exception as e: #if there is an error
-        print("Error adding fake bookings")
-        conn.rollback() #undo the changes
+            conn.commit()
+            return 'Booking successfully added'
+        except Exception as e:
+            print("Error adding booking:", e)
+            conn.rollback()
+            return 'Error adding the booking'
+        finally:
+            conn.close()
+
+@app.route('/booked_room') #This function is used to display all the booked rooms. It retrieves the booked rooms from the database and passes them to the BookedRooms.html template.
+def booked_room():
+    booked_rooms = get_booked_rooms()
+    return render_template("BookedRooms.html", booked_rooms=booked_rooms)
+
+def fake_group_room(): #This function is used to generate fake booking data for testing purposes. It generates fake booking IDs, user IDs, and booking times, and inserts these into the bookings table for each room number.
+    fake_bookings = [fake.date_time_this_year() for _ in range(5)] # Generate 5 fake booking dates
+    fake_user_ids = [fake.random_int(min=1000, max=9999) for _ in range(5)] # Generate 5 fake user IDs
+    fake_booking_ids = [fake.random_int(min=10000, max=99999) for _ in range(5)] # Generate 5 fake booking IDs
+
+    conn = sqlite3.connect('booking.db') # Connect to the database
+    cursor = conn.cursor() # Cursor is a pointer to the database. It is used to execute SQL commands
+ 
+    try: # Try to add the fake bookings to the database
+        for RoomNO in [4118, 4119, 4120, 4121, 4122]: # For each room number
+            for booking_id, user_id, timeslot in zip(fake_booking_ids, fake_user_ids, fake_bookings): # For each booking ID, user ID and timeslot
+                cursor.execute("INSERT INTO bookings (BookingID, UserID, RoomNO, Day, Time) VALUES (?, ?, ?, ?, ?)", 
+                               (booking_id, user_id, RoomNO, timeslot.date().strftime('%Y-%m-%d'), timeslot.time().strftime('%H:%M:%S')))  # Insert the booking into the database
+        conn.commit()
+        return 'Fake bookings successfully added'
+    except Exception as e:
+        print("Error adding fake bookings:", e)
+        conn.rollback()
         return 'Error adding the fake bookings'
-    finally: #close the connection to the database
-        conn.close() 
+    finally:
+        conn.close()
+
+def get_booked_timeslots():
+    conn =sqlite3.connect('booking.db')
+    cursor = conn.cursor()
+
+    try:
+        cursor.execute("SELECT Time FROM bookings")
+        booked_timeslots=[row[0] for row in cursor.fetchall()] #fetchall() returns a list of tuples, where each tuple is a row in the database. We only want the first element of each tuple, which is the timeslot
+        return booked_timeslots
+    except Exception as e:
+        print('Error retrieving booked timeslots:', e)
+    finally:
+        conn.close()
+
+def get_booked_rooms(): #This function connects to the SQLite database 'booking.db', retrieves all the room numbers (RoomNO) and times (TIME) from the bookings table, and returns a list of dictionaries where each dictionary represents a booked room with its room number and timeslot.
+    conn =sqlite3.connect('booking.db')
+    cursor = conn.cursor()
+
+    try:
+        cursor.execute("SELECT RoomNO, TIME FROM bookings")
+        booked_rooms = [{'room number': row[0], 'timeslot': parse(row[1]).strftime("%Y-%m-%d %H:%M")} for row in cursor.fetchall()] #fetchall() returns a list of tuples, where each tuple is a row in the database. We only want the first element of each tuple, which is the timeslot
+        return booked_rooms
+    except Exception as e:
+        print('Error retrieving booked timeslots:', e)
+    finally:
+        conn.close()
 
     if __name__ == '__main__':
         app.run(debug=True) #debug=True means that the server will reload itself each time you make a change to the code

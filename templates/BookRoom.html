@@ -17,7 +17,7 @@
             var button = document.getElementById('bookButton');
 
             // Enable or disable the button based on whether any checkbox is checked
-            button.disabled = checkedCount === 0 || checkedCount > 2;
+            button.disabled = checkedCount === 0 || checkedCount > 4;
         }
 
         function displayAlert() { // This function is called when the button is clicked
@@ -39,9 +39,9 @@
             displayElement.textContent = "Total number of bookings: " + totalChecked;
 
             alert("Room booked!");
-            // To get the timeslots of the checked ones, you could add additional code here
-
-            // To send some data to the server to tell that the room is booked even if the page is refreshed, you could use AJAX or Fetch API
+            //submit the form
+            //document.querySelector('form').submit();
+    
         }
 
         // javascript for tabbar
@@ -72,8 +72,7 @@
         <li><a href="{{ url_for('information') }}">Information</a></li>
     </ul>
     <h1>Room Booking</h1>
-    <button class="BookButton" type="button" id="bookButton" disabled onclick="displayAlert()">BOOK</button>
-    <!-- Disable the button by default -->
+
 
     <!--Create links to change the page in the tab bar-->
     <div class="tab">
@@ -85,15 +84,88 @@
     </div>
 
     <!--The content of the tabs-->
-    <div id="Monday" class="tabcontent">
-        <table class="tableAvailability">
-            <th>Time</th>
-            <th>Availability</th>
-            <tr>
-                <td>07:00 - 08:00</td>
-                <td><input type="checkbox" id="randomCheckbox" onclick="displayCheckbox()">
-                    <!-- Checkbox to enable the button --></td>
-            </tr>
+    <form action="/submit_booking" method="post">
+    <div id="Monday" class="tabcontent"> 
+            <table class="tableAvailability">
+                <th>Time</th>
+                <th>Availability</th>
+                {% for timeslot in ['07:00 - 08:00', '08:00 - 09:00', '09:00 - 10:00', '10:00 - 11:00', '11:00 - 12:00', '12:00 - 13:00', '13:00 - 14:00', '14:00 - 15:00', '15:00 - 16:00'] %}
+                <tr>
+                    <td>{{ timeslot }}</td>
+                    <td><input type="checkbox" id="checkbox-{{loop.index}}" data-timeslot="{{ timeslot }}"
+                            onclick="displayCheckbox()">
+                        <!-- Checkbox to enable the button --></td>
+                </tr>
+                {% endfor %}
+            </table>
+    </div>
+
+    <div id="Tuesday" class="tabcontent">
+    
+            <table class="tableAvailability">
+                <th>Time</th>
+                <th>Availability</th>
+                {% for timeslot in ['07:00 - 08:00', '08:00 - 09:00', '09:00 - 10:00', '10:00 - 11:00', '11:00 - 12:00', '12:00 - 13:00', '13:00 - 14:00', '14:00 - 15:00', '15:00 - 16:00'] %}
+                <tr>
+                    <td>{{ timeslot }}</td>
+                    <td><input type="checkbox" id="checkbox-{{loop.index}}" data-timeslot="{{ timeslot }}"
+                            onclick="displayCheckbox()">
+                        <!-- Checkbox to enable the button --></td>
+                </tr>
+                {% endfor %}
+            </table>
+    </div>
+
+    <div id="Wednesday" class="tabcontent">
+       
+            <table class="tableAvailability">
+                <th>Time</th>
+                <th>Availability</th>
+                {% for timeslot in ['07:00 - 08:00', '08:00 - 09:00', '09:00 - 10:00', '10:00 - 11:00', '11:00 - 12:00', '12:00 - 13:00', '13:00 - 14:00', '14:00 - 15:00', '15:00 - 16:00'] %}
+                <tr>
+                    <td>{{ timeslot }}</td>
+                    <td><input type="checkbox" id="checkbox-{{loop.index}}" data-timeslot="{{ timeslot }}"
+                            onclick="displayCheckbox()">
+                        <!-- Checkbox to enable the button --></td>
+                </tr>{% endfor %}
+            </table>
+    </div>
+
+    <div id="Thursday" class="tabcontent">
+        
+            <table class="tableAvailability">
+                <th>Time</th>
+                <th>Availability</th>
+                {% for timeslot in ['07:00 - 08:00', '08:00 - 09:00', '09:00 - 10:00', '10:00 - 11:00', '11:00 - 12:00', '12:00 - 13:00', '13:00 - 14:00', '14:00 - 15:00','15:00 - 16:00'] %}
+                <tr>
+                    <td>{{ timeslot }}</td>
+                    <td><input type="checkbox" id="checkbox-{{loop.index}}" data-timeslot="{{ timeslot }}"
+                            onclick="displayCheckbox()">
+                        <!-- Checkbox to enable the button --></td>
+                </tr>{% endfor %}
+            </table>
+    </div>
+
+    <div id="Friday" class="tabcontent">
+        
+            <table class="tableAvailability">
+                <th>Time</th>
+                <th>Availability</th>
+                {% for timeslot in ['07:00 - 08:00', '08:00 - 09:00', '09:00 - 10:00', '10:00 - 11:00', '11:00 - 12:00', '12:00 - 13:00', '13:00 - 14:00','14:00 - 15:00', '15:00 - 16:00'] %}
+                <tr>
+                    <td>{{ timeslot }}</td>
+                    <td><input type="checkbox" id="checkbox-{{loop.index}}" data-timeslot="{{ timeslot }}"
+                            onclick="displayCheckbox()">
+                        <!-- Checkbox to enable the button --></td>
+                </tr>{% endfor %}
+            </table>
+            </div>
+
+            <button class="BookButton" type="button" id="bookButton" disabled onclick="displayAlert()">BOOK</button>
+    <!-- Disable the button by default -->
+        </form>
+    
+    <!--
             <tr>
                 <td>08:00 - 09:00</td>
                 <td><input type="checkbox" data-timeslot="2023-11-13T08:00" onclick="displayCheckbox()"></td>
@@ -298,9 +370,7 @@
                 <td>15:00 - 16:00</td>
                 <td>Reserved</td>
             </tr>
-        </table>
-    </div>
-    <div id="display"></div>
+        </table> -->
 </body>
 
 </html>

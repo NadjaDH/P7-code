@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booked Rooms</title>
+</head>
+
+<body>
+    <h1>Booked Rooms and Timeslots</h1>
+    <ul>
+        {% for booking in booked_rooms %}
+            <li>Room Number: {{ booking.room_number }}, Timeslot: {{ booking.timeslot }}</li>
+        {% endfor %}
+    </ul>
+</body>
+
+</html>
