@@ -276,8 +276,8 @@
         </table>
     </div>
 
-</body>
-<!--Current date-->
+
+    <!--Current date-->
 <div class="datetime">
     <div class="date">
         <span id="dayname">Day</span>
@@ -286,4 +286,26 @@
         <span id="year">Year</span>
     </div>
 </div>
+<script>
+    function updateClock(){
+        var now=new Date();
+        var daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Saturday'];
+        var month = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+
+        var dayname = daysOfWeek[now.getDay()];
+        var month = months[now.getMonth()];
+        var daynum = now.getDate();
+        var year = now.getFullYear();
+
+        document.getElementById('dayname').textContent = dayname;
+        document.getElementById('month').textContent = month;
+        document.getElementById('daynum').textContent = daynum;
+        document.getElementById('year').textContent = year;
+    }
+
+    updateClock();
+    setInterval(updateClock, 1000);
+</script>
+</body>
+
 </html>
