@@ -15,6 +15,7 @@
         <li><a href="{{ url_for('information') }}">Information</a></li>
     </ul>
     <h1>Home</h1>
+  
     <!--
     <button class="accordion" id="4118">Room 4.118</button>
     <div class="panel">
@@ -61,6 +62,14 @@
     </div>
     {% endfor %}
    
+    <div class="container">
+      <input type="checkbox" name="" id="zoom_img" />
+  
+      <label for="zoom_img">
+        <img src="{{ url_for('static', filename='images/kroghstræde3map.png') }}" alt="Map">
+      </label>
+    </div>
+    
     <script> // Dette er JS for at accordion fungerer
         var acc = document.getElementsByClassName("accordion");
     var i;
@@ -81,16 +90,6 @@
       } );
     }
     </script>
-
-    <center>
-        <div class="container">
-            <input type="checkbox" name="" id="zoom_img" />
-
-            <label for="zoom_img">
-                <img src="{{ url_for('static', filename='images/kroghstræde3map.png') }}" alt="Map">
-            </label>
-        </div>
-    </center>
 
 </body>
 

@@ -866,10 +866,10 @@ th:nth-child(2) {
 
   
 .container
-        {
-            text-align: right; /* Align the container to the right */
-            margin-top: -400px; /* Add some top margin */
-        }
+    {
+         text-align: right; /* Align the container to the right */
+         margin-top: -400px; /* Add some top margin */
+    }
 
         .container img {
             /*Image zoom styles*/

@@ -6,18 +6,25 @@
     font-size: 16px;
     border: none;
     cursor: pointer;
+    position: relative;
+    top: -50px;
+    left: 50px;
+    border-radius: 10px;
+    width: 150px;
+}
+
+.dropbtn::after {
+    content: "\25BC"; /* Unicode character for a down-pointing triangle */
+    font-size: 12px;
+    position: absolute;
+    top: 50%;
+    right: 8px;
+    transform: translateY(-50%);
 }
 
 .dropbtn:hover, .dropbtn:focus{
     background-color: rgb(151, 180, 200);
-
 }
-
-.dropdown {
-    position: relative;
-    display: inline-block;
-}
-
 
 /* Links inside the dropdown */
 .dropdown-content a {
@@ -26,6 +33,7 @@
     text-decoration: none;
     display: block;
 }
+
 /* Dropdown Content (options) are hidden by default */
 .dropdown-content {
     display: none;
@@ -33,6 +41,8 @@
     background-color: #f1f1f1;
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    border-radius: 5px;
+    left: 15px;
     z-index: 1;
 }
 
