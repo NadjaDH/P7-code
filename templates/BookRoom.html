@@ -21,6 +21,8 @@
         }
 
         function displayAlert() { // This function is called when the button is clicked
+
+            alert("Room booked!");
             // Get all checkboxes
             var checkboxes = document.querySelectorAll('input[type="checkbox"]');
             // Check if any checkbox is checked
@@ -34,11 +36,7 @@
             localStorage.setItem("checked", totalChecked);
             // Log the new total to the console
             console.log(localStorage.getItem("checked"));
-            // Display the total on the webpage
-            var displayElement = document.getElementById("display");
-            displayElement.textContent = "Total number of bookings: " + totalChecked;
-
-            alert("Room booked!");
+            
             //submit the form
             //document.querySelector('form').submit();
     

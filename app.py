@@ -60,18 +60,27 @@ def booked_room():
     return render_template("BookedRooms.html", booked_rooms=booked_rooms)
 
 def fake_group_room(): #This function is used to generate fake booking data for testing purposes. It generates fake booking IDs, user IDs, and booking times, and inserts these into the bookings table for each room number.
-    fake_bookings = [fake.date_time_this_year() for _ in range(5)] # Generate 5 fake booking dates
+    fake_bookings = [fake.date_time_this_year() for _ in range(25)] # Generate 5 fake booking dates
     fake_user_ids = [fake.random_int(min=1000, max=9999) for _ in range(5)] # Generate 5 fake user IDs
-    fake_booking_ids = [fake.random_int(min=10000, max=99999) for _ in range(5)] # Generate 5 fake booking IDs
 
     conn = sqlite3.connect('booking.db') # Connect to the database
     cursor = conn.cursor() # Cursor is a pointer to the database. It is used to execute SQL commands
  
-    try: # Try to add the fake bookings to the database
-        for RoomNO in [4118, 4119, 4120, 4121, 4122]: # For each room number
-            for booking_id, user_id, timeslot in zip(fake_booking_ids, fake_user_ids, fake_bookings): # For each booking ID, user ID and timeslot
-                cursor.execute("INSERT INTO bookings (BookingID, UserID, RoomNO, Day, Time) VALUES (?, ?, ?, ?, ?)", 
-                               (booking_id, user_id, RoomNO, timeslot.date().strftime('%Y-%m-%d'), timeslot.time().strftime('%H:%M:%S')))  # Insert the booking into the database
+    try:
+        booking_ids = set()  # Keep track of unique BookingIDs
+        for RoomNO in [4118, 4119, 4120, 4121, 4122]:
+            for _ in range(5):
+                fake_booking_id = fake.random_int(min=10000, max=99999)
+                while fake_booking_id in booking_ids:
+                    fake_booking_id = fake.random_int(min=10000, max=99999)
+                booking_ids.add(fake_booking_id)
+
+                fake_user_id = fake.random_int(min=1000, max=9999)
+                timeslot = fake_bookings.pop(0)
+
+                cursor.execute("INSERT INTO bookings (BookingID, UserID, RoomNO, Day, Time) VALUES (?, ?, ?, ?, ?)",
+                               (fake_booking_id, fake_user_id, RoomNO, timeslot.date().strftime('%Y-%m-%d'),
+                                timeslot.time().strftime('%H:%M:%S')))
         conn.commit()
         return 'Fake bookings successfully added'
     except Exception as e:
