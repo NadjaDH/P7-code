@@ -845,15 +845,15 @@ th:nth-child(2) {
     position: relative;
     top: 75px;
     left: 45px;
-  }
-  
-  /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
-  .active, .accordion:hover {
+}
+
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+.active, .accordion:hover {
     background-color: #ccc;
-  }
+}
   
-  /* Style the accordion panel. Note: hidden by default */
-  .panel {
+/* Style the accordion panel. Note: hidden by default */
+.panel {
     padding: 0 18px;
     background-color: white;
     display: none;
@@ -862,29 +862,33 @@ th:nth-child(2) {
     position: relative;
     top: 75px;
     left: 45px;
-  }
+}
 
-  
-.container
-    {
-         text-align: right; /* Align the container to the right */
-         margin-top: -400px; /* Add some top margin */
-    }
+.container {
+    position: absolute; /* Position the container absolutely */
+    right: 40px; /* Align the container to the right */
+    top: 40%; /* Position the container in the middle vertically */
+    transform: translateY(-50%); /* Move the container up by half its height */
+    width: 40%; /* Set the width of the container */
+    text-align: right; /* Align the text to the right */
+    border: 15px solid rgb(220, 220, 220); /* Add a 2px solid black border */
+    border-radius: 15px; /* Round the edges of the border */
+}
 
-        .container img {
-            /*Image zoom styles*/
-            /* Style for the container holding the image */
-            margin: 300px;
-            cursor: zoom-in;
-            transition: transform 1s ease; /* Set transition of zoom in to 1 sec */
-            width: 40%; /* Set the width of the container */
-        }
+.container img {
+    /*Image zoom styles*/
+    /* Style for the container holding the image */
+    margin: 0; /* Remove the margin */
+    cursor: zoom-in;
+    transition: transform 1s ease; /* Set transition of zoom in to 1 sec */
+    width: 100%; /* Set the width of the image to 100% of the container */
+}
 
-        input[type=checkbox] {
-            display: none;
-        }
+input[type=checkbox] {
+    display: none;
+}
 
-        input[type=checkbox]:checked~label>img {
-            transform: scale(1.5);
-            cursor: zoom-out;
-        }
+input[type=checkbox]:checked~label>img {
+    transform: scale(1.5);
+    cursor: zoom-out;
+}
