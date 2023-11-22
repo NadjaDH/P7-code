@@ -899,11 +899,10 @@ overview th {
     font-weight: bold;
 }
 
-
-.h1 .child{
-    position: relative;
-    z-index: 5;
+.infoHeader {
+    font-size: 30pt;
 }
+
 .Infotxt {
     background-color: #e2e2e9;
     max-width: 50%; /*længden på containeren. % gør at den er fleksibel og følger str på siden*/
