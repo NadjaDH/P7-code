@@ -6,11 +6,12 @@
     font-size: 16px;
     border: none;
     cursor: pointer;
-    position: relative;
-    top: -50px;
+    position: absolute;
+    top: 170px;
     left: 50px;
     border-radius: 10px;
     width: 150px;
+    height: 70px;
 }
 
 .dropbtn::after {
