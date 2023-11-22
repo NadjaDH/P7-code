@@ -831,7 +831,7 @@ th:nth-child(2) {
     width: 70%;
 }
 
-/* Style the buttons that are used to open and close the accordion panel */
+/* Style the buttons that are used to open and close the accordion panel - w3 */
 .accordion {
     background-color: #eee;
     color: #444;
@@ -845,32 +845,38 @@ th:nth-child(2) {
     position: relative;
     top: 75px;
     left: 45px;
-  }
+}
   
-  /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
-  .active, .accordion:hover {
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+.active, .accordion:hover {
     background-color: #ccc;
-  }
+}
   
-  /* Style the accordion panel. Note: hidden by default */
-  .panel {
+/* Style the accordion panel. Note that this is hidden by default */
+.panel {
     padding: 0 18px;
     background-color: white;
     display: none;
     overflow: hidden;
-    width: 46.7%;
+    width: 50%;
     position: relative;
     top: 75px;
     left: 45px;
-  }
+}
 
-  .accordion-status-indicator {
+/* Makes the width of the .accordion and .panel elements align - copilot */
+.accordion, .panel {
+    box-sizing: border-box;
+}
+
+/* Display a status of the rooms availability with a colored circle */
+.accordion-status-indicator {
     display: inline-block;
     width: 12px;
     height: 12px;
     border-radius: 50%;
     position: absolute;
     top: 50%;
-    right: 10px; /* Adjust the right margin as needed */
+    right: 10px; 
     transform: translateY(-50%);
 }

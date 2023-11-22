@@ -54,13 +54,16 @@
         <p>Lorem ipsum...</p>
     </div> 
     -->
+    
     {% for room in room_info %}
     <button class="accordion">
       Room {{ room.room }}
-      <span class="accordion-status-indicator" style="background-color: {{ 'red' if not room.status else 'green' }}"></span>
-  </button>
+      <span class="accordion-status-indicator"
+      style="background-color: {{ '#F16B5C' if not room.status else '#B3D93A'}}; border: 1px solid #bfbfbf;"></span>
+    </button>
       <div class="panel">
-        <p>Status: {{ "Available" if room.status else "Reserved" }}</p>
+        <p><br>Status: {{ "Available" if room.status else "Reserved" }}
+        <br> Next Booking: </p>
       </div>
     {% endfor %}
    
