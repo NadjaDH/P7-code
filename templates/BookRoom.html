@@ -311,6 +311,20 @@
             </tr>
         </table> -->
         <script>
+            // Javascript for timeslots
+            function bookTimeslots() {
+            var timeslots = document.querySelectorAll('input[type="checkbox"]');
+
+            $.post('/submit_booking', {
+               if(data.status === 'success') {
+                   alert('Timeslots booked successfully!');
+               } else {
+                   alert('Timeslots could not be booked!');
+               }
+            });
+        }
+
+
             // javascript for checkbox
             function displayCheckbox() {
                 // Get all checkboxes
