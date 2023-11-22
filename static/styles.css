@@ -905,6 +905,8 @@ overview th {
     text-transform: uppercase;
     letter-spacing: 3px;
     font-weight: normal;
+    position: relative;
+    z-index: 5;
 }
 
 .Infotxt {
