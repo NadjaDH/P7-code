@@ -863,3 +863,8 @@ th:nth-child(2) {
 .display {
     left: 50px;
 }
+
+input[type="checkbox"]:disabled {
+    opacity: 0.5; /* Adjust opacity for a visual cue */
+    /* Add other styles as needed */
+}

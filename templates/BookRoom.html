@@ -34,8 +34,8 @@
                 {% for timeslot in ['07:00 - 08:00', '08:00 - 09:00', '09:00 - 10:00', '10:00 - 11:00', '11:00 - 12:00', '12:00 - 13:00', '13:00 - 14:00', '14:00 - 15:00', '15:00 - 16:00'] %}
                 <tr>
                     <td>{{ timeslot }}</td>
-                    <td><input type="checkbox" id="checkbox-{{loop.index}}" data-timeslot="{{ timeslot }}" onclick="displayCheckbox()">
-                        <!-- Checkbox to enable the button --></td>
+                    <td><input type="checkbox" id="checkbox-{{loop.index}}" data-timeslot="{{ timeslot }}" onclick="displayCheckbox()" {% if timeslot in reserved_timeslots %}disabled{% endif %}>
+                    </td>
                 </tr>
                 {% endfor %}
             </table>
@@ -324,6 +324,16 @@
     
                 // Enable or disable the button based on whether any checkbox is checked
                 button.disabled = checkedCount === 0 || checkedCount > 4;
+                
+                // set the value of the hidden input field for each checkbox
+                checkboxes.forEach((checkbox, index) => {
+                    var timeslotInput = document.getElementById('timeslot-' + (index + 1));
+                    if (checkbox.checked) {
+                        timeslotInput.value = checkbox.getAttribute('data-timeslot');
+                    } else {
+                        timeslotInput.value = '';
+                     }
+                });
             }
     
             function displayAlert() { // This function is called when the button is clicked

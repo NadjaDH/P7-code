@@ -18,8 +18,8 @@ def home():
 
 @app.route('/booking')
 def booking():
-
-    return render_template("BookRoom.html")
+    reserved_timeslots = get_reserved_timeslots()
+    return render_template("BookRoom.html", reserved_timeslots=reserved_timeslots)
 
 @app.route('/information')
 def information():
@@ -34,7 +34,7 @@ def submit_booking():
     if request.method == 'POST':
         room_number = request.form.get('room')
         timeslot = request.form.get('timeslot')
-
+        checkbox_value = request.form.get('checkBox')
         fake_user_id = fake.random_int(min=1000, max=9999)  # Generate a fake user ID
 
         fake_booking_id = fake.random_int(min=10000, max=99999)
@@ -43,8 +43,8 @@ def submit_booking():
         cursor = conn.cursor()
 
         try:
-            cursor.execute("INSERT INTO bookings (BookingID, UserID, RoomNO, Day, Time) VALUES (?, ?, ?, ?, ?)",
-               (fake_booking_id, fake_user_id, room_number, timeslot.strftime('%Y-%m-%d'), timeslot.strftime('%H:%M:%S')))
+            cursor.execute("INSERT INTO bookings (BookingID, UserID, RoomNO, Day, Time) VALUES (?, ?, ?, ?, ?, ?)",
+               (fake_booking_id, fake_user_id, room_number, timeslot.strftime('%Y-%m-%d'), timeslot.strftime('%H:%M:%S'), checkbox_value))
 
             conn.commit()
             return 'Booking successfully added'
@@ -123,6 +123,20 @@ def get_booked_rooms(): #This function connects to the SQLite database 'booking.
         print('Error retrieving booked timeslots:', e)
     finally:
         conn.close()
+
+def get_reserved_timeslots():
+    conn = sqlite3.connect('booking.db')
+    cursor = conn.cursor()
+
+    try:
+        cursor.execute("SELECT DISTINCT Time FROM bookings")
+        reserved_timeslots = [row[0] for row in cursor.fetchall()]
+        return reserved_timeslots
+    except Exception as e:
+        print('Error retrieving reserved timeslots:', e)
+    finally:
+        conn.close()
+
 
     if __name__ == '__main__':
         app.run(debug=True) #debug=True means that the server will reload itself each time you make a change to the code
