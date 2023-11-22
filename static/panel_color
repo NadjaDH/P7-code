@@ -17,7 +17,7 @@ $(document).ready(function(){
     var second;
     var th;
     
-    $('panel').each(function(index){
+    $('div').each(function(index){
       
       th = $(this);
       

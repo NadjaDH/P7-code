@@ -889,6 +889,6 @@ th:nth-child(2) {
             cursor: zoom-out;
         }
         
-.red {color:red}
-.yellow {color: yellow}
-.green {color: green}
+.red {color:red;}
+.yellow {color: yellow;}
+.green {color: green;}
