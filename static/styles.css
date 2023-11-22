@@ -900,13 +900,14 @@ overview th {
 }
 
 .infoHeader {
-    font-size: 30pt;
+    font-size: 30px;
     font-family: "DIN Next W01 Bold", "Helvetica", sans-serif;
     text-transform: uppercase;
     letter-spacing: 3px;
     font-weight: normal;
     position: relative;
     z-index: 5;
+    margin-top: 70px;
 }
 
 .Infotxt {
