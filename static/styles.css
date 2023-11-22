@@ -901,6 +901,10 @@ overview th {
 
 .infoHeader {
     font-size: 30pt;
+    font-family: "DIN Next W01 Bold", "Helvetica", sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-weight: normal;
 }
 
 .Infotxt {
