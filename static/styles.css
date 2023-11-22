@@ -898,8 +898,8 @@ overview th {
     font-size: 15px;
     font-weight: bold;
 }
-.informationbox {
-    height: 600px;
+.box_round {
+    border-radius: 12px;
     width: 500px;
     color:  #e3e3e8;
 }
