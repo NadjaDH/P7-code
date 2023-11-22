@@ -900,11 +900,19 @@ overview th {
 }
 
 
-/*This is a container that is used to set a grey background color */
-.background-container {
+
+.Infotxt {
     background-color: #e2e2e9;
-    max-width: 200px;
-    padding: 200px 300px;
-    margin: 0 auto;
+    max-width: 50%; /*længden på containeren. % gør at den er fleksibel og følger str på siden*/
+    padding: 100px 100px;
+    margin: 0 auto; /* indikerer at containeren er i center*/
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+
+.h10{
+    font-size: 30px;
+    margin-bottom: 31px;
+    z-index: 5;
+    margin-bottom: 19px;
 }
