@@ -915,8 +915,9 @@ overview th {
     font-family: "DIN Next W01 Bold", "Helvetica", sans-serif;
     letter-spacing: 2px;
     font-size: 30px;
-    margin-bottom: 31px;
+}
+
+.Information {
     z-index: 5;
     margin-bottom: 19px;
-   
 }
