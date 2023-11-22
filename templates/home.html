@@ -55,7 +55,10 @@
     </div> 
     -->
     {% for room in room_info %}
-      <button class="accordion"style="background-color: {{ '#bde7bd' if room.status else '##C0C0C0' }}">Room {{ room.room }}</button>
+    <button class="accordion">
+      Room {{ room.room }}
+      <span class="accordion-status-indicator" style="background-color: {{ 'red' if not room.status else 'green' }}"></span>
+  </button>
       <div class="panel">
         <p>Status: {{ "Available" if room.status else "Reserved" }}</p>
       </div>
