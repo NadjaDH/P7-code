@@ -55,10 +55,12 @@
         <p>Lorem ipsum...</p>
     </div> 
     -->
+    <script src="static/panel_color.js"></script>
+
     {% for room in room_info %}
     <button class="accordion">Room {{ room.room }}</button>
     <div class="panel">
-        <p data-color="3">Status: {{ "Available" if room.status else "Reserved" }}</p>
+        <p data-color='3'>Status: {{ "Available" if room.status else "Reserved" }}</p>
     </div>
     {% endfor %}
    
