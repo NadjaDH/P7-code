@@ -899,10 +899,12 @@ overview th {
     font-weight: bold;
 }
 
+
+/*This is a container that is used to set a grey background color */
 .background-container {
-    background-color: #b4b4c5;
-    max-width: 800px;
+    background-color: #e2e2e9;
+    max-width: 200px;
+    padding: 200px 300px;
     margin: 0 auto;
-    padding: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
