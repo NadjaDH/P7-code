@@ -899,14 +899,10 @@ overview th {
     font-weight: bold;
 }
 
-.box-section {
-    background-color: #f4f4f4;
-    padding: 20px;
-    text-align: center;
-}
-
-
-.box-content {
+.background-container {
+    background-color: #b4b4c5;
     max-width: 800px;
     margin: 0 auto;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
