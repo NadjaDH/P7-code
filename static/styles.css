@@ -912,9 +912,11 @@ overview th {
 
 .h10{
     /*Test for at se om man kan flytte overskrift om information*/
+    font-family: "DIN Next W01 Bold", "Helvetica", sans-serif;
+    letter-spacing: 2px;
     font-size: 30px;
     margin-bottom: 31px;
-    margin-top: 7px;
-    text-align: inherit;
+    z-index: 5;
+    margin-bottom: 19px;
    
 }
