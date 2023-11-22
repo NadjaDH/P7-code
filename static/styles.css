@@ -1,70 +1,11 @@
-html,
-body,
-div,
-span,
-applet,
-object,
-iframe,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-pre,
-a,
-abbr,
-acronym,
-address,
-big,
-cite,
-code,
-del,
-dfn,
-em,
-img,
-ins,
-kbd,
-q,
-s,
-samp,
-small,
-strike,
-strong,
-sub,
-sup,
-tt,
-var,
-b,
-u,
-i,
-center,
-dl,
-dt,
-dd,
-li,
-fieldset,
-form,
-label,
-legend,
-tab,
-table,
-tbody,
-tfoot,
-thead,
-tr,
-th,
-td,
-aside,
-canvas,
-details,
-figure,
-footer,
-header,
-hgroup,
-menu,
-nav,
+html, body, div, span, applet, object, iframe, h1, h2, h3,
+h4, h5, h6, p, pre, a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong,
+sub, sup, tt, var, b, u, i, center, dl, dt, dd, li, fieldset,
+form, label, legend, tab, table, tbody, tfoot, thead, tr,
+th, td, aside, canvas, details, figure, footer, header,
+hgroup, menu, nav,
+
 section {
     margin: 0;
     padding: 0;
@@ -603,65 +544,6 @@ only screen and (min-device-pixel-ratio:1.5) {
         height: auto !important
     }
 }
-/* styling af accordion begynd */ /*
-.accordion {
-    list-style: none;
-    border-top: 1px solid #ddd;
-    border-right: 1px solid #ddd;
-    border-left: 1px solid #ddd;
-    margin: .5rem 0 1rem 0;
-    margin: 0;
-    border: 0
-}
-
-.accordion-header {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-wrap: wrap;
-    flex-wrap: wrap;
-    cursor: pointer;
-    -webkit-tap-highlight-color: transparent;
-    line-height: 1.5;
-    border-bottom: 1px solid #ddd
-}
-
-.accordion-header.active {
-    border-bottom: 0
-}
-
-.accordion-header i {
-    width: 2rem;
-    font-size: 2rem;
-    display: inline-block;
-    text-align: center;
-    margin: auto 0;
-    margin-right: 1rem
-}
-
-.accordion-header h3 {
-    -webkit-box-flex: 1;
-    -ms-flex: 1 1 80%;
-    flex: 1 1 80%;
-    line-height: 45px;
-    margin-bottom: 0
-}
-
-.accordion-ingress {
-    -webkit-box-flex: 1;
-    -ms-flex: 1 1 80%;
-    flex: 1 1 80%;
-    margin-left: 3rem
-}
-
-.accordion-body {
-    display: none;
-    border-bottom: 1px solid #ddd;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-    padding-top: 1rem
-} */
-/* styling af accordion slut */
 
 /* styling af navigation bar*/
 .navbar {
@@ -852,7 +734,7 @@ th:nth-child(2) {
     background-color: #ccc;
 }
   
-/* Style the accordion panel. Note that this is hidden by default */
+/* Style the accordion panel. Note that this is hidden by default - w3*/
 .panel {
     padding: 0 18px;
     background-color: white;
@@ -864,6 +746,36 @@ th:nth-child(2) {
     left: 45px;
 }
 
+/* Makes the width of the .accordion and .panel elements align - copilot */
+.accordion, .panel {
+    box-sizing: border-box;
+}
+
+/* Display a status of the rooms availability with a colored circle - copilot */
+.accordion-status-indicator {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 18%; 
+    transform: translateY(-50%);
+}
+
+/* Add a symbol + or - to indicate whether a panel is open or closed - w3 */
+.accordion:after {
+    content: '\002B'; /* Unicode character for "plus" sign (+) from https://www.toptal.com/designers/htmlarrows/math/plus-sign/ */
+    font-size: 13px;
+    color: #7c7b7b;
+    float: right;
+    margin-left: 5px;
+}
+.active:after {
+    content: "\2212"; /* Unicode character for "minus" sign (-) from https://www.toptal.com/designers/htmlarrows/math/minus-sign/*/
+}
+
+/* Container for the map image on home page */
 .container {
     position: absolute; /* Position the container absolutely */
     right: 40px; /* Align the container to the right */
@@ -891,21 +803,4 @@ input[type=checkbox] {
 input[type=checkbox]:checked~label>img {
     transform: scale(1.5);
     cursor: zoom-out;
-}
-
-/* Makes the width of the .accordion and .panel elements align - copilot */
-.accordion, .panel {
-    box-sizing: border-box;
-}
-
-/* Display a status of the rooms availability with a colored circle */
-.accordion-status-indicator {
-    display: inline-block;
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    position: absolute;
-    top: 50%;
-    right: 10px; 
-    transform: translateY(-50%);
 }
