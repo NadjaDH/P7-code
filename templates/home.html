@@ -60,7 +60,18 @@
     {% for room in room_info %}
     <button class="accordion">Room {{ room.room }}</button>
     <div class="panel">
-        <p data-color='3'>Status: {{ "Available" if room.status else "Reserved" }}</p>
+        <p>Status: {{ "Available" if room.status else "Reserved" }}</p>
+        <table>
+          <tr>
+            <th style="width: 15%;" data-color="5">Mon</th>
+            <th style="width: 15%;" data-color='2'>Tue</th>
+            <th style="width: 15%;">Wed</th>
+            <th style="width: 15%;">Thur</th>
+            <th style="width: 15%;">Fri</th>
+          </tr> 
+        </table>
+
+
     </div>
     {% endfor %}
    

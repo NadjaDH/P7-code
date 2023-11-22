@@ -1,7 +1,7 @@
 $(document).ready(function(){
   
     var mc = {
-      '7-8'     : 'red',
+      '7-9'     : 'red',
       '3-6'    : 'yellow',
       '0-2'   : 'green'
     };
@@ -17,7 +17,7 @@ $(document).ready(function(){
     var second;
     var th;
     
-    $('p').each(function(index){
+    $('div').each(function(index){
       
       th = $(this);
       

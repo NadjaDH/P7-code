@@ -1,5 +1,7 @@
 import random
 
+from tabulate import tabulate
+
 def accordion_function():
     room_4118 = False
     room_4119 = False
