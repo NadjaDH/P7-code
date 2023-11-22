@@ -898,8 +898,15 @@ overview th {
     font-size: 15px;
     font-weight: bold;
 }
-.box_round {
-    border-radius: 12px;
-    width: 500px;
-    color:  #e3e3e8;
+
+.box-section {
+    background-color: #f4f4f4;
+    padding: 20px;
+    text-align: center;
+}
+
+
+.box-content {
+    max-width: 800px;
+    margin: 0 auto;
 }
