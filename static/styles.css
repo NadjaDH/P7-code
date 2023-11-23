@@ -911,7 +911,7 @@ overview th {
 
 
 .Infotxt {
-/* Parent/Mom of information text */
+/* Parent/Mother of information text */
     position: relative; /*make sure that the children don't get lost from their mom*/
     background-color: #e2e2e9;
     max-width: 50%; /* width on the container. % gør at den er fleksibel og følger str på siden*/
@@ -937,10 +937,10 @@ overview th {
    
 }
 
-/*Information about the room booking system*/
+ /*main text in information about grouproom*/
 .Infotxt p:nth-child(2) {
     font: normal 13px/20px "Helvetica Neue", Helvetica, Arial, sans-serif;
     text-align: left;
 }
- /*main text in information about grouproom*/
+
 
