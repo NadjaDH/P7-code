@@ -910,7 +910,7 @@ overview th {
 
 
 
-.Infotxt p{
+.Infotxt {
     background-color: #e2e2e9;
     max-width: 50%; /*længden på containeren. % gør at den er fleksibel og følger str på siden*/
     padding: 100px 100px;
@@ -919,6 +919,12 @@ overview th {
 }
 
 .Infotxt p:first-child {
+    font-size: 30px;
+    font-family: "DIN Next W01 Bold", "Helvetica", sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-weight: normal;
+    position: relative;
     z-index: 5;
     margin-top: 70px;
 }
