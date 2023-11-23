@@ -25,13 +25,13 @@ def booking():
 def information():
     return render_template("Information.html")
 
-def insert_booking(timeslots, room): #This function is used to insert a booking into the database. It takes a list of timeslots and a room number as parameters, and inserts each timeslot into the bookings table in the database.
+def insert_booking(timeslots, room, date): #This function is used to insert a booking into the database. It takes a list of timeslots and a room number as parameters, and inserts each timeslot into the bookings table in the database.
     conn = sqlite3.connect('booking.db')
     cursor = conn.cursor()
 
     try:
         for timeslot in timeslots:
-            cursor.execute("INSERT INTO bookings (Time, RoomNO) VALUES (?, ?)", (timeslot, room))
+            cursor.execute("INSERT INTO bookings (Time, RoomNO, Day) VALUES (?, ?, ?)", (timeslot, room, date))
         conn.commit()
     except Exception as e:
         print('Error inserting booking:', e)
@@ -40,13 +40,17 @@ def insert_booking(timeslots, room): #This function is used to insert a booking 
 
 @app.route('/submit_booking', methods=['POST']) #This function is used to handle a POST request when a user submits a booking form. It takes the room number and timeslot from the form data, generates a fake booking ID and user ID, and inserts these into the bookings table in the database.
 def submit_booking():
-    data = request.get_json()
-    timeslots = data.get('timeslots')
-    room = data.get('Room')
+    try:
+        data = request.get_json()
+        timeslots = data.get('timeslots')
+        room = data.get('Room')
+        date = data.get('date')
 
-    insert_booking(timeslots, room)
+        insert_booking(timeslots, room, date)
 
-    return jsonify({'message': 'Booking submitted successfully'}), 200
+        return jsonify({'message': 'Booking submitted successfully'}), 200
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
 
 
 @app.route('/booked_room') #This function is used to display all the booked rooms. It retrieves the booked rooms from the database and passes them to the BookedRooms.html template.

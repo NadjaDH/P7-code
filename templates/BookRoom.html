@@ -18,15 +18,17 @@
 
     <!--Create links to change the page in the tab bar-->
     <div class="tab">
-        <button class="tablinks" onclick="OpenDay(event, 'Monday')">Mon</button>
-        <button class="tablinks" onclick="OpenDay(event, 'Tuesday')">Tue</button>
-        <button class="tablinks" onclick="OpenDay(event, 'Wednesday')">Wed</button>
-        <button class="tablinks" onclick="OpenDay(event, 'Thursday')">Thu</button>
-        <button class="tablinks" onclick="OpenDay(event, 'Friday')">Fri</button>
+        <button class="tablinks" onclick="OpenDay(event, 'Monday', '2023-11-20')">Mon</button>
+        <button class="tablinks" onclick="OpenDay(event, 'Tuesday', '2023-11-21')">Tue</button>
+        <button class="tablinks" onclick="OpenDay(event, 'Wednesday', '2023-11-22')">Wed</button>
+        <button class="tablinks" onclick="OpenDay(event, 'Thursday', '2023-11-23')">Thu</button>
+        <button class="tablinks" onclick="OpenDay(event, 'Friday', '2023-11-24')">Fri</button>
     </div>
 
     <!--The content of the tabs-->
     <form action="/submit_booking" method="post">
+        <!-- Hidden input field to capture the selected date -->
+        <input type="hidden" id="selectedDateInput" name="selectedDate" value="">
         <div id="Monday" class="tabcontent">
             <table class="tableAvailability">
                 <th>Time</th>
@@ -126,6 +128,10 @@
         <script>
             var checkedValues = []
             let selectedRoomNumber;
+            let selectedDate;
+
+
+
             // javascript for closing the dropdown menu when a room is selected
             function SelectRoom(room) {
                 console.log("SelectRoom function called with room: ", room); // Debugging line
@@ -212,34 +218,12 @@
 
                 var roomNumber = document.getElementById('dropdownButton'); // Replace with actual room number
                 // Send the checked values to the server
-                submitBooking(checkedValues, selectedRoomNumber);
+                submitBooking(checkedValues, selectedRoomNumber, selectedDate);
 
 
             }
-
-            function submitBooking(checkedValues, selectedRoomNumber) {
-                fetch('/submit_booking', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                        timeslots: checkedValues, // Include the array of checked values
-                        Room: selectedRoomNumber // Replace with actual room number
-                    }),
-                })
-                    .then(response => response.json())
-                    .then(data => {
-                        console.log('Success:', data);
-                        alert("Room booked!");
-                    })
-                    .catch((error) => {
-                        console.error('Error:', error);
-                    });
-            }
-
             // javascript for tabbar
-            function OpenDay(evt, day) {
+            function OpenDay(evt, day, selectedDate) {
                 var i, tabcontent, tablinks;
                 // get all elements with class="tabcontent" and hide them
                 tabcontent = document.getElementsByClassName("tabcontent");
@@ -254,7 +238,42 @@
                 // Show the current tab, and add an "active" class to the button that opened the tab
                 document.getElementById(day).style.display = "block";
                 evt.currentTarget.className += " active";
+
+                // Call selectDate function with the selected date
+                selectDate(selectedDate);
             }
+            
+            function selectDate(date) {
+                selectedDate = date;
+                submitDate(date);
+            }
+
+
+
+
+            function submitBooking(checkedValues, selectedRoomNumber, selectedDate) {
+                fetch('/submit_booking', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        timeslots: checkedValues, // Include the array of checked values
+                        Room: selectedRoomNumber, // Replace with actual room number
+                        date: selectedDate
+                    })
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log('Success:', data);
+                        alert("Room booked!");
+                    })
+                    .catch((error) => {
+                        console.error('Error:', error);
+                    });
+            }
+
+
         </script>
 </body>
 
