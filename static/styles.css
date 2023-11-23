@@ -899,7 +899,7 @@ overview th {
     font-weight: bold;
 }
 
-.infoHeader {
+.Infotext:first-child {
     font-size: 30px;
     font-family: "DIN Next W01 Bold", "Helvetica", sans-serif;
     text-transform: uppercase;
