@@ -925,7 +925,6 @@ overview th {
     letter-spacing: 3px;
     font-weight: normal;
     position: relative;
-    z-index: 5;
-    margin-top: 70px;
+    z-index: 7000;
 }
 
