@@ -949,10 +949,29 @@ overview th {
     max-width: 50%; /* width on the container. % gør at den er fleksibel og følger str på siden*/
     padding: 100px 100px;
     margin: 0 auto; /* indikerer at containeren er i center*/
-    font-family: normal 13px/20px "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-size: 16px;
+    
 }
+
+/*this text is the first part of contact page*/
 .contactTxt p:first-child {
     text-align: left;
     text-justify: center;
+    font-family: normal 13px/20px "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 16px;
+}
+
+/*this text is the opening hours of contact page*/
+.contactTxt p:nth-child(2) {
+    text-align: left;
+    text-justify: center;
+    font-family: normal 13px/20px "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 16px;
+}
+
+/*this text is the contact support of contact page*/
+.contactTxt p:nth-child(3) {
+    text-align: left;
+    text-justify: center;
+    font-family: normal 13px/20px "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 16px;
 }
