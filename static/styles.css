@@ -910,7 +910,7 @@ overview th {
 
 
 
-.Infotxt {
+.Infotxt p{
     background-color: #e2e2e9;
     max-width: 50%; /*længden på containeren. % gør at den er fleksibel og følger str på siden*/
     padding: 100px 100px;
@@ -918,7 +918,7 @@ overview th {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.Infotxt:first-child {
+.Infotxt p:first-child {
     z-index: 5;
     margin-top: 70px;
 }
