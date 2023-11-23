@@ -951,8 +951,6 @@ overview th {
     margin: 0 auto; /* indikerer at containeren er i center*/
     text-align: left;
     text-justify: center;
-    font-family: normal 13px/20px "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-size: 16px;
     
 }
 
@@ -961,18 +959,34 @@ overview th {
     text-align: left;
     text-justify: center;
     font-family: normal 13px/20px "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-size: 16px; 
+    font-size: 16px;
     letter-spacing: inherit;
 }
 
+/*Information title*/
+ /*This layout is responsible, meaning that it follow the page size*/
+ .contactTxt p:first-child  {  
+    position: absolute; 
+    z-index: 5; /* Set the child element to go out from their parent*/
+    top: 10%; /*placerer information i toppen af boksen*/
+    left: -25px; /*placerer informationtext i venstre side*/
+    font-size: 30px;
+    font-family: "DIN Next W01 Bold", "Helvetica", sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-weight: 900;
+    color: #211a52 ;
+   
+}
+
 /* child of library header */
-.contactTxt p:nth-child(4) {
+.contactTxt p:nth-child(5) {
     color: #4306dd;
     font-weight: bold;
 }
 
 /* Technical support header*/
-.contactTxt p:nth-child(6){
+.contactTxt p:nth-child(7){
     color: #4306dd;
     font-weight: bold;  
 }
