@@ -956,26 +956,16 @@ overview th {
     
 }
 
-/*this text is the first part of contact page*/
-.contactTxt p:first-child {
+/*This is the father of contactTxt and it defines the font of every child element*/
+.contactTxt p {
     text-align: left;
     text-justify: center;
     font-family: normal 13px/20px "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-size: 16px;
+    font-size: 16px; 
 }
 
-/*this text is the opening hours of contact page*/
-.contactTxt p:nth-child(2) {
-    text-align: left;
-    text-justify: center;
-    font-family: normal 13px/20px "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-size: 16px;
-}
-
-/*this text is the contact support of contact page*/
-.contactTxt p:nth-child(3) {
-    text-align: left;
-    text-justify: center;
-    font-family: normal 13px/20px "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-size: 16px;
+/* child of library header */
+.contactTxt p:nth-child(4) {
+    color: #4306dd;
+    font-weight: bold;
 }
