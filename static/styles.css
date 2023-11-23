@@ -948,3 +948,6 @@ overview th {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 16px;
 }
+.contactTxt p:first-child {
+    text-align: left;
+}
