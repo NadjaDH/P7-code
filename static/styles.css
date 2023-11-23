@@ -970,3 +970,9 @@ overview th {
     color: #4306dd;
     font-weight: bold;
 }
+
+/* Technical support header*/
+.contactTxt p:nth-child(6){
+    color: #4306dd;
+    font-weight: bold;  
+}
