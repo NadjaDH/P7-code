@@ -877,7 +877,7 @@ input[type="checkbox"]:disabled {
     font-size: 16px;
     border: none;
     cursor: pointer;
-    position: absolute;
+    position: relative;
     top: 170px;
     left: 50px;
     border-radius: 10px;

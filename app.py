@@ -42,7 +42,7 @@ def insert_booking(timeslots, room): #This function is used to insert a booking 
 def submit_booking():
     data = request.get_json()
     timeslots = data.get('timeslots')
-    room = data.get('room')
+    room = data.get('roomNumber')
 
     insert_booking(timeslots, room)
 

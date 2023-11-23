@@ -36,7 +36,7 @@
                 <tr>
                     <td>{{ timeslot }}</td>
                     <td><input type="checkbox" id="checkbox-{{loop.index}}" name="timeslots" value="{{ timeslot }}"
-                            data-time="{{ timslot }}" onclick="displayCheckbox()"></td>
+                            data-time="{{ timeslot }}" onclick="displayCheckbox()"></td>
                 </tr>
                 {% endfor %}
             </table>
@@ -51,7 +51,7 @@
                 <tr>
                     <td>{{ timeslot }}</td>
                     <td><input type="checkbox" id="checkbox-{{loop.index}}" name="timeslots" value="{{ timeslot }}"
-                            data-time="{{ timslot }}" onclick="displayCheckbox()"></td>
+                            data-time="{{ timeslot }}" onclick="displayCheckbox()"></td>
                 </tr>
                 {% endfor %}
             </table>
@@ -67,7 +67,7 @@
                 <tr>
                     <td>{{ timeslot }}</td>
                     <td><input type="checkbox" id="checkbox-{{loop.index}}" name="timeslots" value="{{ timeslot }}"
-                            data-time="{{ timslot }}" onclick="displayCheckbox()"></td>
+                            data-time="{{ timeslot }}" onclick="displayCheckbox()"></td>
                     <!-- Checkbox to enable the button --></td>
                 </tr>{% endfor %}
             </table>
@@ -83,7 +83,7 @@
                 <tr>
                     <td>{{ timeslot }}</td>
                     <td><input type="checkbox" id="checkbox-{{loop.index}}" name="timeslots" value="{{ timeslot }}"
-                            data-time="{{ timslot }}" onclick="displayCheckbox()"></td>
+                            data-time="{{ timeslot }}" onclick="displayCheckbox()"></td>
                     <!-- Checkbox to enable the button --></td>
                 </tr>{% endfor %}
             </table>
@@ -99,7 +99,7 @@
                 <tr>
                     <td>{{ timeslot }}</td>
                     <td><input type="checkbox" id="checkbox-{{loop.index}}" name="timeslots" value="{{ timeslot }}"
-                            data-time="{{ timslot }}" onclick="displayCheckbox()"></td>
+                            data-time="{{ timeslot }}" onclick="displayCheckbox()"></td>
                     <!-- Checkbox to enable the button --></td>
                 </tr>{% endfor %}
             </table>
@@ -179,7 +179,7 @@
                 checkboxes.forEach((checkbox, index) => {
                     var timeslotInput = document.getElementById('timeslot-' + (index + 1));
                     if (checkbox.checked) {
-                        timeslotInput.value = checkbox.getAttribute('data-time');
+                        timeslotInput.value = checkbox.getAttribute('data-timeslot');
                     } else {
                         timeslotInput.value = '';
                     }
@@ -215,7 +215,7 @@
 
             }
 
-            function submitBooking(timeslots, roomNumber) {
+            function submitBooking(checkedValues, roomNumber) {
                 fetch('/submit_booking', {
                     method: 'POST',
                     headers: {
