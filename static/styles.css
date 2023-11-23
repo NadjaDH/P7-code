@@ -922,7 +922,7 @@ overview th {
 .Infotxt p:first-child {
     position: absolute;
     z-index: 5;
-    top: 10;
+    top: 0;
     left: -25px;
     font-size: 30px;
     font-family: "DIN Next W01 Bold", "Helvetica", sans-serif;
