@@ -899,16 +899,16 @@ overview th {
     font-weight: bold;
 }
 
-.Infotxt:first-child {
+.h10 {
     font-size: 30px;
     font-family: "DIN Next W01 Bold", "Helvetica", sans-serif;
     text-transform: uppercase;
     letter-spacing: 3px;
     font-weight: normal;
     position: relative;
-    z-index: 5;
-    margin-top: 70px;
 }
+
+
 
 .Infotxt {
     background-color: #e2e2e9;
@@ -918,4 +918,8 @@ overview th {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
+.Infotxt:first-child {
+    z-index: 5;
+    margin-top: 70px;
+}
 
