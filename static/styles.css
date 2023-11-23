@@ -937,7 +937,7 @@ overview th {
 }
 
 
-.Infotext p:nth-child(2) {
+.Infotext p:nth-child() {
     text-align: left;
 }
  /*main text in information about grouproom*/
