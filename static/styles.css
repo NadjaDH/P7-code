@@ -917,7 +917,7 @@ overview th {
     max-width: 50%; /* width on the container. % gør at den er fleksibel og følger str på siden*/
     padding: 100px 100px;
     margin: 0 auto; /* indikerer at containeren er i center*/
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    
    
 }
 
@@ -932,16 +932,15 @@ overview th {
     font-family: "DIN Next W01 Bold", "Helvetica", sans-serif;
     text-transform: uppercase;
     letter-spacing: 3px;
-    font-weight: normal;
+    font-weight: 900;
+    color: #211a52 ;
    
 }
 
-
-.Infotext p:nth-child() {
-    text-align: left;
-}
- /*main text in information about grouproom*/
-.Infotxt p:nth-child(3) {
+/*Information about the room booking system*/
+.Infotxt p:nth-child(2) {
     font: normal 13px/20px "Helvetica Neue", Helvetica, Arial, sans-serif;
     text-align: left;
 }
+ /*main text in information about grouproom*/
+
