@@ -921,7 +921,7 @@ overview th {
 .Infotxt p:first-child {
     position: relative;
     z-index: 7000;
-    top: -25px;
+    top: 30%;
     font-size: 30px;
     font-family: "DIN Next W01 Bold", "Helvetica", sans-serif;
     text-transform: uppercase;
