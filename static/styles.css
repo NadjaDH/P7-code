@@ -944,10 +944,15 @@ overview th {
 }
 
 .contactTxt {
+    position: relative; /*make sure that the children don't get lost from their mom*/
+    background-color: #e2e2e9;
+    max-width: 50%; /* width on the container. % gør at den er fleksibel og følger str på siden*/
+    padding: 100px 100px;
+    margin: 0 auto; /* indikerer at containeren er i center*/
     font-family: normal 13px/20px "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 16px;
 }
 .contactTxt p:first-child {
-    text-align: center;
-    text-justify: left;
+    text-align: left;
+    text-justify: center;
 }
