@@ -868,3 +868,59 @@ input[type="checkbox"]:disabled {
     opacity: 0.5; /* Adjust opacity for a visual cue */
     /* Add other styles as needed */
 }
+
+/*Dropdown button*/
+.dropbtn {
+    background-color: #fff;
+    color: black;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    top: 170px;
+    left: 50px;
+    border-radius: 10px;
+    width: 150px;
+    height: 70px;
+}
+
+.dropbtn::after {
+    content: "\25BC"; /* Unicode character for a down-pointing triangle */
+    font-size: 12px;
+    position: absolute;
+    top: 50%;
+    right: 8px;
+    transform: translateY(-50%);
+}
+
+.dropbtn:hover, .dropbtn:focus{
+    background-color: rgb(151, 180, 200);
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+/* Dropdown Content (options) are hidden by default */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    border-radius: 5px;
+    left: 200px;
+    top: 240px;
+    z-index: 1;
+}
+
+/* Changes color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #ddd;}
+
+/* Show the dropdown menu */
+.show {display:block;}

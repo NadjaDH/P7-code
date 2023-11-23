@@ -27,338 +27,195 @@
 
     <!--The content of the tabs-->
     <form action="/submit_booking" method="post">
-    <div id="Monday" class="tabcontent"> 
+        <div id="Monday" class="tabcontent">
             <table class="tableAvailability">
                 <th>Time</th>
                 <th>Availability</th>
-                {% for timeslot in ['07:00 - 08:00', '08:00 - 09:00', '09:00 - 10:00', '10:00 - 11:00', '11:00 - 12:00', '12:00 - 13:00', '13:00 - 14:00', '14:00 - 15:00', '15:00 - 16:00'] %}
+                {% for timeslot in ['07:00 - 08:00', '08:00 - 09:00', '09:00 - 10:00', '10:00 - 11:00', '11:00 - 12:00',
+                '12:00 - 13:00', '13:00 - 14:00', '14:00 - 15:00', '15:00 - 16:00'] %}
                 <tr>
                     <td>{{ timeslot }}</td>
-                    <td><input type="checkbox" id="checkbox-{{loop.index}}" name="timeslots" value="{{ timeslot }}" onclick="displayCheckbox()"></td>
+                    <td><input type="checkbox" id="checkbox-{{loop.index}}" name="timeslots" value="{{ timeslot }}"
+                            data-time="{{ timslot }}" onclick="displayCheckbox()"></td>
                 </tr>
                 {% endfor %}
             </table>
-    </div>
-    
-    <div id="Tuesday" class="tabcontent">
+        </div>
+
+        <div id="Tuesday" class="tabcontent">
             <table class="tableAvailability">
                 <th>Time</th>
                 <th>Availability</th>
-                {% for timeslot in ['07:00 - 08:00', '08:00 - 09:00', '09:00 - 10:00', '10:00 - 11:00', '11:00 - 12:00', '12:00 - 13:00', '13:00 - 14:00', '14:00 - 15:00', '15:00 - 16:00'] %}
+                {% for timeslot in ['07:00 - 08:00', '08:00 - 09:00', '09:00 - 10:00', '10:00 - 11:00', '11:00 - 12:00',
+                '12:00 - 13:00', '13:00 - 14:00', '14:00 - 15:00', '15:00 - 16:00'] %}
                 <tr>
                     <td>{{ timeslot }}</td>
-                    <td><input type="checkbox" id="checkbox-{{loop.index}}" data-timeslot="{{ timeslot }}" onclick="displayCheckbox()">></td>
+                    <td><input type="checkbox" id="checkbox-{{loop.index}}" name="timeslots" value="{{ timeslot }}"
+                            data-time="{{ timslot }}" onclick="displayCheckbox()"></td>
                 </tr>
                 {% endfor %}
             </table>
-    </div>
+        </div>
 
-    <div id="Wednesday" class="tabcontent">
-       
+        <div id="Wednesday" class="tabcontent">
+
             <table class="tableAvailability">
                 <th>Time</th>
                 <th>Availability</th>
-                {% for timeslot in ['07:00 - 08:00', '08:00 - 09:00', '09:00 - 10:00', '10:00 - 11:00', '11:00 - 12:00', '12:00 - 13:00', '13:00 - 14:00', '14:00 - 15:00', '15:00 - 16:00'] %}
+                {% for timeslot in ['07:00 - 08:00', '08:00 - 09:00', '09:00 - 10:00', '10:00 - 11:00', '11:00 - 12:00',
+                '12:00 - 13:00', '13:00 - 14:00', '14:00 - 15:00', '15:00 - 16:00'] %}
                 <tr>
                     <td>{{ timeslot }}</td>
-                    <td><input type="checkbox" id="checkbox-{{loop.index}}" data-timeslot="{{ timeslot }}"
-                            onclick="displayCheckbox()">
-                        <!-- Checkbox to enable the button --></td>
+                    <td><input type="checkbox" id="checkbox-{{loop.index}}" name="timeslots" value="{{ timeslot }}"
+                            data-time="{{ timslot }}" onclick="displayCheckbox()"></td>
+                    <!-- Checkbox to enable the button --></td>
                 </tr>{% endfor %}
             </table>
-    </div>
+        </div>
 
-    <div id="Thursday" class="tabcontent">
-        
+        <div id="Thursday" class="tabcontent">
+
             <table class="tableAvailability">
                 <th>Time</th>
                 <th>Availability</th>
-                {% for timeslot in ['07:00 - 08:00', '08:00 - 09:00', '09:00 - 10:00', '10:00 - 11:00', '11:00 - 12:00', '12:00 - 13:00', '13:00 - 14:00', '14:00 - 15:00','15:00 - 16:00'] %}
+                {% for timeslot in ['07:00 - 08:00', '08:00 - 09:00', '09:00 - 10:00', '10:00 - 11:00', '11:00 - 12:00',
+                '12:00 - 13:00', '13:00 - 14:00', '14:00 - 15:00','15:00 - 16:00'] %}
                 <tr>
                     <td>{{ timeslot }}</td>
-                    <td><input type="checkbox" id="checkbox-{{loop.index}}" data-timeslot="{{ timeslot }}"
-                            onclick="displayCheckbox()">
-                        <!-- Checkbox to enable the button --></td>
+                    <td><input type="checkbox" id="checkbox-{{loop.index}}" name="timeslots" value="{{ timeslot }}"
+                            data-time="{{ timslot }}" onclick="displayCheckbox()"></td>
+                    <!-- Checkbox to enable the button --></td>
                 </tr>{% endfor %}
             </table>
-    </div>
+        </div>
 
-    <div id="Friday" class="tabcontent">
-        
+        <div id="Friday" class="tabcontent">
+
             <table class="tableAvailability">
                 <th>Time</th>
                 <th>Availability</th>
-                {% for timeslot in ['07:00 - 08:00', '08:00 - 09:00', '09:00 - 10:00', '10:00 - 11:00', '11:00 - 12:00', '12:00 - 13:00', '13:00 - 14:00','14:00 - 15:00', '15:00 - 16:00'] %}
+                {% for timeslot in ['07:00 - 08:00', '08:00 - 09:00', '09:00 - 10:00', '10:00 - 11:00', '11:00 - 12:00',
+                '12:00 - 13:00', '13:00 - 14:00','14:00 - 15:00', '15:00 - 16:00'] %}
                 <tr>
                     <td>{{ timeslot }}</td>
-                    <td><input type="checkbox" id="checkbox-{{loop.index}}" data-timeslot="{{ timeslot }}"
-                            onclick="displayCheckbox()">
-                        <!-- Checkbox to enable the button --></td>
+                    <td><input type="checkbox" id="checkbox-{{loop.index}}" name="timeslots" value="{{ timeslot }}"
+                            data-time="{{ timslot }}" onclick="displayCheckbox()"></td>
+                    <!-- Checkbox to enable the button --></td>
                 </tr>{% endfor %}
             </table>
-            </div>
+        </div>
 
-            <button class="BookButton" type="button" id="bookButton" disabled onclick="displayAlert()">BOOK</button>
-    <!-- Disable the button by default -->
-        </form>
-    
-    <!--
-            <tr>
-                <td>08:00 - 09:00</td>
-                <td><input type="checkbox" data-timeslot="2023-11-13T08:00" onclick="displayCheckbox()"></td>
-            </tr>
-            <tr>
-                <td>09:00 - 10:00</td>
-                <td><input type="checkbox" onclick="displayCheckbox()"></td>
-            </tr>
-            <tr>
-                <td>10:00 - 11:00</td>
-                <td><input type="checkbox" onclick="displayCheckbox()"></td>
-            </tr>
-            <tr>
-                <td>11:00 - 12:00</td>
-                <td><input type="checkbox" onclick="displayCheckbox()"></td>
-            </tr>
-            <tr>
-                <td>12:00 - 13:00</td>
-                <td><input type="checkbox" onclick="displayCheckbox()"></td>
-            </tr>
-            <tr>
-                <td>13:00 - 14:00</td>
-                <td><input type="checkbox" onclick="displayCheckbox()"></td>
-            </tr>
-            <tr>
-                <td>14:00 - 15:00</td>
-                <td><input type="checkbox" onclick="displayCheckbox()"></td>
-            </tr>
-            <tr>
-                <td>15:00 - 16:00</td>
-                <td><input type="checkbox" onclick="displayCheckbox()"></td>
-            </tr>
-        </table>
-    </div>
+        <button class="BookButton" type="button" id="bookButton" disabled onclick="displayAlert()">BOOK</button>
+        <!-- Disable the button by default -->
+    </form>
 
-    <div id="Tuesday" class="tabcontent">
-        <table class="tableAvailability">
-            <th>Time</th>
-            <th>Availability</th>
-            <tr>
-                <td>07:00 - 08:00</td>
-                <td>Reserved</td>
-            </tr>
-            <tr>
-                <td>08:00 - 09:00</td>
-                <td>Reserved</td>
-            </tr>
-            <tr>
-                <td>09:00 - 10:00</td>
-                <td>Reserved</td>
-            </tr>
-            <tr>
-                <td>10:00 - 11:00</td>
-                <td>Reserved</td>
-            </tr>
-            <tr>
-                <td>11:00 - 12:00</td>
-                <td>Reserved</td>
-            </tr>
-            <tr>
-                <td>12:00 - 13:00</td>
-                <td>Reserved</td>
-            </tr>
-            <tr>
-                <td>13:00 - 14:00</td>
-                <td>Reserved</td>
-            </tr>
-            <tr>
-                <td>14:00 - 15:00</td>
-                <td>Reserved</td>
-            </tr>
-            <tr>
-                <td>15:00 - 16:00</td>
-                <td>Reserved</td>
-            </tr>
-        </table>
-    </div>
+    <!--Standard clickable dropdown-->
+    <div class="dropdown">
+        <button onclick="toggleDropdown()" class="dropbtn" id="dropdownButton">Select Group Room</button>
 
-    <div id="Wednesday" class="tabcontent">
-        <table class="tableAvailability">
-            <th>Time</th>
-            <th>Availability</th>
-            <tr>
-                <td>07:00 - 08:00</td>
-                <td>Reserved</td>
-            </tr>
-            <tr>
-                <td>08:00 - 09:00</td>
-                <td>Reserved</td>
-            </tr>
-            <tr>
-                <td>09:00 - 10:00</td>
-                <td>Reserved</td>
-            </tr>
-            <tr>
-                <td>10:00 - 11:00</td>
-                <td>Reserved</td>
-            </tr>
-            <tr>
-                <td>11:00 - 12:00</td>
-                <td>Reserved</td>
-            </tr>
-            <tr>
-                <td>12:00 - 13:00</td>
-                <td>Reserved</td>
-            </tr>
-            <tr>
-                <td>13:00 - 14:00</td>
-                <td>Reserved</td>
-            </tr>
-            <tr>
-                <td>14:00 - 15:00</td>
-                <td>Reserved</td>
-            </tr>
-            <tr>
-                <td>15:00 - 16:00</td>
-                <td>Reserved</td>
-            </tr>
-        </table>
-    </div>
+        <!--option of dropdown-->
+        <div id="dropdownID" class="dropdown-content">
+            <a href="#" onclick="SelectRoom('Room 4.118')">Room 4.118</a>
+            <a href="#" onclick="SelectRoom('Room 4.120')">Room 4.120</a>
+            <a href="#" onclick="SelectRoom('Room 4.122')">Room 4.122</a>
+            <a href="#" onclick="SelectRoom('Room 4.124')">Room 4.124</a>
+            <a href="#" onclick="SelectRoom('Room 4.125')">Room 4.125</a>
+            <!--Add options of choice in the list-->
+        </div>
 
-    <div id="Thursday" class="tabcontent">
-        <table class="tableAvailability">
-            <th>Time</th>
-            <th>Availability</th>
-            <tr>
-                <td>07:00 - 08:00</td>
-                <td>Reserved</td>
-            </tr>
-            <tr>
-                <td>08:00 - 09:00</td>
-                <td>Reserved</td>
-            </tr>
-            <tr>
-                <td>09:00 - 10:00</td>
-                <td>Reserved</td>
-            </tr>
-            <tr>
-                <td>10:00 - 11:00</td>
-                <td>Reserved</td>
-            </tr>
-            <tr>
-                <td>11:00 - 12:00</td>
-                <td>Reserved</td>
-            </tr>
-            <tr>
-                <td>12:00 - 13:00</td>
-                <td>Reserved</td>
-            </tr>
-            <tr>
-                <td>13:00 - 14:00</td>
-                <td>Reserved</td>
-            </tr>
-            <tr>
-                <td>14:00 - 15:00</td>
-                <td>Reserved</td>
-            </tr>
-            <tr>
-                <td>15:00 - 16:00</td>
-                <td>Reserved</td>
-            </tr>
-        </table>
-    </div>
-
-    <div id="Friday" class="tabcontent">
-        <table class="tableAvailability">
-            <th>Time</th>
-            <th>Availability</th>
-            <tr>
-                <td>07:00 - 08:00</td>
-                <td>Reserved</td>
-            </tr>
-            <tr>
-                <td>08:00 - 09:00</td>
-                <td>Reserved</td>
-            </tr>
-            <tr>
-                <td>09:00 - 10:00</td>
-                <td>Reserved</td>
-            </tr>
-            <tr>
-                <td>10:00 - 11:00</td>
-                <td>Reserved</td>
-            </tr>
-            <tr>
-                <td>11:00 - 12:00</td>
-                <td>Reserved</td>
-            </tr>
-            <tr>
-                <td>12:00 - 13:00</td>
-                <td>Reserved</td>
-            </tr>
-            <tr>
-                <td>13:00 - 14:00</td>
-                <td>Reserved</td>
-            </tr>
-            <tr>
-                <td>14:00 - 15:00</td>
-                <td>Reserved</td>
-            </tr>
-            <tr>
-                <td>15:00 - 16:00</td>
-                <td>Reserved</td>
-            </tr>
-        </table> -->
         <script>
+            var checkedValues = []
+            // javascript for closing the dropdown menu when a room is selected
+            function SelectRoom(room) {
+                console.log("SelectRoom function called with room: ", room); // Debugging line
+                var dropdownButton = document.getElementById("dropdownButton");
+                if (dropdownButton) { // Check if the element exists
+                    dropdownButton.innerText = room;
+                } else {
+                    console.log("Element with id 'SelectRoom' not found"); // Debugging line
+                }
+                if (typeof toggleDropdown === "function") { // Check if toggleDropdown is defined
+                    toggleDropdown(); //Closes the dropdown menu after selecting a room
+                } else {
+                    console.log("toggleDropdown is not defined"); // Debugging line
+                }
+            }
+
+            // javascript for when the user clicks on the dropdown button, toggle between hiding and showing the dropdown content
+            function toggleDropdown() {
+                document.getElementById("dropdownID").classList.toggle("show");
+            }
+
+            // javascript for closing the dropdown menu when clicking outside of it
+            window.onclick = function (event) {
+                if (!event.target.matches('.dropbtn')) {
+                    var dropdowns = document.getElementsByClassName("dropdown-content");
+                    var i;
+                    for (i = 0; i < dropdowns.length; i++) {
+                        var openDropdown = dropdowns[i];
+                        if (openDropdown.classList.contains('show')) {
+                            openDropdown.classList.remove('show');
+                        }
+                    }
+                }
+            }
 
 
             // javascript for checkbox
             function displayCheckbox() {
                 // Get all checkboxes
                 var checkboxes = document.querySelectorAll('input[type="checkbox"]');
-    
+
                 // Check if any checkbox is checked
                 var checkedCount = Array.from(checkboxes).filter(checkbox => checkbox.checked).length;
-    
+
                 // Get the button
                 var button = document.getElementById('bookButton');
-    
+
                 // Enable or disable the button based on whether any checkbox is checked
                 button.disabled = checkedCount === 0 || checkedCount > 4;
-                
+
                 // set the value of the hidden input field for each checkbox
                 checkboxes.forEach((checkbox, index) => {
                     var timeslotInput = document.getElementById('timeslot-' + (index + 1));
                     if (checkbox.checked) {
-                        timeslotInput.value = checkbox.getAttribute('data-timeslot');
+                        timeslotInput.value = checkbox.getAttribute('data-time');
                     } else {
                         timeslotInput.value = '';
-                     }
+                    }
                 });
             }
-    
+
             function displayAlert() { // This function is called when the button is clicked
-    
+
                 // Get all checkboxes
                 var checkboxes = document.querySelectorAll('input[type="checkbox"]');
 
                 // Get the values of the checked checkboxes
                 var checkedValues = Array.from(checkboxes)
-                .filter(checkbox => checkbox.checked)
-                .map(checkbox => checkbox.value);
-    
+                    .filter(checkbox => checkbox.checked)
+                    .map(checkbox => checkbox.value);
+
                 // Check if any checkbox is checked
                 var checkedCount = Array.from(checkboxes).filter(checkbox => checkbox.checked).length;
                 // Get current total from localStorage and convert it to a number
                 var totalChecked = Number(localStorage.getItem("checked")) || 0;
                 // Add checkedCount to the total
                 totalChecked += checkedCount;
-    
+
                 // Store the new total in localStorage
                 localStorage.setItem("checked", totalChecked);
                 // Log the new total to the console
-                console.log(localStorage.getItem("checked"));
-                
-                    // Send the checked values to the server
+                console.log(localStorage.getItem("checked"))
+
+                var roomNumber = document.getElementById('dropdownButton'); // Replace with actual room number
+                // Send the checked values to the server
+                submitBooking(checkedValues, roomNumber);
+
+
+            }
+
+            function submitBooking(timeslots, roomNumber) {
                 fetch('/submit_booking', {
                     method: 'POST',
                     headers: {
@@ -366,19 +223,19 @@
                     },
                     body: JSON.stringify({
                         timeslots: checkedValues, // Include the array of checked values
-                        RoomNO: '4118' // Replace with actual room number
-                }),
-    })
-    .then(response => response.json())
-    .then(data => {
-        console.log('Success:', data);
-        alert("Room booked!");
-    })
-    .catch((error) => {
-        console.error('Error:', error);
-    });
-         }
-    
+                        RoomNO: roomNumber // Replace with actual room number
+                    }),
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log('Success:', data);
+                        alert("Room booked!");
+                    })
+                    .catch((error) => {
+                        console.error('Error:', error);
+                    });
+            }
+
             // javascript for tabbar
             function OpenDay(evt, day) {
                 var i, tabcontent, tablinks;
