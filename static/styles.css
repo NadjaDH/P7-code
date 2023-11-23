@@ -918,13 +918,11 @@ overview th {
     padding: 100px 100px;
     margin: 0 auto; /* indikerer at containeren er i center*/
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    letter-spacing: inherit;
-    font-weight: light;
+   
 }
 
-
-.Infotxt p:first-child  {
-    /*Information title*/
+ /*Information title*/
+.Infotxt p:first-child  {  
     position: absolute; 
     z-index: 5; /* Set the child element to go out from their parent*/
     top: 10%; /*placerer information i toppen af boksen*/
@@ -937,3 +935,7 @@ overview th {
    
 }
 
+ /*main text in information about grouproom*/
+.Infotxt p:nth-child(3) {
+    text-align: left;
+}
