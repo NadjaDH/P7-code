@@ -903,7 +903,7 @@ overview th {
     font-size: 30px;
     font-family: "DIN Next W01 Bold", "Helvetica", sans-serif;
     text-transform: uppercase;
-    letter-spacing: 3px;
+    letter-spacing: inherit;
     font-weight: normal;
     position: relative;
 }
@@ -911,19 +911,24 @@ overview th {
 
 
 .Infotxt {
-    position: relative;
+/* Parent/Mom of information text */
+    position: relative; /*make sure that the children don't get lost from their mom*/
     background-color: #e2e2e9;
-    max-width: 50%; /*længden på containeren. % gør at den er fleksibel og følger str på siden*/
+    max-width: 50%; /* width on the container. % gør at den er fleksibel og følger str på siden*/
     padding: 100px 100px;
     margin: 0 auto; /* indikerer at containeren er i center*/
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    letter-spacing: inherit;
+    font-weight: light;
 }
 
-.Infotxt p:first-child {
-    position: absolute;
-    z-index: 5;
-    top: 0;
-    left: -25px;
+
+.Infotxt p:first-child  {
+    /*Information title*/
+    position: absolute; 
+    z-index: 5; /* Set the child element to go out from their parent*/
+    top: 10%; /*placerer information i toppen af boksen*/
+    left: -25px; /*placerer informationtext i venstre side*/
     font-size: 30px;
     font-family: "DIN Next W01 Bold", "Helvetica", sans-serif;
     text-transform: uppercase;
