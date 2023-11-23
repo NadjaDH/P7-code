@@ -922,6 +922,7 @@ overview th {
 }
 
  /*Information title*/
+ /*This layout is responsible, meaning that it follow the page size*/
 .Infotxt p:first-child  {  
     position: absolute; 
     z-index: 5; /* Set the child element to go out from their parent*/
@@ -935,7 +936,12 @@ overview th {
    
 }
 
+
+.Infotext p:nth-child(2) {
+    text-align: left;
+}
  /*main text in information about grouproom*/
 .Infotxt p:nth-child(3) {
+    font: normal 13px/20px "Helvetica Neue", Helvetica, Arial, sans-serif;
     text-align: left;
 }
