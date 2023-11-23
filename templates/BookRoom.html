@@ -27,8 +27,7 @@
 
     <!--The content of the tabs-->
     <form action="/submit_booking" method="post">
-        <!-- Hidden input field to capture the selected date -->
-        <input type="hidden" id="selectedDateInput" name="selectedDate" value="">
+        <input type="hidden" id="selectedDateInput" name="selectedDate" value=""> <!-- Hidden input field to store the selected date -->
         <div id="Monday" class="tabcontent">
             <table class="tableAvailability">
                 <th>Time</th>
@@ -126,16 +125,16 @@
         </div>
 
         <script>
-            var checkedValues = []
-            let selectedRoomNumber;
-            let selectedDate;
+            var checkedValues = [] // Array to store the checked values
+            let selectedRoomNumber; // Variable to store the selected room number
+            let selectedDate; // Variable to store the selected date
 
 
 
             // javascript for closing the dropdown menu when a room is selected
             function SelectRoom(room) {
                 console.log("SelectRoom function called with room: ", room); // Debugging line
-                selectedRoomNumber = room
+                selectedRoomNumber = room // Set the selected room number to the room that was clicked
                 var dropdownButton = document.getElementById("dropdownButton");
                 if (dropdownButton) { // Check if the element exists
                     dropdownButton.innerText = room;
@@ -185,11 +184,11 @@
 
                 // set the value of the hidden input field for each checkbox
                 checkboxes.forEach((checkbox, index) => {
-                    var timeslotInput = document.getElementById('timeslot-' + (index + 1));
+                    var timeslotInput = document.getElementById('timeslot-' + (index + 1)); 
                     if (checkbox.checked) {
-                        timeslotInput.value = checkbox.getAttribute('data-timeslot');
+                        timeslotInput.value = checkbox.getAttribute('data-timeslot'); 
                     } else {
-                        timeslotInput.value = '';
+                        timeslotInput.value = ''; 
                     }
                 });
             }
@@ -216,9 +215,9 @@
                 // Log the new total to the console
                 console.log(localStorage.getItem("checked"))
 
-                var roomNumber = document.getElementById('dropdownButton'); // Replace with actual room number
+                var roomNumber = document.getElementById('dropdownButton'); // Get the room number from the dropdown menu
                 // Send the checked values to the server
-                submitBooking(checkedValues, selectedRoomNumber, selectedDate);
+                submitBooking(checkedValues, selectedRoomNumber, selectedDate); // Call the submitBooking function with the checked values, room number and date
 
 
             }
@@ -242,14 +241,13 @@
                 // Call selectDate function with the selected date
                 selectDate(selectedDate);
             }
-            
+
             function selectDate(date) {
                 selectedDate = date;
-                submitDate(date);
+                // Set the value of the hidden input field to the selected date
+                var selectedDateInput = document.getElementById('selectedDateInput');
+                selectedDateInput.value = date;
             }
-
-
-
 
             function submitBooking(checkedValues, selectedRoomNumber, selectedDate) {
                 fetch('/submit_booking', {
@@ -259,8 +257,8 @@
                     },
                     body: JSON.stringify({
                         timeslots: checkedValues, // Include the array of checked values
-                        Room: selectedRoomNumber, // Replace with actual room number
-                        date: selectedDate
+                        Room: selectedRoomNumber, // Include the room number
+                        date: selectedDate // Include the date
                     })
                 })
                     .then(response => response.json())
