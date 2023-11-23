@@ -34,15 +34,13 @@
                 {% for timeslot in ['07:00 - 08:00', '08:00 - 09:00', '09:00 - 10:00', '10:00 - 11:00', '11:00 - 12:00', '12:00 - 13:00', '13:00 - 14:00', '14:00 - 15:00', '15:00 - 16:00'] %}
                 <tr>
                     <td>{{ timeslot }}</td>
-                    <td><input type="checkbox" id="checkbox-{{loop.index}}" data-timeslot="{{ timeslot }}" onclick="displayCheckbox()" {% if timeslot in reserved_timeslots %}disabled{% endif %}>
-                    </td>
+                    <td><input type="checkbox" id="checkbox-{{loop.index}}" name="timeslots" value="{{ timeslot }}" onclick="displayCheckbox()"></td>
                 </tr>
                 {% endfor %}
             </table>
     </div>
-
-    <div id="Tuesday" class="tabcontent">
     
+    <div id="Tuesday" class="tabcontent">
             <table class="tableAvailability">
                 <th>Time</th>
                 <th>Availability</th>
@@ -311,18 +309,6 @@
             </tr>
         </table> -->
         <script>
-            // Javascript for timeslots
-            function bookTimeslots() {
-            var timeslots = document.querySelectorAll('input[type="checkbox"]');
-
-            $.post('/submit_booking', {
-               if(data.status === 'success') {
-                   alert('Timeslots booked successfully!');
-               } else {
-                   alert('Timeslots could not be booked!');
-               }
-            });
-        }
 
 
             // javascript for checkbox
@@ -354,6 +340,12 @@
     
                 // Get all checkboxes
                 var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+
+                // Get the values of the checked checkboxes
+                var checkedValues = Array.from(checkboxes)
+                .filter(checkbox => checkbox.checked)
+                .map(checkbox => checkbox.value);
+    
                 // Check if any checkbox is checked
                 var checkedCount = Array.from(checkboxes).filter(checkbox => checkbox.checked).length;
                 // Get current total from localStorage and convert it to a number
@@ -365,26 +357,42 @@
                 localStorage.setItem("checked", totalChecked);
                 // Log the new total to the console
                 console.log(localStorage.getItem("checked"));
-                alert("Room booked!");
-                //submit the form
-                //document.querySelector('form').submit();
-        
-            }
+                
+                    // Send the checked values to the server
+                fetch('/submit_booking', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        timeslots: checkedValues, // Include the array of checked values
+                        RoomNO: '4118' // Replace with actual room number
+                }),
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log('Success:', data);
+        alert("Room booked!");
+    })
+    .catch((error) => {
+        console.error('Error:', error);
+    });
+         }
     
             // javascript for tabbar
             function OpenDay(evt, day) {
                 var i, tabcontent, tablinks;
-    
+                // get all elements with class="tabcontent" and hide them
                 tabcontent = document.getElementsByClassName("tabcontent");
                 for (i = 0; i < tabcontent.length; i++) {
                     tabcontent[i].style.display = "none";
                 }
-    
+                // Get all elements with class="tablinks" and remove the class "active"
                 tablinks = document.getElementsByClassName("tablinks");
                 for (i = 0; i < tablinks.length; i++) {
                     tablinks[i].className = tablinks[i].className.replace(" active", "");
                 }
-    
+                // Show the current tab, and add an "active" class to the button that opened the tab
                 document.getElementById(day).style.display = "block";
                 evt.currentTarget.className += " active";
             }

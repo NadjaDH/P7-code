@@ -3,6 +3,7 @@ from accordion import accordion_function
 import sqlite3
 from faker import Faker
 from dateutil.parser import parse
+from flask import jsonify
 
 
 app = Flask(__name__)
@@ -29,34 +30,28 @@ def information():
 def fake_booking():
     return fake_group_room()
 
+def insert_booking(timeslots, room): #This function is used to insert a booking into the database. It takes a list of timeslots and a room number as parameters, and inserts each timeslot into the bookings table in the database.
+    conn = sqlite3.connect('booking.db')
+    cursor = conn.cursor()
+
+    try:
+        for timeslot in timeslots:
+            cursor.execute("INSERT INTO bookings (Time, RoomNO) VALUES (?, ?)", (timeslot, room))
+        conn.commit()
+    except Exception as e:
+        print('Error inserting booking:', e)
+    finally:
+        conn.close()
+
 @app.route('/submit_booking', methods=['POST']) #This function is used to handle a POST request when a user submits a booking form. It takes the room number and timeslot from the form data, generates a fake booking ID and user ID, and inserts these into the bookings table in the database.
 def submit_booking():
-    if request.method == 'POST':
-        room_number = request.form.get('room')
-        timeslot = request.form.get('timeslot')
-        checkbox_value = request.form.get('checkBox')
-        fake_user_id = fake.random_int(min=1000, max=9999)  # Generate a fake user ID
+    data = request.get_json()
+    timeslots = data.get('timeslots')
+    room = data.get('room')
 
-        fake_booking_id = fake.random_int(min=10000, max=99999)
-        
-        conn = sqlite3.connect('booking.db')
-        cursor = conn.cursor()
+    insert_booking(timeslots, room)
 
-        try:
-            cursor.execute("INSERT INTO bookings (BookingID, UserID, RoomNO, Day, Time) VALUES (?, ?, ?, ?, ?, ?)",
-               (fake_booking_id, fake_user_id, room_number, timeslot.strftime('%Y-%m-%d'), timeslot.strftime('%H:%M:%S'), checkbox_value))
-
-            conn.commit()
-            return 'Booking successfully added'
-        except Exception as e:
-            print("Error adding booking:", e)
-            conn.rollback()
-            return 'Error adding the booking'
-        finally:
-            conn.close()
-    # curl -d "room=Room Number&timeslot=Timeslot" -X POST http://localhost:5000/submit_booking
-        #Replace 'Room Number' and 'Timeslot' with the actual room number and timeslot you want to book. The response from this command should be 'Booking successfully added' if the booking was added successfully, or 'Error adding the booking' if there was an error.
-
+    return jsonify({'message': 'Booking submitted successfully'}), 200
 
 
 @app.route('/booked_room') #This function is used to display all the booked rooms. It retrieves the booked rooms from the database and passes them to the BookedRooms.html template.
