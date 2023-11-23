@@ -944,10 +944,10 @@ overview th {
 }
 
 .contactTxt {
-    text-align: center;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 16px;
 }
 .contactTxt p:first-child {
-    text-align: left;
+    text-align: center;
+    text-justify: left;
 }
