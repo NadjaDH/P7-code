@@ -125,9 +125,11 @@
 
         <script>
             var checkedValues = []
+            let selectedRoomNumber;
             // javascript for closing the dropdown menu when a room is selected
             function SelectRoom(room) {
                 console.log("SelectRoom function called with room: ", room); // Debugging line
+                selectedRoomNumber = room
                 var dropdownButton = document.getElementById("dropdownButton");
                 if (dropdownButton) { // Check if the element exists
                     dropdownButton.innerText = room;
@@ -210,12 +212,12 @@
 
                 var roomNumber = document.getElementById('dropdownButton'); // Replace with actual room number
                 // Send the checked values to the server
-                submitBooking(checkedValues, roomNumber);
+                submitBooking(checkedValues, selectedRoomNumber);
 
 
             }
 
-            function submitBooking(checkedValues, roomNumber) {
+            function submitBooking(checkedValues, selectedRoomNumber) {
                 fetch('/submit_booking', {
                     method: 'POST',
                     headers: {
@@ -223,7 +225,7 @@
                     },
                     body: JSON.stringify({
                         timeslots: checkedValues, // Include the array of checked values
-                        RoomNO: roomNumber // Replace with actual room number
+                        Room: selectedRoomNumber // Replace with actual room number
                     }),
                 })
                     .then(response => response.json())
