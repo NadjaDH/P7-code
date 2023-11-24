@@ -899,15 +899,6 @@ overview th {
     font-weight: bold;
 }
 
-.h10 {
-    font-size: 30px;
-    font-family: "DIN Next W01 Bold", "Helvetica", sans-serif;
-    text-transform: uppercase;
-    letter-spacing: inherit;
-    font-weight: normal;
-    position: relative;
-}
-
 
 
 .Infotxt {
@@ -929,11 +920,11 @@ overview th {
     top: 10%; /*placerer information i toppen af boksen*/
     left: -25px; /*placerer informationtext i venstre side*/
     font-size: 30px;
-    font-family: "DIN Next W01 Bold", "Helvetica", sans-serif;
+    font-family: "DIN Next W01 Bold", "Helvetica", sans-serif; /*This is the font they use in aau*/
     text-transform: uppercase;
     letter-spacing: 3px;
     font-weight: 900;
-    color: #211a52 ;
+    color: #211a52 ; /*AAU Blue*/
    
 }
 
@@ -958,7 +949,7 @@ overview th {
 .contactTxt p {
     text-align: left;
     text-justify: center;
-    font: normal 13px/20px "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font: normal 13px/20px "Helvetica Neue", Helvetica, Arial, sans-serif; /*AAU type for content*/
     text-align: left;
     letter-spacing: inherit;
 }
@@ -971,11 +962,11 @@ overview th {
     top: 10%; /*placerer information i toppen af boksen*/
     left: -25px; /*placerer informationtext i venstre side*/
     font-size: 30px;
-    font-family: "DIN Next W01 Bold", "Helvetica", sans-serif;
+    font-family: "DIN Next W01 Bold", "Helvetica", sans-serif; 
     text-transform: uppercase;
     letter-spacing: 3px;
     font-weight: 900;
-    color: #211a52 ;
+    color: #211a52 ; /*AAU Blue*/
    
 }
 
