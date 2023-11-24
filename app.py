@@ -18,8 +18,7 @@ def home():
 
 @app.route('/booking')
 def booking():
-    reserved_timeslots = get_reserved_timeslots()
-    return render_template("BookRoom.html", reserved_timeslots=reserved_timeslots)
+    return render_template("BookRoom.html")
 
 @app.route('/information')
 def information():
@@ -53,50 +52,5 @@ def submit_booking():
         return jsonify({'error': str(e)}), 500
 
 
-@app.route('/booked_room') #This function is used to display all the booked rooms. It retrieves the booked rooms from the database and passes them to the BookedRooms.html template.
-def booked_room(): #We keep this for now, but probably have to delete this route since it shows the same on the front page.
-    booked_rooms = get_booked_rooms()
-    return render_template("BookedRooms.html", booked_rooms=booked_rooms)
-
-def get_booked_timeslots(): # This function connects to the SQLite database 'booking.db', retrieves all the times (TIME) from the bookings table, and returns a list of timeslots.
-    conn =sqlite3.connect('booking.db')
-    cursor = conn.cursor()
-
-    try:
-        cursor.execute("SELECT Time FROM bookings")
-        booked_timeslots=[row[0] for row in cursor.fetchall()] #fetchall() returns a list of tuples, where each tuple is a row in the database. We only want the first element of each tuple, which is the timeslot
-        return booked_timeslots
-    except Exception as e:
-        print('Error retrieving booked timeslots:', e)
-    finally:
-        conn.close()
-
-def get_booked_rooms(): #This function connects to the SQLite database 'booking.db', retrieves all the room numbers (RoomNO) and times (TIME) from the bookings table, and returns a list of dictionaries where each dictionary represents a booked room with its room number and timeslot.
-    conn =sqlite3.connect('booking.db')
-    cursor = conn.cursor()
-
-    try:
-        cursor.execute("SELECT RoomNO, TIME FROM bookings")
-        booked_rooms = [{'room number': row[0], 'timeslot': parse(row[1]).strftime("%Y-%m-%d %H:%M")} for row in cursor.fetchall()] #fetchall() returns a list of tuples, where each tuple is a row in the database. We only want the first element of each tuple, which is the timeslot
-        return booked_rooms
-    except Exception as e:
-        print('Error retrieving booked timeslots:', e)
-    finally:
-        conn.close()
-
-def get_reserved_timeslots():
-    conn = sqlite3.connect('booking.db')
-    cursor = conn.cursor()
-
-    try:
-        cursor.execute("SELECT DISTINCT Time FROM bookings")
-        reserved_timeslots = [row[0] for row in cursor.fetchall()]
-        return reserved_timeslots
-    except Exception as e:
-        print('Error retrieving reserved timeslots:', e)
-    finally:
-        conn.close()
-
-
-    if __name__ == '__main__':
-        app.run(debug=True) #debug=True means that the server will reload itself each time you make a change to the code
+if __name__ == '__main__':
+    app.run(debug=True) #debug=True means that the server will reload itself each time you make a change to the code

@@ -27,18 +27,20 @@
 
     <!--The content of the tabs-->
     <form action="/submit_booking" method="post">
+       
         <input type="hidden" id="selectedDateInput" name="selectedDate" value=""> <!-- Hidden input field to store the selected date, that can't be used by the user
-        but is used to store the selected date that e.g monday has -->
-        <div id="Monday" class="tabcontent">
+            but is used to store the selected date that e.g monday has -->
+
+        <div id="Monday" class="tabcontent"> <!-- The content of the tab -->
             <table class="tableAvailability">
                 <th>Time</th>
                 <th>Availability</th>
                 {% for timeslot in ['07:00 - 08:00', '08:00 - 09:00', '09:00 - 10:00', '10:00 - 11:00', '11:00 - 12:00',
-                '12:00 - 13:00', '13:00 - 14:00', '14:00 - 15:00', '15:00 - 16:00'] %}
+                '12:00 - 13:00', '13:00 - 14:00', '14:00 - 15:00', '15:00 - 16:00'] %} <!-- Loop through the timeslots and create a checkbox for each timeslot -->
                 <tr>
                     <td>{{ timeslot }}</td>
                     <td><input type="checkbox" id="checkbox-{{loop.index}}" name="timeslots" value="{{ timeslot }}"
-                            data-time="{{ timeslot }}" onclick="displayCheckbox()"></td>
+                            data-time="{{ timeslot }}" onclick="displayCheckbox()"></td> <!-- Checkbox to enable the button -->
                 </tr>
                 {% endfor %}
             </table>
@@ -49,11 +51,11 @@
                 <th>Time</th>
                 <th>Availability</th>
                 {% for timeslot in ['07:00 - 08:00', '08:00 - 09:00', '09:00 - 10:00', '10:00 - 11:00', '11:00 - 12:00',
-                '12:00 - 13:00', '13:00 - 14:00', '14:00 - 15:00', '15:00 - 16:00'] %}
+                '12:00 - 13:00', '13:00 - 14:00', '14:00 - 15:00', '15:00 - 16:00'] %} <!-- Loop through the timeslots and create a checkbox for each timeslot -->
                 <tr>
-                    <td>{{ timeslot }}</td>
+                    <td>{{ timeslot }}</td> <!-- Display the timeslot. And create a checkbox with the value of the timeslot  -->
                     <td><input type="checkbox" id="checkbox-{{loop.index}}" name="timeslots" value="{{ timeslot }}"
-                            data-time="{{ timeslot }}" onclick="displayCheckbox()"></td>
+                            data-time="{{ timeslot }}" onclick="displayCheckbox()"></td> <!-- Checkbox to enable the button -->
                 </tr>
                 {% endfor %}
             </table>
@@ -96,7 +98,7 @@
             <table class="tableAvailability">
                 <th>Time</th>
                 <th>Availability</th>
-                {% for timeslot in ['07:00 - 08:00', '08:00 - 09:00', '09:00 - 10:00', '10:00 - 11:00', '11:00 - 12:00',
+                {% for LOL in ['07:00 - 08:00', '08:00 - 09:00', '09:00 - 10:00', '10:00 - 11:00', '11:00 - 12:00',
                 '12:00 - 13:00', '13:00 - 14:00','14:00 - 15:00', '15:00 - 16:00'] %}
                 <tr>
                     <td>{{ timeslot }}</td>
