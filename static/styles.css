@@ -870,7 +870,9 @@ overview th {
             font-size: 18px;
         }
 
-
+/* Not sure if we need this anymore because it relate to the original contact page
+But should be confirmed by other group members before it get deleted */
+/*
 .left_info {
     float: left;
     margin-left: 37%;
@@ -899,51 +901,10 @@ overview th {
     font-weight: bold;
 }
 
+*/
 
 
-.Infotxt {
-/* Parent/Mother of information text */
-    position: relative; /*make sure that the children don't get lost from their mom*/
-    background-color: #e2e2e9;
-    max-width: 50%; /* width on the container. % gør at den er fleksibel og følger str på siden*/
-    padding: 100px 100px;
-    margin: 0 auto; /* indikerer at containeren er i center*/
-    top: 40px; /*create space between navbar and container*/
-   
-}
-.Infotxt img{
-    position: absolute;
-    z-index: 5;
-    top: -20%;
-    right: -30px;
-    height: 200px;
-    width: 300px;
-    
-}
- /*Information title*/
- /*This layout is responsible, meaning that it follow the page size*/
-.Infotxt p:first-child  {  
-    position: absolute; 
-    z-index: 5; /* Set the child element to go out from their parent*/
-    top: 10%; /*placerer information i toppen af boksen*/
-    left: -25px; /*placerer informationtext i venstre side*/
-    font-size: 30px;
-    font-family: "DIN Next W01 Bold", "Helvetica", sans-serif; /*This is the font they use in aau*/
-    text-transform: uppercase;
-    letter-spacing: 3px;
-    font-weight: 900;
-    color: #211a52 ; /*AAU Blue*/
-   
-}
-
-
-
- /*main text in information about grouproom*/
-.Infotxt p:nth-child(2) {
-    font: normal 13px/20px "Helvetica Neue", Helvetica, Arial, sans-serif;
-    text-align: left;
-}
-
+/* This CSS part relate to the contactpage*/
 .contactTxt {
     position: relative; /*make sure that the children don't get lost from their mom*/
     background-color: #e2e2e9;
@@ -994,3 +955,47 @@ overview th {
     color: #4406e0; /*rgb blue*/
     font-weight: bold;  
 }
+
+/* This CSS part relate to the information page*/
+.Infotxt {
+    /* Parent/Mother of information text */
+        position: relative; /*make sure that the children don't get lost from their mom*/
+        background-color: #e2e2e9;
+        max-width: 50%; /* width on the container. % gør at den er fleksibel og følger str på siden*/
+        padding: 100px 100px;
+        margin: 0 auto; /* indikerer at containeren er i center*/
+        top: 40px; /*create space between navbar and container*/
+       
+    }
+    /*.Infotxt img{
+        position: absolute;
+        z-index: 5;
+        top: -20%;
+        right: -30px;
+        height: 200px;
+        width: 300px;
+       
+    }
+    */ 
+    
+     /*Information title*/
+     /*This layout is responsible, meaning that it follow the page size*/
+    .Infotxt p:first-child  {  
+        position: absolute; 
+        z-index: 5; /* Set the child element to go out from their parent*/
+        top: 10%; /*placerer information i toppen af boksen*/
+        left: -25px; /*placerer informationtext i venstre side*/
+        font-size: 30px;
+        font-family: "DIN Next W01 Bold", "Helvetica", sans-serif; /*This is the font they use in aau*/
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        font-weight: 900;
+        color: #211a52 ; /*AAU Blue*/
+       
+    }
+    
+     /*main text in information about grouproom*/
+    .Infotxt p:nth-child(2) {
+        font: normal 13px/20px "Helvetica Neue", Helvetica, Arial, sans-serif;
+        text-align: left;
+    }
