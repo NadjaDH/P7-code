@@ -911,7 +911,15 @@ overview th {
     top: 40px; /*create space between navbar and container*/
    
 }
-
+.Infotxt img{
+    position: absolute;
+    z-index: 5;
+    top: -20%;
+    right: -30px;
+    height: 200px;
+    width: 300px;
+    
+}
  /*Information title*/
  /*This layout is responsible, meaning that it follow the page size*/
 .Infotxt p:first-child  {  
@@ -927,6 +935,8 @@ overview th {
     color: #211a52 ; /*AAU Blue*/
    
 }
+
+
 
  /*main text in information about grouproom*/
 .Infotxt p:nth-child(2) {
