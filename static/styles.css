@@ -908,7 +908,7 @@ overview th {
     max-width: 50%; /* width on the container. % gør at den er fleksibel og følger str på siden*/
     padding: 100px 100px;
     margin: 0 auto; /* indikerer at containeren er i center*/
-    
+    top: 40px; /*create space between navbar and container*/
    
 }
 
@@ -942,6 +942,8 @@ overview th {
     margin: 0 auto; /* indikerer at containeren er i center*/
     text-align: left;
     text-justify: center;
+    top: 40px; /*create space between navbar and container*/
+    
     
 }
 
@@ -952,6 +954,7 @@ overview th {
     font: normal 13px/20px "Helvetica Neue", Helvetica, Arial, sans-serif; /*AAU type for content*/
     text-align: left;
     letter-spacing: inherit;
+    
 }
 
 /*Information title*/
@@ -972,12 +975,12 @@ overview th {
 
 /* child of library header */
 .contactTxt p:nth-child(5) {
-    color: #4306dd;
+    color: #4406e0;
     font-weight: bold;
 }
 
 /* Technical support header*/
 .contactTxt p:nth-child(7){
-    color: #4306dd;
+    color: #4406e0; /*rgb blue*/
     font-weight: bold;  
 }
