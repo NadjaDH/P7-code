@@ -928,7 +928,7 @@ But should be confirmed by other group members before it get deleted */
     
 }
 
-/*Information title*/
+/*Contact title*/
  /*This layout is responsible, meaning that it follow the page size*/
  .contactTxt p:first-child  {  
     position: absolute; 
