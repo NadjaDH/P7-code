@@ -948,12 +948,14 @@ But should be confirmed by other group members before it get deleted */
 .contactTxt p:nth-child(5) {
     color: #4406e0;
     font-weight: bold;
+    text-transform: uppercase;
 }
 
 /* Technical support header*/
 .contactTxt p:nth-child(7){
     color: #4406e0; /*rgb blue*/
-    font-weight: bold;  
+    font-weight: bold; 
+    text-transform: uppercase; 
 }
 
 /* This CSS part relate to the information page*/
