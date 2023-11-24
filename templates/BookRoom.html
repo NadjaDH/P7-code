@@ -27,7 +27,8 @@
 
     <!--The content of the tabs-->
     <form action="/submit_booking" method="post">
-        <input type="hidden" id="selectedDateInput" name="selectedDate" value=""> <!-- Hidden input field to store the selected date -->
+        <input type="hidden" id="selectedDateInput" name="selectedDate" value=""> <!-- Hidden input field to store the selected date, that can't be used by the user
+        but is used to store the selected date that e.g monday has -->
         <div id="Monday" class="tabcontent">
             <table class="tableAvailability">
                 <th>Time</th>
@@ -170,25 +171,25 @@
 
             // javascript for checkbox
             function displayCheckbox() {
-                // Get all checkboxes
+                // Get all checkboxes on the page
                 var checkboxes = document.querySelectorAll('input[type="checkbox"]');
 
-                // Check if any checkbox is checked
+                // Check if any checkbox is checked and store the number of checked checkboxes
                 var checkedCount = Array.from(checkboxes).filter(checkbox => checkbox.checked).length;
 
-                // Get the button
+                // Get the button element
                 var button = document.getElementById('bookButton');
 
-                // Enable or disable the button based on whether any checkbox is checked
+                // Enable or disable the button based on how many checkboxes are checked
                 button.disabled = checkedCount === 0 || checkedCount > 4;
 
                 // set the value of the hidden input field for each checkbox
                 checkboxes.forEach((checkbox, index) => {
-                    var timeslotInput = document.getElementById('timeslot-' + (index + 1)); 
+                    var timeslotInput = document.getElementById('timeslot-' + (index + 1));
                     if (checkbox.checked) {
-                        timeslotInput.value = checkbox.getAttribute('data-timeslot'); 
+                        timeslotInput.value = checkbox.getAttribute('data-timeslot');
                     } else {
-                        timeslotInput.value = ''; 
+                        timeslotInput.value = '';
                     }
                 });
             }
@@ -215,9 +216,11 @@
                 // Log the new total to the console
                 console.log(localStorage.getItem("checked"))
 
-                var roomNumber = document.getElementById('dropdownButton'); // Get the room number from the dropdown menu
+                var roomNumber = document.getElementById('dropdownButton'); // Get the room number from the dropdown menu and store it in a variable called roomNumber
                 // Send the checked values to the server
-                submitBooking(checkedValues, selectedRoomNumber, selectedDate); // Call the submitBooking function with the checked values, room number and date
+                submitBooking(checkedValues, selectedRoomNumber, selectedDate); // When the button is clicked, call the submitBooking function with the checked values, 
+                //the room number and the selected date, that runs the code in the submitBooking
+
 
 
             }
@@ -243,9 +246,11 @@
             }
 
             function selectDate(date) {
+                // Sets the global variable selectedDate to the value of date passed into the function.
                 selectedDate = date;
-                // Set the value of the hidden input field to the selected date
+               //Retrieves the hidden input field with the id selectedDateInput.
                 var selectedDateInput = document.getElementById('selectedDateInput');
+                //Sets the value of the hidden input field to the date passed into the function.
                 selectedDateInput.value = date;
             }
 
