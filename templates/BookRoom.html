@@ -15,7 +15,6 @@
     </ul>
     <h1>Room Booking</h1>
 
-
     <!--Create links to change the page in the tab bar-->
     <div class="tab">
         <button class="tablinks" onclick="OpenDay(event, 'Monday', '2023-11-20')">Mon</button>
@@ -24,6 +23,14 @@
         <button class="tablinks" onclick="OpenDay(event, 'Thursday', '2023-11-23')">Thu</button>
         <button class="tablinks" onclick="OpenDay(event, 'Friday', '2023-11-24')">Fri</button>
     </div>
+
+    <!-- Cancel Booking Form -->
+    <form id="cancelBookingForm" onsubmit="cancelBooking(event)" action="{{ url_for('cancel_booking_route') }}" method="POST">
+        <label for="cancelBookingID">Booking ID to Cancel:</label>
+        <input type="text" id="cancelBookingID" name="booking_id" required>
+        
+        <button type="submit">Cancel Booking</button>
+    </form>
 
     <!--The content of the tabs-->
     <form action="/submit_booking" method="post">
@@ -126,6 +133,7 @@
             <a href="#" onclick="SelectRoom('Room 4.125')">Room 4.125</a>
             <!--Add options of choice in the list-->
         </div>
+    
 
         <script>
             var checkedValues = [] // Array to store the checked values
@@ -149,6 +157,25 @@
                 } else {
                     console.log("toggleDropdown is not defined"); // Debugging line
                 }
+            }
+
+            // Function to cancel a booking
+            function cancelBooking(event) {
+                event.preventDefault(); // prevent the default form submission
+                const formData = {
+                    booking_id: document.getElementById('cancelBookingID').value
+                };
+
+                fetch('{{ url_for('cancel_booking_route') }}', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(formData)
+                })
+                .then(response => response.json())
+                .then(data => console.log(data))
+                .catch(error => console.error('Error:', error));
             }
 
             // javascript for when the user clicks on the dropdown button, toggle between hiding and showing the dropdown content
@@ -277,7 +304,7 @@
             }
 
 
-        </script>
+    </script>
 </body>
 
 </html>

@@ -17,6 +17,44 @@ def home():
 def booking():
     return render_template("BookRoom.html")
 
+def cancel_booking(booking_id):
+    conn = sqlite3.connect('booking.db')
+    cursor = conn.cursor()
+
+    try:
+        # Execute a SQL DELETE command to delete the booking with the given booking ID from the bookings table
+        cursor.execute("DELETE FROM bookings WHERE BookingID = ?", (booking_id,))
+
+        # If no rows were affected, the booking ID was not found in the database.
+        if cursor.rowcount == 0:
+            return False, 'Booking ID not found'
+
+        # Commit the changes and close the connection to the database
+        conn.commit()
+        return True, 'Booking successfully cancelled'
+    except Exception as e:
+        print('Error cancelling booking:', e)
+        return False, 'Error cancelling the booking'
+    finally:
+        conn.close()
+
+@app.route('/cancel_booking_route', methods=['POST'])
+def cancel_booking_route():
+    try:
+        booking_id = request.form.get('booking_id')
+
+        if not booking_id:
+            return jsonify({'error': 'Booking ID is missing in the request'}), 400
+
+        success, message = cancel_booking(booking_id)
+
+        if success:
+            return jsonify({'message': message}), 200
+        else:
+            return jsonify({'error': message}), 404  # Return 404 for not found
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
 @app.route('/information')
 def information():
     return render_template("Information.html")
