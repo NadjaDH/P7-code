@@ -5,7 +5,6 @@
     <title>Home</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
     <script src="https://code.jquery.com/jquery-1.7.2.js"></script>
-
 </head>
 
 <body>
@@ -61,16 +60,14 @@
     <button class="accordion">Room {{ room.room }}</button>
     <div class="panel">
         <p>Status: {{ "Available" if room.status else "Reserved" }}</p>
-        <table>
+
+      {% for day in day_info %}
+        <table class="weekend">
           <tr>
-            <th style="width: 15%;" data-color="5">Mon</th>
-            <th style="width: 15%;" data-color='2'>Tue</th>
-            <th style="width: 15%;">Wed</th>
-            <th style="width: 15%;">Thur</th>
-            <th style="width: 15%;">Fri</th>
+            <th data-color="{{ day.day }}"> {{ day.day }}</th>
           </tr> 
         </table>
-
+      {% endfor %}
 
     </div>
     {% endfor %}

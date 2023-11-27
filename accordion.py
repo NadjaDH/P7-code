@@ -1,7 +1,5 @@
 import random
 
-from tabulate import tabulate
-
 def accordion_function():
     room_4118 = False
     room_4119 = False
@@ -16,4 +14,19 @@ def accordion_function():
     print(roomnumber_list)
     return roomnumber_list
 accordion_function()
+
+def weekend_function():
+    MONDAY          = 1
+    TUESDAY         = 1
+    WEDNSDAY        = 1
+    THURSDAY        = 1
+    FRIDAY          = 1
+
+    daydate_list = [MONDAY, TUESDAY, WEDNSDAY, THURSDAY, FRIDAY] # an array with the ints above
+
+    for a in range(len(daydate_list)):
+        daydate_list[a] = int(random.getrandbits(3)) # randomly assign 3-bit number to each day
+    print(daydate_list)
+    return daydate_list
+weekend_function()
 

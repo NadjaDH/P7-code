@@ -806,6 +806,7 @@ th {
     height: 50px;
     font-size: medium;
     font-weight: bold;
+
 }
 
 td {
@@ -817,17 +818,15 @@ td:nth-child(1) {
     width: 40%;
 }
 
-th:nth-child(1) {
-    width: 40%;
+th:nth-child(1), th:nth-child(2), th:nth-child(3), th:nth-child(4), th:nth-child(5){
+    width: 20%;
+    background-color: data-color;
 }
 
 td:nth-child(2) {
     width: 70%;
 }
 
-th:nth-child(2) {
-    width: 70%;
-}
 
 /* Style the buttons that are used to open and close the accordion panel */
 .accordion {

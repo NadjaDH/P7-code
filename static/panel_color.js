@@ -17,7 +17,7 @@ $(document).ready(function(){
     var second;
     var th;
     
-    $('div').each(function(index){
+    $('th').each(function(index){
       
       th = $(this);
       
