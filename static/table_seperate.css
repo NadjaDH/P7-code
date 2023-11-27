@@ -1,7 +1,8 @@
 th {
-    height: 50px;
     background-color: #211a52;
-    font-size: medium;
-    font-weight: bold;
     color: white;
+}
+
+th:nth-child(1), th:nth-child(2){
+    width: 40%;
 }
