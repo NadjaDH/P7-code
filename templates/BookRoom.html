@@ -139,8 +139,11 @@
             var checkedValues = [] // Array to store the checked values
             let selectedRoomNumber; // Variable to store the selected room number
             let selectedDate; // Variable to store the selected date
+            var bookedTimeslots = []; // Array to store the booked timeslots
 
-
+            function isTimeslotBooked(timeslot) { //The function isTimeslotBooked(timeslot) checks if a given timeslot is already booked.
+                return bookedTimeslots.includes(timeslot);
+            }
 
             // javascript for closing the dropdown menu when a room is selected
             function SelectRoom(room) {
@@ -157,7 +160,7 @@
                 } else {
                     console.log("toggleDropdown is not defined"); // Debugging line
                 }
-            }
+            } 
 
             // Function to cancel a booking
             function cancelBooking(event) {
@@ -293,8 +296,16 @@
                         date: selectedDate // Include the date
                     })
                 })
-                    .then(response => response.json())
-                    .then(data => {
+                    .then(response => response.json()) // Parse the response as JSON
+                    .then(data => { // Log the data to the console
+                        if (data.error) {
+                            alert(data.error);
+                        } else {
+                            //If there's no error message, the booking was successful
+                            console.log('Success:', data);
+                            alert("Room booked!");
+                            }
+                            
                         console.log('Success:', data); 
                         alert("Room booked!");
                     })
