@@ -1,13 +1,10 @@
 from flask import Flask, render_template, request, redirect, url_for, jsonify
 from accordion import accordion_function
 import sqlite3
-from faker import Faker
 from dateutil.parser import parse
 
 
 app = Flask(__name__)
-fake = Faker()
-
 
 @app.route('/')
 def home():
@@ -25,8 +22,8 @@ def information():
     return render_template("Information.html")
 
 def insert_booking(timeslots, room, date): #This function is used to insert a booking into the database. It takes a list of timeslots and a room number as parameters, and inserts each timeslot into the bookings table in the database.
-    conn = sqlite3.connect('booking.db')
-    cursor = conn.cursor()
+    conn = sqlite3.connect('booking.db') # connect to the database
+    cursor = conn.cursor() #cursor is used to execute SQL commands
 
     try:
         for timeslot in timeslots:
