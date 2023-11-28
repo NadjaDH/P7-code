@@ -81,7 +81,7 @@ def is_timeslot_booked(timeslot, room, date):
     finally:
         conn.close()
 
-def insert_booking(timeslots, room, date):
+def insert_booking(timeslots, room, date, BookID):
     conn = sqlite3.connect('booking.db')
     cursor = conn.cursor()
 
@@ -92,7 +92,7 @@ def insert_booking(timeslots, room, date):
                 raise ValueError(f'Timeslot {timeslot} for Room {room} on {date} is already booked.')
 
             # If the timeslot is not booked, insert the booking and set is_booked to 1
-            cursor.execute("INSERT INTO bookings (Time, RoomNO, Day, is_booked) VALUES (?, ?, ?, 1)", (timeslot, room, date))
+            cursor.execute("INSERT INTO bookings (BookingID, Time, RoomNO, Day, is_booked) VALUES (?, ?, ?, ?, 1)", (BookID, timeslot, room, date))
 
         # Commit the changes
         conn.commit()
@@ -108,12 +108,13 @@ def submit_booking():
         timeslots = data.get('timeslots')
         room = data.get('Room')
         date = data.get('date')
+        BookID = data.get('BookingID')
 
         for timeslot in timeslots:
             if is_timeslot_booked(timeslot, room, date):
                 return jsonify({'error': 'One or more selected timeslots are already booked'}), 400
         # Insert the booking into the database if there are no double bookings
-        insert_booking(timeslots, room, date)
+        insert_booking(timeslots, room, date, BookID)
 
         return jsonify({'message': 'Booking submitted successfully'}), 200
     except ValueError as e: #This exception is raised when a double booking is detected.
