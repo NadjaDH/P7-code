@@ -1,10 +1,9 @@
-html, body, div, span, applet, object, iframe, h1, h2, h3,
-h4, h5, h6, p, pre, a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong,
-sub, sup, tt, var, b, u, i, center, dl, dt, dd, li, fieldset,
-form, label, legend, tab, table, tbody, tfoot, thead, tr,
-th, td, aside, canvas, details, figure, footer, header,
-hgroup, menu, nav,
+html, body, div, span, applet, object, iframe, h1, p, pre, a, 
+abbr, acronym, address, big, cite, code, del, dfn, em, img, 
+ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, 
+var, b, u, i, center, dl, dt, dd, li, fieldset, form, label, 
+legend, tab, table, tbody, tfoot, thead, tr, th, td, aside, 
+canvas, details, figure, footer, header, hgroup, menu, nav,
 
 section {
     margin: 0;
@@ -15,26 +14,12 @@ section {
     vertical-align: baseline;
 }
 
-article,
-aside,
-details,
-figcaption,
-figure,
-footer,
-header,
-hgroup,
-menu,
-nav,
-section {
+article, aside, details, figcaption, figure, footer,
+header, hgroup, menu, nav, section {
     display: block
 }
 
-body {
-    line-height: 1
-}
-
-html,
-body {
+html, body {
     margin: 0;
     word-break: break-word;
     height: 100%
@@ -67,86 +52,26 @@ html {
 body {
     font-family: "Helvetica", sans-serif;
     font-size: 12px;
-    line-height: 140%;
+    line-height: 1;
     color: #354450;
 }
 
-h1,
-.h1,
-h2,
-.h2,
-h3,
-.h3,
-h4,
-.h4,
-h5,
-.h5,
-h6,
-.h6 {
+h1, .h1 {
+    font-family: "DIN Next W01 Bold", "Helvetica", sans-serif;
+    letter-spacing: 2px;
+    color: #211a52;
+    font-size: 30px;
+    position: relative;
+    left: 45px;
+    top: 45px;
     text-transform: uppercase;
     line-height: 100%;
     letter-spacing: 1px;
     font-weight: normal
 }
 
-h1,
-.h1,
-h2,
-.h2 {
-    font-family: "DIN Next W01 Bold", "Helvetica", sans-serif;
-    letter-spacing: 2px
-}
-
-h1,
-.h1,
-h2,
-.h2,
-h3,
-.h3 {
-    color: #211a52
-}
-
-.color .h1,
-.color .h2,
-.color .h3 {
+.color .h1 {
     color: #fff !important
-}
-
-h3,
-.h3,
-h4,
-.h4,
-h5,
-.h5,
-h6,
-.h6 {
-    font-family: "DIN Next W01 Regular", "Helvetica", sans-serif
-}
-
-h1,
-.h1 {
-    font-size: 30px;
-    position: relative;
-    left: 45px;
-    top: 45px;
-}
-
-h2,
-.h2 {
-    font-size: 14px;
-    margin-bottom: 13px
-}
-
-h3,
-.h3,
-h4,
-.h4,
-h5,
-.h5,
-h6,
-.h6 {
-    font-size: 12px;
-    margin-bottom: 12px
 }
 
 p {

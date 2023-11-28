@@ -9,7 +9,7 @@
 
 <body>
   <ul class="navbar">
-      <li><a href="{{ url_for('home') }}">Home</a></li>
+      <li><a class="active" href="{{ url_for('home') }}">Home</a></li>
       <li><a href="{{ url_for('booking') }}">Book Room</a></li>
       <li><a href="{{ url_for('contact') }}">Contact</a></li>
       <li><a href="{{ url_for('information') }}">Information</a></li>
@@ -54,7 +54,7 @@
   <div class="container">
     <input type="checkbox" name="" id="zoom_img" />
     <label for="zoom_img">
-      <img src="{{ url_for('static', filename='images/Mapwithcolor.png') }}" alt="Map">
+      <img src="{{ url_for('static', filename='images/K3map.png') }}" alt="Map">
     </label>
   </div>
    
