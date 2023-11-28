@@ -655,6 +655,10 @@ only screen and (min-device-pixel-ratio:1.5) {
     background-color: #aeabc5;
 }
 
+.tab button:disabled {
+    background-color: #ab9e9e;
+}
+
 .tab button.active {
     border-bottom: none;
     background-color: #211a52;

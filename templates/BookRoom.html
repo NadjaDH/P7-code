@@ -263,37 +263,54 @@
    </div>
    
 <script>
- // javascript for checkboxes
- function displayCheckbox() {
-            var checkbox = document.getElementById("randomCheckbox"); // Get the checkbox
-            var button = document.querySelector(".BookButton"); // Get the button
+function displayCheckbox() {
+    var checkbox = document.getElementById("randomCheckbox"); // Get the checkbox
+    var button = document.querySelector(".BookButton"); // Get the button
 
-            if (checkbox.checked == true) { // If the checkbox is checked, enable the button
-                button.disabled = false;
-            } else {
-                button.disabled = true; // Else disable the button
-            }
-        }
-        function displayAlert() { // Display an alert when the button is clicked
-            alert("Room Booked!");
-        }
+    if (checkbox.checked == true) { // If the checkbox is checked, enable the button
+        button.disabled = false;
+    } else {
+        button.disabled = true; // Else disable the button
+    }
+}
 
-// javascript for tabbar functionality
+function displayAlert() { // Display an alert when the button is clicked
+    alert("Room Booked!");
+}
+
+// javascript for tabbar
 function OpenDay(evt, day) {
     var i, tabcontent, tablinks;
-        tabcontent = document.getElementsByClassName("tabcontent");
-            for (i = 0; i < tabcontent.length; i++) {
-                tabcontent[i].style.display = "none";
-            }
 
-            tablinks = document.getElementsByClassName("tablinks");
-            for (i = 0; i < tablinks.length; i++) {
-                tablinks[i].className = tablinks[i].className.replace(" active", "");
-            }
+    var dayOfWeek = (parseInt(day) - 1) % 7; //Convert the day of the week to a number between 0 and 6
 
-            document.getElementById(day).style.display = "block";
-            evt.currentTarget.className += " active";
-        }
+    //Initialize variable with the function to check if the day of the week is before
+    var buttonDisabled = hasDayPassed(dayOfWeek);
+
+    //If the button should be disabled, do nothing so that it is not possible to open the content
+    if (buttonDisabled) {
+        return;
+    }
+
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    } //Hide all the content
+
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+    } //Remove the active class from all the buttons
+
+    document.getElementById(day).style.display = "block";
+        evt.currentTarget.className += " active"; //Show the content of the button that was clicked
+}
+
+function hasDayPassed (daysOfWeek) { //Function to check if the day of the week is before the current day
+    var now = new Date();
+    var currentDay = now.getDay();
+    return currentDay > daysOfWeek; 
+}
 
 // javascript for closing the dropdown menu when a room is selected
 function SelectRoom(room) {
@@ -329,8 +346,35 @@ window.onclick = function(event) {
         } 
     }
 }
+
+// Update current day in javascript
+function updateClock(){
+    var now = new Date();
+    var daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+
+    var currentDay = now.getDay() + 1; //ChatGPT
+    var buttons = document.getElementsByClassName("tablinks");
+
+    //ChatGPT
+    for (var i = 0; i < buttons.length; i++) { //Loop through all the buttons
+        var buttonDay = i + 2; //Get the day of the week for the button
+        buttons[i].disabled = buttonDay < currentDay; //Disable the button if the day of the week is before the current day
+    }
+
+    var dayname = daysOfWeek[now.getDay()];
+    var month = months[now.getMonth()];
+    var daynum = now.getDate();
+    var year = now.getFullYear();
+
+    document.getElementById('dayname').textContent = dayname;
+    document.getElementById('month').textContent = month;
+    document.getElementById('daynum').textContent = daynum;
+    document.getElementById('year').textContent = year;
+}
+
+updateClock();
+setInterval(updateClock, 1000);
 </script>
-
 </body>
-
 </html>
