@@ -23,18 +23,34 @@
         function OpenDay(evt, day) {
             var i, tabcontent, tablinks;
 
+            var dayOfWeek = (parseInt(day) - 1) % 7; //Convert the day of the week to a number between 0 and 6
+
+            //Initialize variable with the function to check if the day of the week is before
+            var buttonDisabled = hasDayPassed(dayOfWeek);
+
+            //If the button should be disabled, do nothing so that it is not possible to open the content
+            if (buttonDisabled) {
+                return;
+            }
+
             tabcontent = document.getElementsByClassName("tabcontent");
             for (i = 0; i < tabcontent.length; i++) {
                 tabcontent[i].style.display = "none";
-            }
+            } //Hide all the content
 
             tablinks = document.getElementsByClassName("tablinks");
             for (i = 0; i < tablinks.length; i++) {
                 tablinks[i].className = tablinks[i].className.replace(" active", "");
-            }
+            } //Remove the active class from all the buttons
 
             document.getElementById(day).style.display = "block";
-            evt.currentTarget.className += " active";
+            evt.currentTarget.className += " active"; //Show the content of the button that was clicked
+        }
+
+        function hasDayPassed (daysOfWeek) { //Function to check if the day of the week is before the current day
+            var now = new Date();
+            var currentDay = now.getDay();
+            return currentDay > daysOfWeek; 
         }
     </script>
 </head>
@@ -276,8 +292,7 @@
         </table>
     </div>
 
-
-<!--Current date, month, year-->
+<!--Current date, month, year
 <div class="datetime">
     <div class="date">
         <span id="dayname">Day</span>
@@ -286,6 +301,7 @@
         <span id="year">Year</span>
     </div>
 </div>
+-->
 
 <!--Update current day in javascript-->
 <script>
@@ -293,6 +309,15 @@
         var now = new Date();
         var daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
         var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+
+        var currentDay = now.getDay() + 1; //ChatGPT
+        var buttons = document.getElementsByClassName("tablinks");
+
+        //ChatGPT
+        for (var i = 0; i < buttons.length; i++) { //Loop through all the buttons
+            var buttonDay = i + 2; //Get the day of the week for the button
+            buttons[i].disabled = buttonDay < currentDay; //Disable the button if the day of the week is before the current day
+        }
 
         var dayname = daysOfWeek[now.getDay()];
         var month = months[now.getMonth()];
