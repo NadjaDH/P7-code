@@ -140,6 +140,7 @@
             let selectedRoomNumber; // Variable to store the selected room number
             let selectedDate; // Variable to store the selected date
             var bookedTimeslots = []; // Array to store the booked timeslots
+            var bookingID; // Variable to store the bookingID
 
             function isTimeslotBooked(timeslot) { //The function isTimeslotBooked(timeslot) checks if a given timeslot is already booked.
                 return bookedTimeslots.includes(timeslot);
@@ -258,6 +259,8 @@
             function OpenDay(evt, day, selectedDate) {
                 var i, tabcontent, tablinks;
                 // get all elements with class="tabcontent" and hide them
+
+                resetCheckboxes(); // Reset the checkboxes when a new tab is opened
                 tabcontent = document.getElementsByClassName("tabcontent");
                 for (i = 0; i < tabcontent.length; i++) {
                     tabcontent[i].style.display = "none";
@@ -283,6 +286,18 @@
                 //Sets the value of the hidden input field to the date passed into the function.
                 selectedDateInput.value = date;
             }
+            // Reset the checkboxes when a new tab is opened
+            function resetCheckboxes() {
+                var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+                checkboxes.forEach((checkbox) => {
+                    checkbox.checked = false;
+                });
+            }
+            // Create a bookingID
+            function createBookingID() {
+                var bookingID = Math.floor(Math.random() * 1000) + 1; // Create a random number between 0 and 1000
+                return bookingID; // Return the bookingID
+            }
 
             function submitBooking(checkedValues, selectedRoomNumber, selectedDate) {
                 fetch('/submit_booking', {
@@ -305,9 +320,6 @@
                             console.log('Success:', data);
                             alert("Room booked!");
                             }
-                            
-                        console.log('Success:', data); 
-                        alert("Room booked!");
                     })
                     .catch((error) => {  // Catch any errors and log them to the console
                         console.error('Error:', error); // Log the error to the console
