@@ -771,6 +771,7 @@ th:nth-child(2) {
     float: right;
     margin-left: 5px;
 }
+
 .active:after {
     content: "\2212"; /* Unicode character for "minus" sign (-) from https://www.toptal.com/designers/htmlarrows/math/minus-sign/*/
 }
@@ -804,3 +805,125 @@ input[type=checkbox]:checked~label>img {
     transform: scale(1.5);
     cursor: zoom-out;
 }
+
+/* Not sure if we need this anymore because it relate to the original contact page
+But should be confirmed by other group members before it get deleted */
+/*
+.left_info {
+    float: left;
+    margin-left: 37%;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+}
+
+.right_info {
+    float: right;
+    margin-right: 37%;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    
+}
+
+.contact_text {
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+}
+
+.techlib {
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    font-weight: bold;
+}*/
+
+/* This CSS part relate to the contactpage*/
+.contactTxt {
+    position: relative; /*make sure that the children don't get lost from their mom*/
+    background-color: #e2e2e9;
+    max-width: 50%; /* width on the container. % gør at den er fleksibel og følger str på siden*/
+    padding: 100px 100px;
+    margin: 0 auto; /* indikerer at containeren er i center*/
+    text-align: left;
+    text-justify: center;
+    top: 40px; /*create space between navbar and container*/
+}
+
+/*This is the father of contactTxt and it defines the font of every child element*/
+.contactTxt p {
+    text-align: left;
+    text-justify: center;
+    font: normal 13px/20px "Helvetica Neue", Helvetica, Arial, sans-serif; /*AAU type for content*/
+    text-align: left;
+    letter-spacing: inherit;
+}
+
+/*Contact title*/
+ /*This layout is responsible, meaning that it follow the page size*/
+ .contactTxt p:first-child  {  
+    position: absolute; 
+    z-index: 5; /* Set the child element to go out from their parent*/
+    top: 10%; /*placerer information i toppen af boksen*/
+    left: -25px; /*placerer informationtext i venstre side*/
+    font-size: 30px;
+    font-family: "DIN Next W01 Bold", "Helvetica", sans-serif; 
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-weight: 900;
+    color: #211a52 ; /*AAU Blue*/
+}
+
+/* child of library header */
+.contactTxt p:nth-child(5) {
+    color: #4406e0;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+/* Technical support header*/
+.contactTxt p:nth-child(7){
+    color: #4406e0; /*rgb blue*/
+    font-weight: bold; 
+    text-transform: uppercase; 
+}
+
+/* This CSS part relate to the information page*/
+.Infotxt {
+    /* Parent/Mother of information text */
+        position: relative; /*make sure that the children don't get lost from their mom*/
+        background-color: #e2e2e9;
+        max-width: 50%; /* width on the container. % gør at den er fleksibel og følger str på siden*/
+        padding: 100px 100px;
+        margin: 0 auto; /* indikerer at containeren er i center*/
+        top: 40px; /*create space between navbar and container*/
+    }
+    /*.Infotxt img{
+        position: absolute;
+        z-index: 5;
+        top: -20%;
+        right: -30px;
+        height: 200px;
+        width: 300px;
+    }
+    */ 
+    
+     /*Information title*/
+     /*This layout is responsible, meaning that it follow the page size*/
+    .Infotxt p:first-child  {  
+        position: absolute; 
+        z-index: 5; /* Set the child element to go out from their parent*/
+        top: 10%; /*placerer information i toppen af boksen*/
+        left: -25px; /*placerer informationtext i venstre side*/
+        font-size: 30px;
+        font-family: "DIN Next W01 Bold", "Helvetica", sans-serif; /*This is the font they use in aau*/
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        font-weight: 900;
+        color: #211a52 ; /*AAU Blue*/
+    }
+    
+     /*main text in information about grouproom*/
+    .Infotxt p:nth-child(2) {
+        font: normal 13px/20px "Helvetica Neue", Helvetica, Arial, sans-serif;
+        text-align: left;
+    }

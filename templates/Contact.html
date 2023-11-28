@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Contact</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+
+<body>
+    <ul class="navbar">
+        <li><a href="{{ url_for('home') }}">Home</a></li>
+        <li><a href="{{ url_for('booking') }}">Book Room</a></li>
+        <li><a href="{{ url_for('contact') }}">Contact</a></li>
+        <li><a href="{{ url_for('information') }}">Information</a></li>
+    </ul>
+    
+    <!--NB: Using <p> instead of <br> gives a more dynaamic and responsive page-->
+   <div class="contactTxt">
+        <p>Contact</p><!--first child-->
+    
+        <p> <!--2nth child-->
+            For any questions about group rooms or the use hereof, contact the library. <br>
+        </p>
+
+        <p> <!--3nth child-->
+            Opening hours are monday - friday 9 - 16. <br>
+        </p> 
+
+        <p> <!--4nth child-->
+            If you need help with the website, contact technical support.
+        </p>
+    
+        <p> <!--5nth child-->
+            Library
+        </p> 
+    
+        <p> <!--6nth child-->
+            E-mail: aub@aub.aau.dk<br> 
+            Phone Number: 99 40 94 00
+        </p>
+
+        <p> <!--7nth child-->
+            Technical support
+        </p> 
+        <p> <!--8nth child-->
+            E-mail: support@its.aau.dk <br> 
+            Phone Number: 99 40 20 20
+        </p>
+   </div>
+   <!--Not sure about we need this part anymore, but it should be confirmed by another group member-->
+   <!-- <p> 
+        <div class="contact_text">
+        For any questions about group rooms or the <br>
+        use hereof, contact the library. <br>
+        Opening hours are monday - friday 9 - 16. <br><br>
+        If you need help with the website, contact <br>
+        technical support. <br><br>
+        </div>
+    
+    -->
+        <!--<span class="right_info">right aligned</span><span class="left_info"><br>left aligned</span> Test for at se hvad virker-->
+
+       <!-- <div class="left_info">
+            <b><div class="techlib">Library:</div></b> <br>
+            E-mail: aub@aub.aau.dk <br>
+            Phone Number: 99 40 94 00
+        </div> 
+
+        <div class="right_info">
+            <b><div class="techlib">Technical support:</div></b> <br>
+            E-mail: support@its.aau.dk <br>
+            Phone Number: 99 40 20 20
+        </div>
+    
+
+
+    </p>
+-->
+</body>
+
+</html>
