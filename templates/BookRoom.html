@@ -140,7 +140,6 @@
             let selectedRoomNumber; // Variable to store the selected room number
             let selectedDate; // Variable to store the selected date
             var bookedTimeslots = []; // Array to store the booked timeslots
-            var bookingID; // Variable to store the bookingID
 
             function isTimeslotBooked(timeslot) { //The function isTimeslotBooked(timeslot) checks if a given timeslot is already booked.
                 return bookedTimeslots.includes(timeslot);
@@ -297,6 +296,8 @@
             function createBookingID() {
                 var bookingID = Math.floor(Math.random() * 1000) + 1; // Create a random number between 0 and 1000
                 return bookingID; // Return the bookingID
+
+                // TO DO: Lav resten af funktionen - skal gemme bookingID i databasen, den skal lave et unikt bookingID
             }
 
             function submitBooking(checkedValues, selectedRoomNumber, selectedDate) {
