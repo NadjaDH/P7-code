@@ -175,7 +175,7 @@
                     booking_id: document.getElementById('cancelBookingID').value
                 };
 
-                fetch('{{ url_for('cancel_booking_route') }}', {
+                fetch('cancel_booking_route', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
