@@ -1,9 +1,9 @@
 $(document).ready(function(){
   
     var mc = {
-      '7-9'     : 'red',
+      '7-9'     : '#F16B5C',
       '3-6'    : 'yellow',
-      '0-2'   : 'green'
+      '0-2'   : '#B3D93A'
     };
     
   function between(x, min, max) {
@@ -33,7 +33,7 @@ $(document).ready(function(){
           console.log(between(dc, first, second));
           
           if( between(dc, first, second) ){
-            th.addClass(value);
+            th.css('background-color', value);
           }
   
       
