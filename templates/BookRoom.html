@@ -28,9 +28,9 @@
     <form id="cancelBookingForm" onsubmit="cancelBooking(event)" action="{{ url_for('cancel_booking_route') }}"
         method="POST">
         <label for="cancelBookingID">Booking ID to Cancel:</label>
-        <input type="text" id="cancelBookingID" name="booking_id" required>
+        <input type="number" id="cancelBookingID" name="booking_id" required>
 
-        <button type="submit">Cancel Booking</button>
+        <button type="text">Cancel Booking</button>
     </form>
 
     <!--The content of the tabs-->
@@ -170,21 +170,28 @@
 
             // Function to cancel a booking
             function cancelBooking(event) {
-                event.preventDefault(); // prevent the default form submission
-                const formData = {
-                    booking_id: document.getElementById('cancelBookingID').value
+// Prevent the form from submitting. Without event.preventDefault(), the form would be submitted twice: once by the default form submission behavior, and once by your JavaScript code. This could lead to unexpected results.
+                event.preventDefault(); 
+                // Get the booking ID from the form
+                let bookingId = document.getElementById('cancelBookingID').value;
+
+                // Create the formData object. This is the data that will be sent to the server
+                let formData = {
+                    booking_id: bookingId
                 };
 
+                // Send the fetch request. This is an asynchronous function, so the code will continue to run while the request is being sent to the server
                 fetch('cancel_booking_route', {
-                    method: 'POST',
+                    method: 'POST', 
                     headers: {
-                        'Content-Type': 'application/json'
+                        'Content-Type': 'application/x-www-form-urlencoded' // Set the content type to application/x-www-form-urlencoded
                     },
-                    body: JSON.stringify(formData)
+                    body: new URLSearchParams(formData).toString() // Convert the formData object to a URL encoded string
                 })
-                    .then(response => response.json())
-                    .then(data => console.log(data))
-                    .catch(error => console.error('Error:', error));
+                // TODO: Mangler alert.
+                .then(response => response.json())
+                .then(data => console.log(data))
+                .catch(error => console.error('Error:', error));
             }
 
             // javascript for when the user clicks on the dropdown button, toggle between hiding and showing the dropdown content

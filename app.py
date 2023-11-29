@@ -41,7 +41,7 @@ def cancel_booking(booking_id):
 @app.route('/cancel_booking_route', methods=['POST'])
 def cancel_booking_route():
     try:
-        booking_id = request.form.get('booking_id')
+        booking_id = int(request.form.get('booking_id')) #This function is used to handle a POST request when a user submits a booking ID to cancel a booking. It takes the booking ID from the form data and calls the cancel_booking function to delete the booking from the database.
 
         if not booking_id:
             return jsonify({'error': 'Booking ID is missing in the request'}), 400
