@@ -726,10 +726,10 @@ th:nth-child(2) {
     width: 100%; /* Set the width of the image to 100% of the container */
 }
 
-input[type=checkbox] {
+/*input[type=checkbox] {
     display: none;
 }
-
+*/
 input[type=checkbox]:checked~label>img {
     transform: scale(1.5);
     cursor: zoom-out;
