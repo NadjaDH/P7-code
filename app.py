@@ -14,7 +14,9 @@ def home():
     day_date = [MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY]
     day_info = [{'day' : day_date, 'value': value} for day_date, value in zip(day_data, day_date)]
     return render_template("home.html", room_info=room_info, day_info=day_info)
-
+def get_nth(lst, i):
+    return [l[i] for l in lst]
+app.jinja_env.filters['get_nth'] = get_nth
 
 @app.route('/booking')
 def booking():
