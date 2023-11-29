@@ -303,8 +303,6 @@
             // Create a bookingID
             function createBookingID() {
                 var bookingID = Math.floor(Math.random() * 1000) + 1; // Create a random number between 0 and 1000
-                return bookingID; // Return the bookingID
-            }
 
             // Get the bookButton
             var bookButton = document.getElementById('bookButton');
@@ -314,7 +312,7 @@
                 var bookingID = createBookingID();
             submitBooking(checkedValues, selectedRoomNumber, selectedDate, bookingID);
             });
-
+        }
             function submitBooking(checkedValues, selectedRoomNumber, selectedDate, bookingID) {
                 fetch('/submit_booking', {
                     method: 'POST',
