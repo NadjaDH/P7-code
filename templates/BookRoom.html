@@ -302,17 +302,17 @@
             }
             // Create a bookingID
             function createBookingID() {
-                var bookingID = Math.floor(Math.random() * 1000) + 1; // Create a random number between 0 and 1000
+                // Get the bookButton
+                var bookButton = document.getElementById('bookButton');
 
-            // Get the bookButton
-            var bookButton = document.getElementById('bookButton');
+                // Add an event listener to the bookButton
+                bookButton.addEventListener('click', function() {
+                    var bookingID = Math.floor(Math.random() * 1000) + 1; // Create a random number between 0 and 1000
+                    console.log(bookingID); // Log the bookingID to the console
+                    submitBooking(checkedValues, selectedRoomNumber, selectedDate, bookingID);
 
-            // Add an event listener to the bookButton
-            bookButton.addEventListener('click', function () {
-                var bookingID = createBookingID();
-            submitBooking(checkedValues, selectedRoomNumber, selectedDate, bookingID);
-            });
-        }
+                });
+            }
             function submitBooking(checkedValues, selectedRoomNumber, selectedDate, bookingID) {
                 fetch('/submit_booking', {
                     method: 'POST',
@@ -334,15 +334,15 @@
                             //If there's no error message, the booking was successful
                             console.log('Success:', data);
                             alert("Room booked!");
-                            }
+                        }
                     })
                     .catch((error) => {  // Catch any errors and log them to the console
                         console.error('Error:', error); // Log the error to the console
                     });
             }
 
-
-    </script>
+            createBookingID(); // Call the createBookingID function
+        </script>
 </body>
 
 </html>

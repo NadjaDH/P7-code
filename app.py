@@ -108,7 +108,7 @@ def submit_booking():
         timeslots = data.get('timeslots')
         room = data.get('Room')
         date = data.get('date')
-        BookID = data.get('BookingID')
+        BookID = data.get('BookID')
 
         for timeslot in timeslots:
             if is_timeslot_booked(timeslot, room, date):
