@@ -39,7 +39,7 @@
   </div>
   -->
 
-  {% for room in room_info %}
+  {% for room in room_info|sort(attribute='status', reverse=True) %}
   <button class="accordion">
     Room {{ room.room }}
     <span class="accordion-status-indicator"
