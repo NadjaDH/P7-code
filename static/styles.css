@@ -537,7 +537,7 @@ only screen and (min-device-pixel-ratio:1.5) {
     /* Gør at knappen er 350px bred */
     height: 100px;
     /* Gør at knappen er 100px høj */
-    position: relative;
+    position: absolute;
     /* ikke helt sikker, men den gør at positionen er relativ til den omkringliggende tekst */
     top: 250px;
     /* Gør at knappen er 250px fra toppen af siden */
