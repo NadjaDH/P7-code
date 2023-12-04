@@ -1,4 +1,14 @@
 import random
+import sqlite3 
+
+# Connect to out database
+conn=sqlite3.connect('booking.db')
+
+# Create a cursor  
+cursor=conn.cursor()
+
+#execute a sql command
+cursor.execute("SELECT * FROM bookings")
 
 def accordion_function():
     room_4118 = False
