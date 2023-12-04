@@ -209,6 +209,16 @@ var checkedValues = [] // Array to store the checked values
                         console.error('Error:', error); // Log the error to the console
                     });
             }
+
+            function checkIn(roomId) {
+                fetch('/check_in/' + roomId, {method: 'POST'});
+            }
+
+            function checkOut(roomId) {
+                fetch('/check_out/' + roomId, {method: 'POST'});
+            }
+
+            
             // Update current day in javascript
             function updateClock() {
                 var now = new Date();
