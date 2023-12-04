@@ -862,3 +862,17 @@ But should be confirmed by other group members before it get deleted */
     top: 500px;
     left: 800px;
 }
+
+/* Styling for the check-in and check-out buttons */
+.checkInOutButton {
+    background-color: #154e74; /* Blue color */
+    color: #fff; /* White text color */
+    padding: 10px 15px; /* Padding for the button */
+    border: none; /* No border */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Cursor style on hover */
+    margin-left: -500px; /* Margin around the button */
+    margin-right: 720px;
+    margin-top: 300px;
+    float: right; 
+}
