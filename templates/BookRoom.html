@@ -124,9 +124,12 @@
                 </tr>{% endfor %}
             </table>
         </div>
-
-        <button class="BookButton" type="button" id="bookButton" disabled onclick="displayAlert()">BOOK</button>
         <!-- Disable the button by default -->
+        <button class="BookButton" type="button" id="bookButton" disabled onclick="displayAlert()">BOOK</button>
+        
+        <!-- Add the following buttons for check-in and check-out -->
+        <button class="checkInOutButton" onclick="event.preventDefault(); alert('You are now checked-in')">Check-In</button>
+        <button class="checkInOutButton" onclick="event.preventDefault(); alert('You are not checked-out')">Check-Out</button>
     </form>
 
     <!--Standard clickable dropdown-->
