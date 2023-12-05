@@ -30,15 +30,15 @@ def weekend_function():
     return daydate_list
 weekend_function()
 
-def shuffled_function(element):
-    roomnumber_list = accordion_function()
-    daydate_list = weekend_function()
-    combined_array = list(zip(roomnumber_list, daydate_list))
-    random.shuffle(combined_array)
-    mixedarray_list = [value for _, value in combined_array]
-    print(mixedarray_list)
-    return mixedarray_list
-shuffled_function()
+#def shuffled_function(element):
+#    roomnumber_list = accordion_function()
+#    daydate_list = weekend_function()
+#    combined_array = list(zip(roomnumber_list, daydate_list))
+#    random.shuffle(combined_array)
+#    mixedarray_list = [value for _, value in combined_array]
+#    print(mixedarray_list)
+#    return mixedarray_list
+#shuffled_function()
 
 
 
