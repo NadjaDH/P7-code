@@ -37,9 +37,9 @@ weekend_function()
 #    roomnumber_list = accordion_function()
 #    daydate_list = weekend_function()
 
-#    combined_array = list(zip(roomnumber_list, daydate_list)) 
-#    random.shuffle(combined_array)
-#    mixedarray_list = [value for _, value in combined_array]
+#    combined_array = list(zip(roomnumber_list, daydate_list)) # list of arrays, the first array will not change, the last array will
+#    random.shuffle(combined_array) # shuffles the array, shuffling the day_date list depending on roomnuber_list
+#    mixedarray_list = [value for _, value in combined_array] #renews the values in combined_array
 #    print(mixedarray_list)
 #    return mixedarray_list
 #shuffled_function()
