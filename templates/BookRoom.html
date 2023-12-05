@@ -130,8 +130,8 @@
     </form>
     
     <!-- Add the following buttons for check-in and check-out -->
-    <button class="checkInOutButton" onclick="alert('You are now checked-in')">Check-In</button>
-    <button class="checkInOutButton" onclick="alert('You are now checked-out')">Check-Out</button>
+    <button class="checkInOutButton" onclick="checkIn()">Check-In</button>
+    <button class="checkInOutButton" onclick="checkOut()">Check-out</button>
     
     <!--Standard clickable dropdown-->
     <div class="dropdown">
@@ -148,7 +148,9 @@
         </div>
     </div>
 
-    <script src="{{ url_for('static', filename='js/BookingJavascript.js') }}"></script>
+    <script src = "{{ url_for('static', filename='js/BookingJavascript.js') }}"></script>
+    <script src = "{{ url_for('static', filename='js/CheckInCheckOut.js') }}"></script>
+
 </body>
 
 </html>

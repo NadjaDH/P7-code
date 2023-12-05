@@ -42,8 +42,8 @@
   {% for room in room_info|sort(attribute='status', reverse=True) %}
   <button class="accordion">
     Room {{ room.room }}
-    <span class="accordion-status-indicator"
-    style="background-color: {{ '#F16B5C' if not room.status else '#B3D93A'}}; border: 1px solid #bfbfbf;"></span>
+    <span id="StatusIndicator" class="accordion-status-indicator"
+    style="border: 1px solid #bfbfbf;"></span>
   </button>
     <div class="panel">
       <p><br>Status: {{ "Available" if room.status else "Reserved" }}
@@ -81,6 +81,7 @@
             });
         });
     });
+    <script src = "{{ url_for('static', filename='js/CheckInCheckOut.js') }}"></script>
 </script>
 
 </body>
