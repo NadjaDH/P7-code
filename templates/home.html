@@ -61,10 +61,10 @@
     <div class="panel">
         <p>Status: {{ "Available" if room.status else "Reserved" }}</p>
 
-        <table class="weekend">   
+        <table>   
           <tr>
-            {% for day in day_info %}
-              <th data-color="{{ day.day }}"> {{ day.day }} </th>
+            {% for mixed in mixed_info %}
+              <th data-color="{{ mixed.mixed }}"> {{ mixed.mixed }} </th>
             {% endfor %}
           </tr> 
         </table>
