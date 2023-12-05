@@ -11,12 +11,13 @@ def home():
     
     day_data = weekend_function()
     day_date = [MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY]
+     # takes value for 'day' and 'value' where 'day' is the array day_date above, and day_data that gets its values from the weekend_function
     day_info = [{'day' : day_date, 'value': value} for day_date, value in zip(day_data, day_date)]
     return render_template("home.html", room_info=room_info, day_info=day_info)
 
 #    mixed_data = shuffled_function()
-#    index_to_randomize = 2
-#    mixed_numbers = shuffled_function(index_to_randomize)
+#    index_to_randomize = 2  # number of indexes
+#    mixed_numbers = shuffled_function(index_to_randomize) # the function with x indexes
 #    mixed_info = [{'day': mixed_numbers, 'value': value} for mixed_numbers, value in zip(mixed_numbers, mixed_data)]
 
 
