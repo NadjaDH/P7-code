@@ -121,6 +121,8 @@ function hasDayPassed(daysOfWeek) { //Function to check if the day of the week i
 
 // javascript for closing the dropdown menu when a room is selected
 function SelectRoom(room) {
+    // Remove the 'Room ' prefix and convert the remaining part to a float
+    var room = parseFloat(room.replace('Room ', ''));
     console.log("SelectRoom function called with room: ", room); // Debugging line
     selectedRoomNumber = room // Set the selected room number to the room that was clicked
     var dropdownButton = document.getElementById("dropdownButton");
@@ -215,8 +217,7 @@ function submitBooking(checkedValues, selectedRoomNumber, selectedDate, bookingI
 function checkIn() {
     if (selectedRoomNumber) {
         // Remove the "Room " part from selectedRoomNumber before appending it to the URL
-        var roomNumber = selectedRoomNumber.replace("Room ", "");
-        fetch('/check_in_room/' + roomNumber, {method: 'POST'});
+        fetch('/check_in_room/' + selectedRoomNumber, {method: 'POST'});
     } else {
         alert("Please select a room first.");
     }
@@ -225,8 +226,7 @@ function checkIn() {
 function checkOut() {
     if (selectedRoomNumber) {
         // Remove the "Room " part from selectedRoomNumber before appending it to the URL
-        var roomNumber = selectedRoomNumber.replace("Room ", "");
-        fetch('/check_out_room/' + roomNumber, {method: 'POST'});
+        fetch('/check_out_room/' + selectedRoomNumber, {method: 'POST'});
     } else {
         alert("Please select a room first.");
     }

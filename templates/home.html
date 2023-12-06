@@ -39,17 +39,17 @@
   </div>
   -->
 
-  {% for room in room_info|sort(attribute='status', reverse=True) %}
+  {% for room in room_info %}
   <button class="accordion">
     Room {{ room.room }}
-    <span id="StatusIndicator {{ loop.index }}" class="accordion-status-indicator"
-    style="background-color: green;"></span>
+    <span id="StatusIndicator{{ room.room }}" class="accordion-status-indicator"
+    style="background-color: {{'green' if room.status else 'red'}}"></span>
   </button>
     <div class="panel">
       <p><br>Status: {{ "Available--" if room.status else "Unavailable" }}
       <br> Next Booking: </p>
     </div>
-  {% endfor %}
+{% endfor %}
   
   <div class="container">
     <input type="checkbox" name="" id="zoom_img" />

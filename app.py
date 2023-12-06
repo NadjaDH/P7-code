@@ -9,9 +9,11 @@ app = Flask(__name__)
 
 @app.route('/')
 def home():
-    room_data = accordion_function()
-    room_numbers = [4118, 4119, 4120, 4121, 4122]
-    room_info = [{'room': room_number, 'status': status} for room_number, status in zip(room_numbers, room_data)] # 
+    conn = sqlite3.connect('booking.db')
+    c = conn.cursor()
+    c.execute("SELECT DISTINCT RoomNO, status FROM bookings")
+    room_info = [{'room': room, 'status': status} for room, status in c.fetchall()]
+    conn.close()
     return render_template("home.html", room_info=room_info)
 
 @app.route('/booking')
@@ -111,16 +113,18 @@ def insert_booking(timeslots, room, date, BookID):
 
 # Update the 'check_in_room' and 'check_out_room' functions as follows
 
-def check_in_room(room):
+def check_in_room(roomNumber):
     try:
         conn = sqlite3.connect('booking.db')
         c = conn.cursor()
 
         # Update the status of the room to 'checked in'
-        c.execute("UPDATE bookings SET is_booked = 1 WHERE RoomNO = ?", (room,))
-
+        query = "UPDATE bookings SET status = ? WHERE RoomNO = ?"
+        params = (False, roomNumber)
+        c.execute(query, params)
+        print(f"Executing query: {query} with params: {params}")  # Add this line
         conn.commit()
-
+        print(f"checking in room {roomNumber}")
         return True, 'Successfully checked in to room'
     except Exception as e:
         print('Error checking in:', e)
@@ -144,7 +148,7 @@ def check_out_room(roomNumber):
         conn = sqlite3.connect('booking.db')
     
         # Update the status of the room to 'checked out'
-        conn.cursor().execute("UPDATE bookings SET is_booked = 0 WHERE RoomNO = ?", (roomNumber,)) # Update the status of the room to 'checked out'
+        conn.cursor().execute("UPDATE bookings SET status = ? WHERE RoomNO = ?", (True, roomNumber,)) # Update the status of the room to 'checked out'
 
         conn.commit() # to update the database
         print(f"checking out room {roomNumber}")
