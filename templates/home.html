@@ -40,13 +40,13 @@
   -->
 
   {% for room in room_info|sort(attribute='status', reverse=True) %}
-  <button class="accordion" onclick="selectRoom('{{room.room}}')">
+  <button class="accordion">
     Room {{ room.room }}
-    <span id="StatusIndicator" class="accordion-status-indicator"
-    style="background-color: initial;"></span>
+    <span id="StatusIndicator {{ loop.index }}" class="accordion-status-indicator"
+    style="background-color: green;"></span>
   </button>
     <div class="panel">
-      <p><br>Status: {{ "Checked In" if room.status else "Checked Out" }}
+      <p><br>Status: {{ "Available--" if room.status else "Unavailable" }}
       <br> Next Booking: </p>
     </div>
   {% endfor %}
@@ -88,12 +88,7 @@
       element.style.backgroundColor = color;
     }
     }
-    window.onload = function() {
-    var color = localStorage.getItem('backgroundColor'); // Get the color from local storage
-    if (color) {
-        changeBackgroundColor(color); // Change the background color
-    }
-};
+    
 </script> 
 <script src = "{{ url_for('static', filename='js/BookingJavascript.js') }}"></script>
 </body>

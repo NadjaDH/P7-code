@@ -128,9 +128,8 @@ def check_in_room(room):
     finally:
         conn.close()
 
-@app.route('/check_in_room/Room%20<roomNumber>', methods=['POST'])
+@app.route('/check_in_room/<roomNumber>', methods=['POST'])
 def check_in_route(roomNumber):
-    roomNumber = roomNumber.replace("Room%20", "")
     success, message = check_in_room(roomNumber)
 
     if success:
@@ -138,18 +137,17 @@ def check_in_route(roomNumber):
     else:
         return jsonify({'error': message}), 500  # Return 500 for server error
 
-def check_out_room(room):
-    print(f"Room number in check_out_room: {room}")  # Add this line
+def check_out_room(roomNumber):
+    print(f"Room number in check_out_room: {roomNumber}")  # Add this line
     try:
-        print(f"checking out room {room}")
+    
         conn = sqlite3.connect('booking.db')
-        c = conn.cursor()
-
+    
         # Update the status of the room to 'checked out'
-        c.execute("UPDATE bookings SET is_booked = 0 WHERE RoomNO = ?", (room,))
+        conn.cursor().execute("UPDATE bookings SET is_booked = 0 WHERE RoomNO = ?", (roomNumber,)) # Update the status of the room to 'checked out'
 
-        conn.commit()
-
+        conn.commit() # to update the database
+        print(f"checking out room {roomNumber}")
         return True, 'Successfully checked out of room'
     except Exception as e:
         print('Error checking out:', e)
@@ -157,10 +155,9 @@ def check_out_room(room):
     finally:
         conn.close()
 
-@app.route('/check_out_room/Room%20<roomNumber>', methods=['POST'])
+@app.route('/check_out_room/<roomNumber>', methods=['POST'])
 def check_out_route(roomNumber):
     
-    roomNumber = roomNumber.replace("Room%20", "")
     success, message = check_out_room(roomNumber)
 
     if success:
