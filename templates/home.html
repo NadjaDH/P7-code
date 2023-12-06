@@ -41,8 +41,8 @@
 
   {% for room in room_info %}
   <button class="accordion">
-    Room {{ room.room }}
-    <span id="StatusIndicator{{ room.room }}" class="accordion-status-indicator"
+    {{ room.room }}
+    <span id="StatusIndicator{{ room }}" class="accordion-status-indicator"
     style="background-color: {{'green' if room.status else 'red'}}"></span>
   </button>
     <div class="panel">

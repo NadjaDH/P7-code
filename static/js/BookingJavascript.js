@@ -122,7 +122,6 @@ function hasDayPassed(daysOfWeek) { //Function to check if the day of the week i
 // javascript for closing the dropdown menu when a room is selected
 function SelectRoom(room) {
     // Remove the 'Room ' prefix and convert the remaining part to a float
-    var room = parseFloat(room.replace('Room ', ''));
     console.log("SelectRoom function called with room: ", room); // Debugging line
     selectedRoomNumber = room // Set the selected room number to the room that was clicked
     var dropdownButton = document.getElementById("dropdownButton");
