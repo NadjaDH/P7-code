@@ -98,7 +98,7 @@ def insert_booking(timeslots, room, date, BookID):
 
             # If the timeslot is not booked, insert the booking and set is_booked to 1
             cursor.execute("INSERT INTO bookings (BookingID, Time, RoomNO, Day, is_booked) VALUES (?, ?, ?, ?, 1)", (BookID, timeslot, room, date))
-
+    
         # Commit the changes
         conn.commit()
     except Exception as e:
@@ -126,7 +126,6 @@ def submit_booking():
         return jsonify({'error': str(e)}), 400 #Return 400 for bad request
     except Exception as e:
         return jsonify({'error': str(e)}), 500
-
 
 if __name__ == '__main__':
     app.run(debug=True) #debug=True means that the server will reload itself each time you make a change to the code

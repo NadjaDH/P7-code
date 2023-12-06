@@ -43,7 +43,7 @@
   <button class="accordion">
     Room {{ room.room }}
     <span id="StatusIndicator" class="accordion-status-indicator"
-    style="border: 1px solid #bfbfbf;"></span>
+    style="background-color: initial;"></span>
   </button>
     <div class="panel">
       <p><br>Status: {{ "Available" if room.status else "Reserved" }}
@@ -58,7 +58,8 @@
     </label>
   </div>
    
-  <script> // Dette er JS for at accordion fungerer
+  <script> 
+  // Dette er JS for at accordion fungerer
     document.addEventListener('DOMContentLoaded', function() {
         var accordions = document.querySelectorAll('.accordion');
 
@@ -81,7 +82,18 @@
             });
         });
     });
-    <script src = "{{ url_for('static', filename='js/CheckInCheckOut.js') }}"></script>
+    function changeBackgroundColor(color) {
+    var element = document.getElementById('StatusIndicator'); 
+    if (element) {
+      element.style.backgroundColor = color;
+    }
+    }
+    window.onload = function() {
+    var color = localStorage.getItem('backgroundColor'); // Get the color from local storage
+    if (color) {
+        changeBackgroundColor(color); // Change the background color
+    }
+};
 </script>
 
 </body>

@@ -219,14 +219,13 @@ function changeBackgroundColor(color) {
 // Add event listeners to the buttons
 document.getElementById('checkInButton').addEventListener('click', function () {
     alert('You are now checked-in');
-    localStorage.setItem('backgroundColor','green'); // Change to the color you want
+    localStorage.setItem('backgroundColor', 'red'); // Save the color to local storage
 });
 
 document.getElementById('checkOutButton').addEventListener('click', function () {
     alert('You are now checked-out');
-    localStorage.setItem('backgroundColor', 'red'); // Change to the color you want
+    localStorage.setItem('backgroundColor', 'green'); // Save the color to local storage
 });
-
 
 // Update current day in javascript
 function updateClock() {
@@ -253,6 +252,5 @@ function updateClock() {
     document.getElementById('daynum').textContent = daynum;
     document.getElementById('year').textContent = year;
 }
-
 updateClock();
 setInterval(updateClock, 1000);
