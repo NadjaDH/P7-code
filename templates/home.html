@@ -42,8 +42,8 @@
   {% for room in room_info|sort(attribute='status', reverse=True) %}
   <button class="accordion">
     Room {{ room.room }}
-    <span class="accordion-status-indicator"
-    style="background-color: {{ '#F16B5C' if not room.status else '#B3D93A'}}; border: 1px solid #bfbfbf;"></span>
+    <span id="myElement"class="accordion-status-indicator"
+    style="background-color: initial;"></span>
   </button>
     <div class="panel">
       <p><br>Status: {{ "Available" if room.status else "Reserved" }}

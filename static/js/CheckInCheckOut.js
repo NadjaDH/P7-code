@@ -1,16 +1,7 @@
-let selectedRoomNumber;
-
-function checkIn() {
-    var room = document.getElementById("SelectRoom".value);
-    selectedRoomNumber = room
-    document.getElementById("checkInModal").style.display = "block";
-    document.getElementById("statusIndicator").style.backgroundColor = "#B3D93A"; // Checked-in color
-}
-
-function checkOut() {
-    var room = document.getElementById("SelectRoom".value);
-    selectedRoomNumber = room
-    document.getElementById("checkOutModal").style.display = "block";
-    document.getElementById("statusIndicator").style.backgroundColor = "#F16B5C"; // Checked-out color
-}
-
+// On the page with the indicator, use this code to set the background color when the page loads
+window.onload = function() {
+    var color = localStorage.getItem('backgroundColor'); // Get the color from local storage
+    if (color) {
+        changeBackgroundColor(color); // Change the background color
+    }
+};
