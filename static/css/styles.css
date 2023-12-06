@@ -878,12 +878,9 @@ But should be confirmed by other group members before it get deleted */
 }
 
 .bookingInfo {
-    display: inline-block;
+    display: inline-block; /*Inline-block makes sure that the differnet elements are placed next to each other*/
     width: 350px;
     position: absolute;
-    /* ikke helt sikker, men den gør at positionen er relativ til den omkringliggende tekst */
     top: 355px;
-    /* Gør at knappen er 250px fra toppen af siden */
     left: 800px;
-    /* Gør at knappen er 800px fra venstre side af siden */
 }
