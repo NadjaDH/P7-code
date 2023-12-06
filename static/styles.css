@@ -807,8 +807,9 @@ th {
     font-size: medium;
     font-weight: bold;
     width: 20%;
-    background-color: #211a52;
-    color: white;
+    background-color: lightblue;
+    color: black;
+    border-radius: 10px ;
 }
 
 td {

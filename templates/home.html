@@ -63,8 +63,8 @@
 
         <table>   
           <tr>
-            {% for day in day_info %}
-              <th data-color="{{ day.day }}"> {{ day.day }} </th>
+            {% for day in day_info %}  <!-- gets day_info from app.py  until endfor -->
+              <th data-color="{{ day.day }}"> {{ day.day }} </th> <!-- gets the 'day' value (day_date) from app.py -->
             {% endfor %}
           </tr> 
         </table>
