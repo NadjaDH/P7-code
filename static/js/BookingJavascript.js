@@ -212,20 +212,25 @@ function submitBooking(checkedValues, selectedRoomNumber, selectedDate, bookingI
         });
 }
 // JavaScript function to change background color
-function changeBackgroundColor(color) {
-    document.getElementById('myElement').style.backgroundColor = color;
+function checkIn() {
+    if (selectedRoomNumber) {
+        // Remove the "Room " part from selectedRoomNumber before appending it to the URL
+        var roomNumber = selectedRoomNumber.replace("Room ", "");
+        fetch('/check_in_room/' + roomNumber, {method: 'POST'});
+    } else {
+        alert("Please select a room first.");
+    }
+} 
+
+function checkOut() {
+    if (selectedRoomNumber) {
+        // Remove the "Room " part from selectedRoomNumber before appending it to the URL
+        var roomNumber = selectedRoomNumber.replace("Room ", "");
+        fetch('/check_out_room/' + roomNumber, {method: 'POST'});
+    } else {
+        alert("Please select a room first.");
+    }
 }
-
-// Add event listeners to the buttons
-document.getElementById('checkInButton').addEventListener('click', function () {
-    alert('You are now checked-in');
-    localStorage.setItem('backgroundColor', 'red'); // Save the color to local storage
-});
-
-document.getElementById('checkOutButton').addEventListener('click', function () {
-    alert('You are now checked-out');
-    localStorage.setItem('backgroundColor', 'green'); // Save the color to local storage
-});
 
 // Update current day in javascript
 function updateClock() {

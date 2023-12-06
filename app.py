@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, redirect, url_for, jsonify
 from accordion import accordion_function
 import sqlite3
 from dateutil.parser import parse
+import traceback
 
 
 app = Flask(__name__)
@@ -31,6 +32,8 @@ def cancel_booking(booking_id):
 
         # Commit the changes and close the connection to the database
         conn.commit()
+
+
         return True, 'Booking successfully cancelled'
     except Exception as e:
         print('Error cancelling booking:', e)
@@ -105,6 +108,67 @@ def insert_booking(timeslots, room, date, BookID):
         print('Error inserting booking:', e)
     finally:
         conn.close()
+
+# Update the 'check_in_room' and 'check_out_room' functions as follows
+
+def check_in_room(room):
+    try:
+        conn = sqlite3.connect('booking.db')
+        c = conn.cursor()
+
+        # Update the status of the room to 'checked in'
+        c.execute("UPDATE bookings SET is_booked = 1 WHERE RoomNO = ?", (room,))
+
+        conn.commit()
+
+        return True, 'Successfully checked in to room'
+    except Exception as e:
+        print('Error checking in:', e)
+        return False, 'Error checking in to the room'
+    finally:
+        conn.close()
+
+@app.route('/check_in_room/Room%20<roomNumber>', methods=['POST'])
+def check_in_route(roomNumber):
+    roomNumber = roomNumber.replace("Room%20", "")
+    success, message = check_in_room(roomNumber)
+
+    if success:
+        return jsonify({'message': message}), 200
+    else:
+        return jsonify({'error': message}), 500  # Return 500 for server error
+
+def check_out_room(room):
+    print(f"Room number in check_out_room: {room}")  # Add this line
+    try:
+        print(f"checking out room {room}")
+        conn = sqlite3.connect('booking.db')
+        c = conn.cursor()
+
+        # Update the status of the room to 'checked out'
+        c.execute("UPDATE bookings SET is_booked = 0 WHERE RoomNO = ?", (room,))
+
+        conn.commit()
+
+        return True, 'Successfully checked out of room'
+    except Exception as e:
+        print('Error checking out:', e)
+        return False, 'Error checking out of the room'
+    finally:
+        conn.close()
+
+@app.route('/check_out_room/Room%20<roomNumber>', methods=['POST'])
+def check_out_route(roomNumber):
+    
+    roomNumber = roomNumber.replace("Room%20", "")
+    success, message = check_out_room(roomNumber)
+
+    if success:
+        return jsonify({'message': message}), 200
+    else:
+        return jsonify({'error': message}), 500  # Return 500 for server error
+
+   
 
 @app.route('/submit_booking', methods=['POST']) #This function is used to handle a POST request when a user submits a booking form. It takes the room number and timeslot from the form data, generates a fake booking ID and user ID, and inserts these into the bookings table in the database.
 def submit_booking():
