@@ -49,7 +49,7 @@
       <p><br>Status: {{ "Available" if room.status else "Reserved" }}
       <br> Next Booking: </p>
         <!--Calendar function here-->
-
+        <div id="calendar_{{ room.room }}" class="calendar"></div>
   
     </div>
   {% endfor %}
