@@ -2,15 +2,18 @@ from flask import Flask, render_template, request, redirect, url_for, jsonify
 from accordion import accordion_function
 import sqlite3
 from dateutil.parser import parse
+import traceback
 
 
 app = Flask(__name__)
 
 @app.route('/')
 def home():
-    room_data = accordion_function()
-    room_numbers = [4118, 4119, 4120, 4121, 4122]
-    room_info = [{'room': room_number, 'status': status} for room_number, status in zip(room_numbers, room_data)] # 
+    conn = sqlite3.connect('booking.db')
+    c = conn.cursor()
+    c.execute("SELECT DISTINCT RoomNO, status FROM bookings")
+    room_info = [{'room': room, 'status': status} for room, status in c.fetchall()]
+    conn.close()
     return render_template("home.html", room_info=room_info)
 
 @app.route('/booking')
@@ -31,6 +34,8 @@ def cancel_booking(booking_id):
 
         # Commit the changes and close the connection to the database
         conn.commit()
+
+
         return True, 'Booking successfully cancelled'
     except Exception as e:
         print('Error cancelling booking:', e)
@@ -98,13 +103,73 @@ def insert_booking(timeslots, room, date, BookID):
 
             # If the timeslot is not booked, insert the booking and set is_booked to 1
             cursor.execute("INSERT INTO bookings (BookingID, Time, RoomNO, Day, is_booked) VALUES (?, ?, ?, ?, 1)", (BookID, timeslot, room, date))
-
+    
         # Commit the changes
         conn.commit()
     except Exception as e:
         print('Error inserting booking:', e)
     finally:
         conn.close()
+
+# Update the 'check_in_room' and 'check_out_room' functions as follows
+
+def check_in_room(roomNumber):
+    try:
+        conn = sqlite3.connect('booking.db')
+        c = conn.cursor()
+
+        # Update the status of the room to 'checked in'
+        query = "UPDATE bookings SET status = ? WHERE RoomNO = ?"
+        params = (False, roomNumber)
+        c.execute(query, params)
+        print(f"Executing query: {query} with params: {params}")  # Add this line
+        conn.commit()
+        print(f"checking in room {roomNumber}")
+        return True, 'Successfully checked in to room'
+    except Exception as e:
+        print('Error checking in:', e)
+        return False, 'Error checking in to the room'
+    finally:
+        conn.close()
+
+@app.route('/check_in_room/<roomNumber>', methods=['POST'])
+def check_in_route(roomNumber):
+    success, message = check_in_room(roomNumber)
+
+    if success:
+        return jsonify({'message': message}), 200
+    else:
+        return jsonify({'error': message}), 500  # Return 500 for server error
+
+def check_out_room(roomNumber):
+    print(f"Room number in check_out_room: {roomNumber}")  # Add this line
+    try:
+    
+        conn = sqlite3.connect('booking.db')
+    
+        # Update the status of the room to 'checked out'
+        conn.cursor().execute("UPDATE bookings SET status = ? WHERE RoomNO = ?", (True, roomNumber,)) # Update the status of the room to 'checked out'
+
+        conn.commit() # to update the database
+        print(f"checking out room {roomNumber}")
+        return True, 'Successfully checked out of room'
+    except Exception as e:
+        print('Error checking out:', e)
+        return False, 'Error checking out of the room'
+    finally:
+        conn.close()
+
+@app.route('/check_out_room/<roomNumber>', methods=['POST'])
+def check_out_route(roomNumber):
+    
+    success, message = check_out_room(roomNumber)
+
+    if success:
+        return jsonify({'message': message}), 200
+    else:
+        return jsonify({'error': message}), 500  # Return 500 for server error
+
+   
 
 @app.route('/submit_booking', methods=['POST']) #This function is used to handle a POST request when a user submits a booking form. It takes the room number and timeslot from the form data, generates a fake booking ID and user ID, and inserts these into the bookings table in the database.
 def submit_booking():
@@ -126,7 +191,6 @@ def submit_booking():
         return jsonify({'error': str(e)}), 400 #Return 400 for bad request
     except Exception as e:
         return jsonify({'error': str(e)}), 500
-
 
 if __name__ == '__main__':
     app.run(debug=True) #debug=True means that the server will reload itself each time you make a change to the code
