@@ -49,8 +49,7 @@
       <p><br>Status: {{ "Available" if room.status else "Reserved" }}
       <br> Next Booking: </p>
 
-      <!--Calender container for the room-->
-       <div id="calendar_{{room.room}}" class="calendar"></div>
+  
     </div>
   {% endfor %}
   
@@ -82,25 +81,12 @@
                 var panel = this.nextElementSibling;
                 panel.style.display = isActive ? 'none' : 'block';
 
-                //update calendar when the accordion is open
-                // here Chat GPT
-                if(!isActive) {
-                  updateCalendar(panel, this);
-                }
+              
             });
         });
     });
 
-    function updateCalendar(panel, accordion) {
-      var calendarContainer = panel.querySelector('.calendar');
-      var daysOfWeek = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
-      var daysHtml = "<strong>Days of the Week: </strong>>br>"
-    }
-
-    // Display the days of the Week
-    daysOfWeek.forEach(function(day) {
-      daysHtml += day + "<be>";
-        });
+  
 </script>
 
 </body>
