@@ -895,3 +895,10 @@ But should be confirmed by other group members before it get deleted */
     top: 50px;
     left: 825px;
 }
+
+#Textindicator {
+    position: absolute;
+    top: 20px;
+    left: 175px;
+
+}

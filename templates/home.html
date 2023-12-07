@@ -44,7 +44,7 @@
     {{ room.room }}
     <span id="StatusIndicator{{ room }}" class="accordion-status-indicator"
     style="background-color: {{'green' if room.status else 'red'}}"></span>
-    <p> Status: {{ "Available" if room.status else "Reserved" }} </p>
+    <p id="Textindicator"> Status: {{ "Available" if room.status else "Reserved" }} </p>
   </button>
     <div class="panel">
       <p><br>Status: {{ "Available" if room.status else "Reserved" }}
