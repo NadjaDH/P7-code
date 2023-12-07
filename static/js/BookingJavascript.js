@@ -217,6 +217,7 @@ function checkIn() {
     if (selectedRoomNumber) {
         // Remove the "Room " part from selectedRoomNumber before appending it to the URL
         fetch('/check_in_room/' + selectedRoomNumber, {method: 'POST'});
+        alert("You are now checked in!")
     } else {
         alert("Please select a room first.");
     }
@@ -226,6 +227,7 @@ function checkOut() {
     if (selectedRoomNumber) {
         // Remove the "Room " part from selectedRoomNumber before appending it to the URL
         fetch('/check_out_room/' + selectedRoomNumber, {method: 'POST'});
+        alert("You are now checked out!")
     } else {
         alert("Please select a room first.");
     }
