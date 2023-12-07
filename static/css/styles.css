@@ -871,8 +871,19 @@ But should be confirmed by other group members before it get deleted */
     border: none; /* No border */
     border-radius: 5px; /* Rounded corners */
     cursor: pointer; /* Cursor style on hover */
-    margin-left: -500px; /* Margin around the button */
-    margin-right: 720px;
-    margin-top: 300px;
-    float: right; 
+
+}
+
+.checkInOutButton:hover {
+    background-color: #636567; /* Dark blue color */
+}
+#checkInButton {
+    position: relative;
+    top: 50px;
+    left: 800px;
+}
+#checkOutButton {
+    position: relative;
+    top: 50px;
+    left: 825px;
 }
