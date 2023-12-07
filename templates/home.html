@@ -67,6 +67,7 @@
     document.addEventListener('DOMContentLoaded', function() {
         var accordions = document.querySelectorAll('.accordion');
 
+
         // Add click event listeners to each accordion
         accordions.forEach(function(accordion) {
             accordion.addEventListener('click', function() {
@@ -84,12 +85,29 @@
                 var panel = this.nextElementSibling;
                 panel.style.display = isActive ? 'none' : 'block';
 
+        // From Chat gpt, calendar function
+        // Update calendar when the accordion is open
+        if (!isActive) {
+          updateCalendar(panel, this);
+        }
               
             });
         });
     });
+    
+    // also chat gpt 
+    function updateCalendar(panel, accordion) {
+      var calendarContainer = panel.querySelector('.calendar');
+      var daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+      var daysHtml = "<strong>Days of the Week:</strong><br>";
 
-  
+      // Display the days of the week
+      daysOfWeek.forEach(function(day) {
+        daysHtml += day + "<br>";
+      });
+
+      calendarContainer.innerHTML = daysHtml;
+    };
 </script>
 
 </body>
