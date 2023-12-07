@@ -876,3 +876,11 @@ But should be confirmed by other group members before it get deleted */
     margin-top: 300px;
     float: right; 
 }
+
+.bookingInfo {
+    display: inline-block; /*Inline-block makes sure that the differnet elements are placed next to each other*/
+    width: 350px;
+    position: absolute;
+    top: 355px;
+    left: 800px;
+}
