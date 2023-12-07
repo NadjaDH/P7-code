@@ -557,6 +557,14 @@ only screen and (min-device-pixel-ratio:1.5) {
     color: #666666;
 }
 
+.bookingInfo {
+    display: inline-block;
+    width: 350px;
+    position: absolute;
+    top: 355px;
+    left: 800px;
+}
+
 /* end of styling of the booking button on the booking page */
 .tab {
     overflow: hidden;
