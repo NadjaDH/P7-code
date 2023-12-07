@@ -708,6 +708,13 @@ th:nth-child(2) {
     float: right;
     margin-left: 5px;
 }
+#Textindicator {
+    position: absolute;
+    top: 50%;
+    left: 22%;
+    transform: translateY(-50%);
+}
+
 
 .active:after {
     content: "\2212"; /* Unicode character for "minus" sign (-) from https://www.toptal.com/designers/htmlarrows/math/minus-sign/*/
@@ -896,9 +903,3 @@ But should be confirmed by other group members before it get deleted */
     left: 825px;
 }
 
-#Textindicator {
-    position: absolute;
-    top: 20px;
-    left: 175px;
-
-}
