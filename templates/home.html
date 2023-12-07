@@ -48,20 +48,7 @@
     <div class="panel">
       <p><br>Status: {{ "Available" if room.status else "Reserved" }}
       <br> Next Booking: </p>
-
-  
-    </div>
-  {% endfor %}
-  
-  <div class="container">
-    <input type="checkbox" name="" id="zoom_img" />
-    <label for="zoom_img">
-      <img src="{{ url_for('static', filename='images/K3map.png') }}" alt="Map">
-    </label>
-  </div>
-   
-
-  <!--Test of calendar taken from nettet-->
+        <!--Test of calendar taken from nettet-->
   <div class="card">
     <div class="big-year" id="yearNum">
     </div>
@@ -88,6 +75,20 @@
       </tbody>
     </table>
   </div>
+
+  
+    </div>
+  {% endfor %}
+  
+  <div class="container">
+    <input type="checkbox" name="" id="zoom_img" />
+    <label for="zoom_img">
+      <img src="{{ url_for('static', filename='images/K3map.png') }}" alt="Map">
+    </label>
+  </div>
+   
+
+
   <script> // Dette er JS for at accordion fungerer
     document.addEventListener('DOMContentLoaded', function() {
         var accordions = document.querySelectorAll('.accordion');
