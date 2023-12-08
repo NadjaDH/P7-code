@@ -882,7 +882,7 @@ But should be confirmed by other group members before it get deleted */
     margin: 20px
 }
 
-.day {
+
     .day {
         display: inline-block;
         width: 100px;
@@ -890,4 +890,3 @@ But should be confirmed by other group members before it get deleted */
         margin: 5px;
         border: 1px solid #ccc;
       } 
-}

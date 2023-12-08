@@ -93,7 +93,7 @@
             });
         });
     });
-    // taken from chat gpt to check if calendar works
+  
     document.addEventListener("DOMContentLoaded", function() {
       // Get the current date
       const currentDate = new Date();
@@ -105,13 +105,8 @@
       const startDate = new Date(currentDate);
       startDate.setDate(currentDate.getDate() - currentDayOfWeek);
     
-      // Get the days of the week
-      const daysOfWeek = [];
-      for (let i = 0; i < 7; i++) {
-        const date = new Date(startDate);
-        date.setDate(startDate.getDate() + i);
-        daysOfWeek.push(date.toLocaleDateString('en-US', { weekday: 'short' }));
-      }
+      // Get the days of the week (Monday through Friday)
+      const daysOfWeek = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'];
     
       // Display the days in the HTML
       const daysContainer = document.getElementById('days-container');
@@ -128,6 +123,7 @@
         daysContainer.appendChild(dayElement);
       });
     });
+       
 </script>
 
 </body>
