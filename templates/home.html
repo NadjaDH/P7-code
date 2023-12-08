@@ -48,8 +48,13 @@
     <div class="panel">
       <p><br>Status: {{ "Available" if room.status else "Reserved" }}
       <br> Next Booking: </p>
+
         <!--Calendar function here-->
-        <div id="calendar_{{ room.room }}" class="calendar"></div>
+        <!--Just defining the headline to ensure there is a calendar-->
+        <div id="calendarContainer">
+          <h2>Weekly Calendar</h2>
+          <div id= "days-container"></div>
+        </div>
   
     </div>
   {% endfor %}
@@ -84,30 +89,45 @@
                 this.classList.toggle('active', !isActive);
                 var panel = this.nextElementSibling;
                 panel.style.display = isActive ? 'none' : 'block';
-
-        // From Chat gpt, calendar function
-        // Update calendar when the accordion is open
-        if (!isActive) {
-          updateCalendar(panel, this);
-        }
               
             });
         });
     });
+    // taken from chat gpt to check if calendar works
+    document.addEventListener("DOMContentLoaded", function() {
+      // Get the current date
+      const currentDate = new Date();
     
-    // also chat gpt 
-    function updateCalendar(panel, accordion) {
-      var calendarContainer = panel.querySelector('.calendar');
-      var daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-      var daysHtml = "<strong>Days of the Week:</strong><br>";
-
-      // Display the days of the week
-      daysOfWeek.forEach(function(day) {
-        daysHtml += day + "<br>";
+      // Get the current day of the week (0 = Sunday, 1 = Monday, ..., 6 = Saturday)
+      const currentDayOfWeek = currentDate.getDay();
+    
+      // Calculate the start date of the week (Sunday)
+      const startDate = new Date(currentDate);
+      startDate.setDate(currentDate.getDate() - currentDayOfWeek);
+    
+      // Get the days of the week
+      const daysOfWeek = [];
+      for (let i = 0; i < 7; i++) {
+        const date = new Date(startDate);
+        date.setDate(startDate.getDate() + i);
+        daysOfWeek.push(date.toLocaleDateString('en-US', { weekday: 'short' }));
+      }
+    
+      // Display the days in the HTML
+      const daysContainer = document.getElementById('days-container');
+      daysOfWeek.forEach((day, index) => {
+        const dayElement = document.createElement('div');
+        dayElement.className = 'day';
+        dayElement.textContent = day;
+    
+        // Highlight the current day
+        if (index === currentDayOfWeek) {
+          dayElement.classList.add('today');
+        }
+    
+        daysContainer.appendChild(dayElement);
       });
-
-      calendarContainer.innerHTML = daysHtml;
-    };
+    });
 </script>
 
 </body>

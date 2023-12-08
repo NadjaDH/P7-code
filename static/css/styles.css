@@ -876,3 +876,8 @@ But should be confirmed by other group members before it get deleted */
     margin-top: 300px;
     float: right; 
 }
+/*Calendar function*/ /*taken from chat GPT*/
+#calendarContainer{
+    text-align: center;
+    margin: 20px
+}
