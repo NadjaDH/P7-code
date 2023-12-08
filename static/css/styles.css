@@ -881,3 +881,13 @@ But should be confirmed by other group members before it get deleted */
     text-align: center;
     margin: 20px
 }
+
+.day {
+    .day {
+        display: inline-block;
+        width: 100px;
+        padding: 10px;
+        margin: 5px;
+        border: 1px solid #ccc;
+      } 
+}
