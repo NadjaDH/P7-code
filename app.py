@@ -94,7 +94,7 @@ def is_timeslot_booked(timeslot, room, date):
 def from_Timeslots_To_Booking (room, date, timeslots): #Define one booking as one booking only
     bookings = []
     if len(timeslots) > 0:
-        lastBookingPosition = 0
+        lastBookingPosition = -1 #ingen bookinger gemt i liste endnu
         
         for timeslot in timeslots:
             #check list of timeslots
@@ -103,14 +103,16 @@ def from_Timeslots_To_Booking (room, date, timeslots): #Define one booking as on
             endTime = timeslotTexts[2]
             
             #If timeslot startTime er forskellig fra booking endTime så append
-            print('hygge hejsa')
+            
             # else ret booking endTime til timeslot endTime
-            if timeslots.len() == 1:
+            if lastBookingPosition == -1:
                 booking = [room, date, startTime, endTime]
                 bookings.append(booking)
+                lastBookingPosition = lastBookingPosition + 1
             else:
                 lastBooking = bookings[lastBookingPosition]
-                if startTime != lastBooking[3] or timeslots.len() == 1:
+                
+                if startTime != lastBooking[3]:
                     booking = [room, date, startTime, endTime]
                     bookings.append(booking)
                     lastBookingPosition = lastBookingPosition + 1
@@ -122,24 +124,36 @@ def from_Timeslots_To_Booking (room, date, timeslots): #Define one booking as on
             print(f'bookings {booking}')
     return bookings
 
-    
+#TODO:
+#def from_bookings_to_Timeslot(bookings):
+#    return timeslots, room og date
+       
 def insert_booking(timeslots, room, date, BookID):
+    #OBS: BookID har ingen værdi, men værdi sættes i tabellen ved INSERT
     conn = sqlite3.connect('booking.db')
     cursor = conn.cursor()
     # Check om brugerens antal bookings er lovlige (Hent users gyldige bookinger ..)
     try:
         # Omsæt timeslots til bookings
-        bookings = from_Timeslots_To_Booking( room, date, timeslots )
+        bookings = from_Timeslots_To_Booking( room, date, timeslots  )
+        #print(f'BookId {BookID}')
         # Check if the timeslot is already booked
         # (senere) Hent brugerens valide bookinger og check om brugeren samlet set overholder krav
+        
+        #Slet brugerens nuværende bookings for dette rum og denne dato - de skal overskrives af de nye bookings
+        sql = f"DELETE FROM bookings WHERE Day = '{date}' AND RoomNO = '{room}'"
+        print(sql)
+        cursor.execute(sql)
+        
         # Gem bookings i database
-        for timeslot in timeslots:
+        for booking in bookings:
             # Check if the timeslot is already booked
-            if is_timeslot_booked(timeslot, room, date):
-                raise ValueError(f'Timeslot {timeslot} for Room {room} on {date} is already booked.')
+          #TODO:  if is_timeslot_booked(timeslot, room, date):
+           #     raise ValueError(f'Timeslot {timeslot} for Room {room} on {date} is already booked.')
+           cursor.execute("INSERT INTO bookings (RoomNO, Day, StartTime, EndTime, is_booked) VALUES(?, ?, ?, ?, 1)", (room, date, booking[2], booking[3]))
 
             # If the timeslot is not booked, insert the booking and set is_booked to 1
-            cursor.execute("INSERT INTO bookings (BookingID, Time, RoomNO, Day, is_booked) VALUES (?, ?, ?, ?, 1)", (BookID, timeslot, room, date))
+            #cursor.execute("INSERT INTO bookings (BookingID, Time, RoomNO, Day, is_booked) VALUES (?, ?, ?, ?, 1)", (BookID, timeslot, room, date))
     
         # Commit the changes
         conn.commit()
@@ -219,7 +233,7 @@ def submit_booking():
 
         for timeslot in timeslots:
             if is_timeslot_booked(timeslot, room, date):
-                return jsonify({'error': 'One or more selected timeslots are already booked xxxxx'}), 400
+                return jsonify({'error': 'One or more selected timeslots are already booked'}), 400
         # Insert the booking into the database if there are no double bookings
         insert_booking(timeslots, room, date, BookID)
 
