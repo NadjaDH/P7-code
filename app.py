@@ -94,10 +94,12 @@ def is_timeslot_booked(timeslot, room, date):
 def from_Timeslots_To_Booking (room, date, timeslots): #Define one booking as one booking only
     bookings = []
     if len(timeslots) > 0:
+        timeslot = timeslots[0]
         timeslotTexts =f"{timeslot}".split()
         booking = [room, date, timeslotTexts[0], timeslotTexts[2]]
         bookings.append(booking)
         lastBookingPosition = 0
+        
         for timeslot in timeslots:
             #check list of timeslots
             timeslotTexts =f"{timeslot}".split()
