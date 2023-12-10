@@ -18,13 +18,13 @@
     </ul>
     <h1>Room Booking</h1>
 
-    <!--Create links to change the page in the tab bar-->
+    <!--Create links to change the page in the tab bar - give each day id to allow auto-opening on given day -->
     <div class="tab">
-        <button class="tablinks" onclick="OpenDay(event, 'Monday', '2023-11-20')">Mon</button>
-        <button class="tablinks" onclick="OpenDay(event, 'Tuesday', '2023-11-21')">Tue</button>
-        <button class="tablinks" onclick="OpenDay(event, 'Wednesday', '2023-11-22')">Wed</button>
-        <button class="tablinks" onclick="OpenDay(event, 'Thursday', '2023-11-23')">Thu</button>
-        <button class="tablinks" onclick="OpenDay(event, 'Friday', '2023-11-24')">Fri</button>
+        <button class="tablinks" id="Mon" onclick="OpenDay(event, 'Monday', '2023-11-20')">Mon</button>
+        <button class="tablinks" id="Tue" onclick="OpenDay(event, 'Tuesday', '2023-11-21')">Tue</button>
+        <button class="tablinks" id="Wed" onclick="OpenDay(event, 'Wednesday', '2023-11-22')">Wed</button>
+        <button class="tablinks" id="Thu" onclick="OpenDay(event, 'Thursday', '2023-11-23')">Thu</button>
+        <button class="tablinks" id="Fri" onclick="OpenDay(event, 'Friday', '2023-11-24')">Fri</button>
     </div>
 
     <!-- Cancel Booking Form -->

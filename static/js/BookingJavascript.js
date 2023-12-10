@@ -141,6 +141,16 @@ function SelectRoom(room) {
     } else {
         console.log("toggleDropdown is not defined"); // Debugging line
     }
+    // Once a room is selected, automatically open tab for current day - CoPilot
+    var dayNames = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'];
+    var date = new Date();
+    // Get abbreviation for current day - note: getDay() returns 0 for Sunday, 1 for Monday, etc., so we subtract 1 to align with our array
+    var dayOfWeek = dayNames[date.getDay() - 1];
+    if (date.getDay() === 0 || date.getDay() === 6) {
+        dayOfWeek = 'Mon'; // defaults to Monday if it's Saturday or Sunday
+    }
+    // Find the element with the ID of the current day (or 'Mon' if it's Saturday or Sunday) and simulate a click on it
+    document.getElementById(dayOfWeek).click();
 }
 
 //Function to check if any checkboxes are checked
