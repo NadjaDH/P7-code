@@ -52,7 +52,7 @@
                     <tr>
                         <td>{{ timeslot }}</td>
                         <td>
-                            {% if {'time': timeslot, 'date': selected_date, 'room': room} in booking_info %}
+                            {% if {'time': timeslot, 'room': room} in booking_info %}
                                 Reserved
                             {% else %}
                                 <input type="checkbox" id="checkbox-{{loop.index}}" name="timeslots" value="{{ timeslot }}"

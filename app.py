@@ -11,8 +11,8 @@ app = Flask(__name__)
 def home():
     conn = sqlite3.connect('booking.db')
     c = conn.cursor()
-    c.execute("SELECT DISTINCT RoomNO, status FROM bookings")
-    room_info = [{'room': room, 'status': status} for room, status in c.fetchall()]
+    c.execute("SELECT RoomNO, MAX(status) FROM bookings GROUP BY RoomNO")
+    room_info = [{'room': room, 'status': bool(status)} for room, status in c.fetchall()]
     conn.close()
     return render_template("home.html", room_info=room_info)
 
@@ -20,10 +20,13 @@ def home():
 def booking():
     conn = sqlite3.connect('booking.db')
     c = conn.cursor()
-    c.execute("SELECT Time, RoomNO, FROM bookings WHERE is_booked = 1") 
-    booking_info = [{'room': room, 'time': time,} for room, time, date in c.fetchall()] 
+    c.execute("SELECT Time, RoomNO, Day FROM bookings WHERE is_booked = 1") 
+    booking_info = [{'room': room, 'time': time, 'date': date,} for room, time, date in c.fetchall()] 
     conn.close()
-    return render_template("BookRoom.html", booking_info=booking_info)
+    # Define selected_date and room
+    selected_date = '2022-12-10'  # Replace with actual date
+    room = 1  # Replace with actual room number
+    return render_template("BookRoom.html", booking_info=booking_info, selected_date=selected_date, room=room)
 
 def cancel_booking(booking_id):
     conn = sqlite3.connect('booking.db')
