@@ -270,3 +270,4 @@ function updateClock() {
 }
 updateClock();
 setInterval(updateClock, 1000);
+window.onload = displayCheckbox; // Call the displayCheckbox function when the page is loaded

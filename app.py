@@ -11,7 +11,7 @@ app = Flask(__name__)
 def home():
     conn = sqlite3.connect('booking.db')
     c = conn.cursor()
-    c.execute("SELECT RoomNO, MAX(status) FROM bookings GROUP BY RoomNO")
+    c.execute("SELECT RoomNO, MAX(status) FROM bookings GROUP BY RoomNO") 
     room_info = [{'room': room, 'status': bool(status)} for room, status in c.fetchall()]
     conn.close()
     return render_template("home.html", room_info=room_info)
@@ -20,13 +20,10 @@ def home():
 def booking():
     conn = sqlite3.connect('booking.db')
     c = conn.cursor()
-    c.execute("SELECT Time, RoomNO, Day FROM bookings WHERE is_booked = 1") 
-    booking_info = [{'room': room, 'time': time, 'date': date,} for room, time, date in c.fetchall()] 
+    c.execute("SELECT Time, RoomNO, Day FROM bookings WHERE is_booked = 1")
+    booking_info = [{'room': room, 'timeslot': timeslot, 'date': date,} for room, timeslot, date in c.fetchall()]
     conn.close()
-    # Define selected_date and room
-    selected_date = '2022-12-10'  # Replace with actual date
-    room = 1  # Replace with actual room number
-    return render_template("BookRoom.html", booking_info=booking_info, selected_date=selected_date, room=room)
+    return render_template("BookRoom.html", booking_info=booking_info, is_timeslot_booked=is_timeslot_booked)
 
 def cancel_booking(booking_id):
     conn = sqlite3.connect('booking.db')
@@ -86,6 +83,7 @@ def is_timeslot_booked(timeslot, room, date):
 
     try:
         # Check if there is any booking with the specified timeslot, room, and date
+        print(f"timeslot: {timeslot}, room: {room}, date: {date}")
         cursor.execute("SELECT COUNT(*) FROM bookings WHERE Time = ? AND RoomNO = ? AND Day = ?", (timeslot, room, date))
         count = cursor.fetchone()[0]
 
@@ -176,8 +174,6 @@ def check_out_route(roomNumber):
         return jsonify({'message': message}), 200
     else:
         return jsonify({'error': message}), 500  # Return 500 for server error
-
-   
 
 @app.route('/submit_booking', methods=['POST']) #This function is used to handle a POST request when a user submits a booking form. It takes the room number and timeslot from the form data, generates a fake booking ID and user ID, and inserts these into the bookings table in the database.
 def submit_booking():
