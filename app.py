@@ -12,11 +12,14 @@ def home():
     #CHAT GPT
     conn = sqlite3.connect('booking.db')
     c = conn.cursor()
-    c.execute("SELECT DISTINCT RoomNO FROM bookings")  # Fetch distinct rooms
-    rooms = [room[0] for room in c.fetchall()]
+    #manually adding a list with room numbers
+    all_rooms = [4.118, 4.120, 4.122, 4.124, 4.125]
+   # Fetch the status for each room from the database
+    c.execute("SELECT RoomNO, status FROM bookings")
+    room_statuses = dict(c.fetchall())
 
     # Create room_info list with default status values
-    room_info = [{'room': room, 'status': None} for room in rooms]
+    room_info = [{'room': room, 'status': room_statuses.get(room, 'Available')} for room in all_rooms]
 
     conn.close()
     return render_template("home.html", room_info=room_info)
