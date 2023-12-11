@@ -20,8 +20,8 @@ def home():
 def booking():
     conn = sqlite3.connect('booking.db')
     c = conn.cursor()
-    c.execute("SELECT Time, RoomNO, Day FROM bookings WHERE is_booked = 1")
-    booking_info = [{'room': room, 'time': time, 'date': date,} for room, time, date in c.fetchall()]
+    c.execute("SELECT Time, RoomNO, FROM bookings WHERE is_booked = 1") 
+    booking_info = [{'room': room, 'time': time,} for room, time, date in c.fetchall()] 
     conn.close()
     return render_template("BookRoom.html", booking_info=booking_info)
 
