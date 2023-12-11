@@ -5,7 +5,37 @@ var bookedTimeslots = []; // Array to store the booked timeslots
 var bookButton = document.getElementById('bookButton'); // Get the book button
 
 function isTimeslotBooked(timeslot) { //The function isTimeslotBooked(timeslot) checks if a given timeslot is already booked.
+    alert(bookedTimeslots);
     return bookedTimeslots.includes(timeslot);
+}
+
+async function isTimeslotBooked(timeslot, room, selected_date) {
+    var booked = false;
+    const response = await fetch('/is_timeslot_booked', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            timeslot: timeslot, // Include the array of checked values
+            room: room, // Include the room number
+            date: selected_date, // Include the date
+        })
+    })
+        .then(response => response.json()) // Parse the response as JSON
+        .then(data => { // Log the data to the console
+            if (data.error) {
+                alert(data.error);
+            } else {
+                //If there's no error message, the booking was successful
+                console.log('Success:', data);
+                if(data.message) booked = true;
+            }
+        })
+        .catch((error) => {  // Catch any errors and log them to the console
+            console.error('Error:', error); // Log the error to the console
+        });
+        return booked;
 }
 
 function displayCheckbox() {
@@ -71,9 +101,7 @@ function OpenDay(evt, day, selectedDate) {
     
     //Initialize variable with the function to check if the day of the week is before
     var buttonDisabled = hasDayPassed(dayOfWeek);
-    
-    resetCheckboxes(); // Reset the checkboxes when a new tab is opened
-    
+        
     //If the button should be disabled, do nothing so that it is not possible to open the content
     if (buttonDisabled) {
         return;
@@ -94,6 +122,8 @@ function OpenDay(evt, day, selectedDate) {
     
     // Call selectDate function with the selected date
     selectDate(selectedDate);
+
+    resetCheckboxes(); // Reset the checkboxes when a new tab is opened
 }
 
 function selectDate(date) {
@@ -108,7 +138,12 @@ function selectDate(date) {
 // Reset the checkboxes when a new tab is opened
 function resetCheckboxes() {
     var checkboxes = document.querySelectorAll('input[type="checkbox"]');
-    checkboxes.forEach((checkbox) => {
+    checkboxes.forEach(async (checkbox) => {
+        var booked = await isTimeslotBooked(checkbox.value, selectedRoomNumber, selectedDate);
+        if (booked){
+            checkbox.disabled = true;
+        }
+        else checkbox.disabled = false;
         checkbox.checked = false;
     });
 }
@@ -222,6 +257,7 @@ function submitBooking(checkedValues, selectedRoomNumber, selectedDate, bookingI
             console.error('Error:', error); // Log the error to the console
         });
 }
+
 // JavaScript function to change background color
 function checkIn() {
     if (selectedRoomNumber) {

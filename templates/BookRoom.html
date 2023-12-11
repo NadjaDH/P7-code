@@ -53,7 +53,7 @@
                         <td>{{ timeslot }}</td>
                         <td>
                             <input type="checkbox" id="checkbox-{{ loop.index }}" name="timeslots" value="{{ timeslot }}"
-                            data-timeslot="{{ timeslot }}" onclick="displayCheckbox()" {% if is_timeslot_booked(timeslot, room, selected_date) %}disabled{% endif %}>
+                            data-timeslot="{{ timeslot }}" onclick="displayCheckbox()">
                         </td>
                     </tr>
                     {% endfor %}
