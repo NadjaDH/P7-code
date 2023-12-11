@@ -3,7 +3,7 @@
 
 <head>
 
-    <title>Home</title>
+   <title>Home</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
     <!--link to cssSheet-->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/Style_Dropdown.css') }}">
@@ -19,7 +19,7 @@
                 <li><a href="{{ url_for('information') }}">Information</a></li>
             </ul>
     </header>
-    <h1>Room Booking</h1>
+    <!--<h1>Room Booking</h1>-->
 
     <!--Create links to change the page in the tab bar - give each day id to allow auto-opening on given day -->
     <div class="tab">
@@ -47,11 +47,15 @@
 
             <div id="Monday" class="tabcontent">
                 <table class="tableAvailability">
+                    <thead>
+                    <tr>
                     <th>Time</th>
                     <th>Availability</th>
                     {% for timeslot in ['07:00 - 08:00', '08:00 - 09:00', '09:00 - 10:00', '10:00 - 11:00', '11:00 - 12:00',
                     '12:00 - 13:00', '13:00 - 14:00', '14:00 - 15:00', '15:00 - 16:00'] %}
                     <!-- Loop through the timeslots -->
+                    </tr>
+                    </thead>
                     <tr>
                         <td>{{ timeslot }}</td>
                         <td>

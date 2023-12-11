@@ -43,10 +43,12 @@ html {
 
 body {
     font-family: "Helvetica", sans-serif;
-    font-size: 12px;
+    font-size: 12px; /*should consider to change it to 16pt which is the standard*/
     line-height: 1;
     color: #354450;
-    background: #e3e8ec
+    background: #FCFCFD;
+    /*background: #fff /*Set background color for whole web*/
+   /*background: #e3e8ec*/
 }
 
 h1, .h1 {
@@ -96,6 +98,12 @@ p {
 header {
     display: flex; /*flex align logo and navbar*/
     align-items: center;
+    background-color: #e3e8ec;
+    /*background-color: #fff;*/
+    size: 100;
+    border-bottom: 1px solid grey; 
+
+    
   }
   
 /* styling af navigation bar*/
@@ -115,9 +123,6 @@ header {
     
 }
 
-.navbar ul li{
-    float: center;
-}
 
 .navbar li {
     float: left; /* Float links side by side */
@@ -187,6 +192,38 @@ header {
     color: #666666; /*Book Text*/
 }
 
+/* style the cancel form*/
+#cancelBookingForm { /* # is used when you want to style a ID*/
+    position: absolute;
+    top: 500px;
+    left: 800px;
+}
+
+/* Styling for the check-in and check-out buttons */
+.checkInOutButton {
+    background-color: #154e74; /* Blue color */
+    color: #fff; /* White text color */
+    padding: 10px 15px; /* Padding for the button */
+    border: none; /* No border */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Cursor style on hover */
+
+}
+
+.checkInOutButton:hover {
+    background-color: #636567; /* Dark blue color */
+}
+#checkInButton {
+    position: relative;
+    top: 420px;
+    left: 800px;
+}
+#checkOutButton {
+    position: relative;
+    top: 420px;
+    left: 825px;
+}
+
 .bookingInfo {
     display: inline-block;
     width: 350px;
@@ -198,7 +235,8 @@ header {
 /* end of styling of the booking button on the booking page */
 .tab {
     overflow: hidden;
-    background-color: #e3e8ec;
+    /*background-color: #e3e8ec; The background behind the tabs - not sure that we need it though*/ 
+   /* background-color: #fff;*/
     width: 50%;
     position: relative;
     top: 205px;
@@ -206,7 +244,7 @@ header {
 
 .tab button {
     font-weight: bold;
-    background-color: #fff;
+    background-color: #fff; /*color of the tab labels*/
     border: 2px solid black;
     border-radius: none;
     padding: 14px 16px;
@@ -238,16 +276,23 @@ header {
     width: 35%;
     position: absolute;
     left: 45px;
-    top: 345px; /*Change position of the table*/
+    top: 315px; /*Change position of the table*/
     
 }
 
 /*Table is affecting the booking table*/
-table,
-th,
+table {
+    border-collapse: collapse; /*merge the table rows*/
+    box-shadow: 0 5px  8px #aeabc5; /*set shadow if needed*/
+    width: 100%; /*define legth on table*/
+}
+thead {
+   padding: 30px; 
+   background-color: #211a52;
+}
 td {
-    border: 1px solid black;
-    border-top: none;
+    
+    /*border: 1px solid black;*/
     border-collapse: collapse;
     width: 100%;
     text-align: center;
@@ -255,15 +300,18 @@ td {
 }
 
 th {
-    height: 50px;
+    height: 48px;
     background-color: #211a52;
     font-size: medium;
     font-weight: bold;
     color: white;
+    padding-top: 20px;
 }
 
 td {
+    /*border-top: 1px solid #aeabc5;*/
     height: 30px;
+    padding: 5pt;
 }
 
 /*Targets the width of the first and second column in the table*/
@@ -283,6 +331,9 @@ th:nth-child(2) {
     width: 70%;
 }
 
+tr:nth-child(odd) { /*define every other row in the datatable*/
+    background-color: #eee;
+}
 /* Style the buttons that are used to open and close the accordion panel - w3 */
 .accordion {
     background-color: #eee;
@@ -478,35 +529,5 @@ input[type=checkbox]:disabled + .reserved-label {
         font: normal 13px/20px "Helvetica Neue", Helvetica, Arial, sans-serif;
         text-align: left;
     }
-/* style the cancel form*/
-#cancelBookingForm { /* # is used when you want to style a ID*/
-    position: absolute;
-    top: 500px;
-    left: 800px;
-}
 
-/* Styling for the check-in and check-out buttons */
-.checkInOutButton {
-    background-color: #154e74; /* Blue color */
-    color: #fff; /* White text color */
-    padding: 10px 15px; /* Padding for the button */
-    border: none; /* No border */
-    border-radius: 5px; /* Rounded corners */
-    cursor: pointer; /* Cursor style on hover */
-
-}
-
-.checkInOutButton:hover {
-    background-color: #636567; /* Dark blue color */
-}
-#checkInButton {
-    position: relative;
-    top: 50px;
-    left: 800px;
-}
-#checkOutButton {
-    position: relative;
-    top: 50px;
-    left: 825px;
-}
 
