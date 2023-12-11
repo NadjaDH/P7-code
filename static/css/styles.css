@@ -904,26 +904,15 @@ But should be confirmed by other group members before it get deleted */
 }
 
 /*Calendar function*/ /*taken from chat GPT*/
-#calendarContainer{
+.calendar {
+    margin-top: 10px;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); /* 5 columns for Monday to Friday */
+    gap: 5px;
+  }
+
+  .calendar-day {
+    border: 1px solid #ccc;
+    padding: 5px;
     text-align: center;
-    margin: 20px
-}
-
-.days-container{
-    display: flex;
-    justify-content: space-around;
-    text-align: center;
-
-}
-
-.day {
-    display: inline-block;
-    width: 100px;
-    padding: 10px;
-    margin: 5px;
-    border: 0.5px solid #eeeeee;
-    } 
-
-    .current-day {
-        font-size: 700;
-    }
+  }
