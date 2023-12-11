@@ -90,32 +90,7 @@
             });
         });
     });
-    //CHAT GPT
-    function generateWeeklyCalendar(roomNumber, availabilityStatus) {
-      const container = document.getElementById(`daysContainer${roomNumber}`);
-
-      // Get the days of the week (Monday through Friday)
-      const daysOfWeek = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'];
-
-      // Display only the days for the current week
-      const currentDate = new Date();
-      const currentDayOfWeek = currentDate.getDay(); // 0 for Sunday, 1 for Monday, etc.
-
-      // Clear previous content in the container
-      container.innerHTML = '';
-
-      // Display the days in the HTML
-      daysOfWeek.forEach((day) => {
-        const dayElement = document.createElement('div');
-        dayElement.className = 'day';
-        dayElement.textContent = day;
-
-        // Set background color based on availability status
-        dayElement.style.backgroundColor = getBackgroundColor(availabilityStatus);
-
-        container.appendChild(dayElement);
-      });
-    }
+   
 </script> 
 <script src = "{{ url_for('static', filename='js/BookingJavascript.js') }}"></script>
 </body>
