@@ -903,16 +903,3 @@ But should be confirmed by other group members before it get deleted */
     left: 825px;
 }
 
-/*Calendar function*/ /*taken from chat GPT*/
-.calendar {
-    margin-top: 10px;
-    display: grid;
-    grid-template-columns: repeat(5, 1fr); /* 5 columns for Monday to Friday */
-    gap: 5px;
-  }
-
-  .calendar-day {
-    border: 1px solid #ccc;
-    padding: 5px;
-    text-align: center;
-  }
