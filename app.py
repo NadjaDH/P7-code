@@ -11,24 +11,8 @@ app = Flask(__name__)
 def home():
     conn = sqlite3.connect('booking.db')
     c = conn.cursor()
-    #Fetch all distinct room numbers
-    c.execute("SELECT DISTINCT RoomNO, status FROM bookings") #CHAT GPT
-    all_rooms = [room[0] for room in c.fetchall()]
-    #room_info = [{'room': room, 'status': status} for room, status in c.fetchall()] OURS
-    # Fetch booking information for each room
-    room_info = []
-    for room in all_rooms:
-        c.execute("SELECT status, next_booking FROM bookings WHERE RoomNO=?", (room,))
-        result = c.fetchone()
-        if result:
-            status, next_booking = result
-        else:
-            # If there is no booking, set default values
-            status = None
-            next_booking = None
-
-        room_info.append({'room': room, 'status': status, 'next_booking': next_booking})
-#CHAT GPT END
+    c.execute("SELECT DISTINCT RoomNO, status FROM bookings") 
+    room_info = [{'room': room, 'status': status} for room, status in c.fetchall()] 
     conn.close()
     return render_template("home.html", room_info=room_info)
 
