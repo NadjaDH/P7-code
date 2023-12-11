@@ -47,6 +47,13 @@
     <p id="Textindicator"> Status: {{ "Available" if room.status else "Reserved" }} </p>
   </button>
     <div class="panel">
+        <!--Calendar function here-->
+      <!--define a unique calendar for each group room-->
+      <div id="calendarContainer{{ room.room }}">
+        <h2>Weekly Calendar</h2>
+        <div id="daysContainer{{ room.room }}" class="days-container"></div>
+      </div>
+      
       <p><br>Status: {{ "Available" if room.status else "Reserved" }}
       <br> Next Booking: </p>
     </div>
