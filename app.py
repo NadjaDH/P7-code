@@ -9,12 +9,23 @@ app = Flask(__name__)
 
 @app.route('/')
 def home():
+    #CHAT GPT
     conn = sqlite3.connect('booking.db')
     c = conn.cursor()
-    c.execute("SELECT DISTINCT RoomNO, status FROM bookings") 
-    room_info = [{'room': room, 'status': status} for room, status in c.fetchall()] 
+    c.execute("SELECT DISTINCT RoomNO FROM bookings")  # Fetch distinct rooms
+    rooms = [room[0] for room in c.fetchall()]
+
+    # Create room_info list with default status values
+    room_info = [{'room': room, 'status': None} for room in rooms]
+
     conn.close()
     return render_template("home.html", room_info=room_info)
+   # conn = sqlite3.connect('booking.db')
+   # c = conn.cursor()
+   # c.execute("SELECT DISTINCT RoomNO, status FROM bookings") 
+   # room_info = [{'room': room, 'status': status} for room, status in c.fetchall()] 
+   # conn.close()
+#return render_template("home.html", room_info=room_info)
 
 @app.route('/booking')
 def booking():
