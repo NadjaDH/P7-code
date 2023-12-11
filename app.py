@@ -13,7 +13,7 @@ def home():
     conn = sqlite3.connect('booking.db')
     c = conn.cursor()
     #manually adding a list with room numbers
-    all_rooms = [4.118, 4.120, 4.122, 4.124, 4.125]
+    all_rooms = ['Room 4.118', 'Room 4.120', 'Room 4.122', 'Room 4.124', 'Room 4.125']
    # Fetch the status for each room from the database
     c.execute("SELECT RoomNO, status FROM bookings")
     room_statuses = dict(c.fetchall())
