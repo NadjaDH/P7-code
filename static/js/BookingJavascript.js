@@ -176,6 +176,7 @@ function SelectRoom(room) {
     } else {
         console.log("toggleDropdown is not defined"); // Debugging line
     }
+    resetCheckboxes(); // Reset the checkboxes when a new room is selected
 }
 
 //Function to check if any checkboxes are checked
