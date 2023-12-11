@@ -906,13 +906,16 @@ But should be confirmed by other group members before it get deleted */
 /*Calendar function*/ /*taken from chat GPT*/
 #calendarContainer{
     text-align: center;
-    margin: 20px
+    margin: 20px;
+    
 }
 
 .days-container{
     display: flex;
     justify-content: space-around;
     text-align: center;
+    border-color: black;
+    border-width: 1pt;
 
 }
 
