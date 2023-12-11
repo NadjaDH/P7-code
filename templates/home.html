@@ -83,7 +83,26 @@
             });
         });
     });
-    
+
+    // CHAT GPT
+    document.addEventListener('DOMContentLoaded', function () {
+      var accordions = document.querySelectorAll('.accordion');
+  
+      accordions.forEach(function (accordion) {
+        accordion.addEventListener('click', function () {
+          var isActive = this.classList.contains('active');
+  
+          accordions.forEach(function (otherAccordion) {
+            otherAccordion.classList.remove('active');
+            otherAccordion.nextElementSibling.style.display = 'none';
+          });
+  
+          this.classList.toggle('active', !isActive);
+          var panel = this.nextElementSibling;
+          panel.style.display = isActive ? 'none' : 'block';
+        });
+      });
+    });
 </script> 
 <script src = "{{ url_for('static', filename='js/BookingJavascript.js') }}"></script>
 </body>
