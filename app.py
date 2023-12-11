@@ -11,8 +11,8 @@ app = Flask(__name__)
 def home():
     conn = sqlite3.connect('booking.db')
     c = conn.cursor()
-    c.execute("SELECT DISTINCT RoomNO, status FROM bookings")
-    room_info = [{'room': room, 'status': status} for room, status in c.fetchall()]
+    c.execute("SELECT RoomNO, MAX(status) FROM bookings GROUP BY RoomNO")
+    room_info = [{'room': room, 'status': bool(status)} for room, status in c.fetchall()]
     conn.close()
     return render_template("home.html", room_info=room_info)
 
