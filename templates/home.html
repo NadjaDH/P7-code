@@ -42,7 +42,7 @@
   {% for room in room_info %}
   <button class="accordion">
     {{ room.room }}
-    <span id="StatusIndicator{{ room }}" class="accordion-status-indicator"
+    <span id="StatusIndicator{{ room.room }}" class="accordion-status-indicator"
     style="background-color: {{'green' if room.status else 'red'}}"></span>
     <p id="Textindicator"> Status: {{ "Available" if room.status else "Reserved" }} </p>
   </button>
@@ -84,25 +84,7 @@
         });
     });
 
-    // CHAT GPT
-    document.addEventListener('DOMContentLoaded', function () {
-      var accordions = document.querySelectorAll('.accordion');
-  
-      accordions.forEach(function (accordion) {
-        accordion.addEventListener('click', function () {
-          var isActive = this.classList.contains('active');
-  
-          accordions.forEach(function (otherAccordion) {
-            otherAccordion.classList.remove('active');
-            otherAccordion.nextElementSibling.style.display = 'none';
-          });
-  
-          this.classList.toggle('active', !isActive);
-          var panel = this.nextElementSibling;
-          panel.style.display = isActive ? 'none' : 'block';
-        });
-      });
-    });
+    
 </script> 
 <script src = "{{ url_for('static', filename='js/BookingJavascript.js') }}"></script>
 </body>
