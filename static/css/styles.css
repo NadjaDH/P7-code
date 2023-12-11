@@ -903,3 +903,27 @@ But should be confirmed by other group members before it get deleted */
     left: 825px;
 }
 
+/*Calendar function*/ /*taken from chat GPT*/
+#calendarContainer{
+    text-align: center;
+    margin: 20px
+}
+
+.days-container{
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+
+}
+
+.day {
+    display: inline-block;
+    width: 100px;
+    padding: 10px;
+    margin: 5px;
+    border: 0.5px solid #eeeeee;
+    } 
+
+    .current-day {
+        font-size: 700;
+    }
