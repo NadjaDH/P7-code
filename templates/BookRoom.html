@@ -70,11 +70,9 @@
                 <!-- Loop through the timeslots and create a checkbox for each timeslot -->
                 <tr>
                     <td>{{ timeslot }}</td>
-                    <td>
-                        <input type="checkbox" id="checkbox-{{ loop.index }}" name="timeslots" value="{{ timeslot }}"
-                        data-timeslot="{{ timeslot }}">
-                        <label for="checkbox-{{ loop.index }}" id="label-{{ loop.index }}"></label>
-                    </td>
+                    <!-- Display the timeslot. And create a checkbox with the value of the timeslot  -->
+                    <td><input type="checkbox" id="checkbox-{{loop.index}}" name="timeslots" value="{{ timeslot }}"
+                            data-time="{{ timeslot }}" onclick="displayCheckbox()"></td>
                     <!-- Checkbox to enable the button -->
                 </tr>
                 {% endfor %}
