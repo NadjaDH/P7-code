@@ -9,12 +9,26 @@ app = Flask(__name__)
 
 @app.route('/')
 def home():
+    #CHAT GPT
     conn = sqlite3.connect('booking.db')
     c = conn.cursor()
-    c.execute("SELECT DISTINCT RoomNO, status FROM bookings")
-    room_info = [{'room': room, 'status': status} for room, status in c.fetchall()]
+    #manually adding a list with room numbers
+    all_rooms = ['Room 4.118', 'Room 4.120', 'Room 4.122', 'Room 4.124', 'Room 4.125']
+   # Fetch the status for each room from the database
+    c.execute("SELECT RoomNO, status FROM bookings")
+    room_statuses = dict(c.fetchall())
+
+    # Create room_info list with default status values
+    room_info = [{'room': room, 'status': room_statuses.get(room, 'Available')} for room in all_rooms]
+
     conn.close()
     return render_template("home.html", room_info=room_info)
+   # conn = sqlite3.connect('booking.db')
+   # c = conn.cursor()
+   # c.execute("SELECT DISTINCT RoomNO, status FROM bookings") 
+   # room_info = [{'room': room, 'status': status} for room, status in c.fetchall()] 
+   # conn.close()
+#return render_template("home.html", room_info=room_info)
 
 @app.route('/booking')
 def booking():
@@ -90,19 +104,70 @@ def is_timeslot_booked(timeslot, room, date):
         return True  # Assume the timeslot is booked in case of an error
     finally:
         conn.close()
+        
+def from_Timeslots_To_Booking (room, date, timeslots): #Define one booking as one booking only
+    bookings = []
+    if len(timeslots) > 0:
+        lastBookingPosition = -1 #ingen bookinger gemt i liste endnu
+        
+        for timeslot in timeslots:
+            #check list of timeslots
+            timeslotTexts =f"{timeslot}".split()
+            startTime = timeslotTexts[0]
+            endTime = timeslotTexts[2]
+            
+            #If timeslot startTime er forskellig fra booking endTime så append
+            
+            # else ret booking endTime til timeslot endTime
+            if lastBookingPosition == -1:
+                booking = [room, date, startTime, endTime]
+                bookings.append(booking)
+                lastBookingPosition = lastBookingPosition + 1
+            else:
+                lastBooking = bookings[lastBookingPosition]
+                
+                if startTime != lastBooking[3]:
+                    booking = [room, date, startTime, endTime]
+                    bookings.append(booking)
+                    lastBookingPosition = lastBookingPosition + 1
+                else:
+                    bookings[lastBookingPosition][3] = endTime
+                 
+                
+        for booking in bookings:
+            print(f'bookings {booking}')
+    return bookings
 
+#TODO:
+#def from_bookings_to_Timeslot(bookings):
+#    return timeslots, room og date
+       
 def insert_booking(timeslots, room, date, BookID):
+    #OBS: BookID har ingen værdi, men værdi sættes i tabellen ved INSERT
     conn = sqlite3.connect('booking.db')
     cursor = conn.cursor()
-
+    # Check om brugerens antal bookings er lovlige (Hent users gyldige bookinger ..)
     try:
-        for timeslot in timeslots:
+        # Omsæt timeslots til bookings
+        bookings = from_Timeslots_To_Booking( room, date, timeslots  )
+        #print(f'BookId {BookID}')
+        # Check if the timeslot is already booked
+        # (senere) Hent brugerens valide bookinger og check om brugeren samlet set overholder krav
+        
+        #Slet brugerens nuværende bookings for dette rum og denne dato - de skal overskrives af de nye bookings
+        sql = f"DELETE FROM bookings WHERE Day = '{date}' AND RoomNO = '{room}'"
+        print(sql)
+        cursor.execute(sql)
+        
+        # Gem bookings i database
+        for booking in bookings:
             # Check if the timeslot is already booked
-            if is_timeslot_booked(timeslot, room, date):
-                raise ValueError(f'Timeslot {timeslot} for Room {room} on {date} is already booked.')
+          #TODO:  if is_timeslot_booked(timeslot, room, date):
+           #     raise ValueError(f'Timeslot {timeslot} for Room {room} on {date} is already booked.')
+           cursor.execute("INSERT INTO bookings (RoomNO, Day, StartTime, EndTime, is_booked) VALUES(?, ?, ?, ?, 1)", (room, date, booking[2], booking[3]))
 
             # If the timeslot is not booked, insert the booking and set is_booked to 1
-            cursor.execute("INSERT INTO bookings (BookingID, Time, RoomNO, Day, is_booked) VALUES (?, ?, ?, ?, 1)", (BookID, timeslot, room, date))
+            #cursor.execute("INSERT INTO bookings (BookingID, Time, RoomNO, Day, is_booked) VALUES (?, ?, ?, ?, 1)", (BookID, timeslot, room, date))
     
         # Commit the changes
         conn.commit()
