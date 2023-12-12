@@ -910,23 +910,23 @@ But should be confirmed by other group members before it get deleted */
     
 }
 
+/*make it possible to align the day of weeks*/
 .days-container{
-    display: flex;
+    display: flex; 
     justify-content: space-around;
     text-align: center;
-    border-color: black;
-    border-width: 1pt;
-
 }
 
+/*Style the day box in the calendar*/
 .day {
     display: inline-block;
     width: 100px;
     padding: 10px;
     margin: 5px;
-    border: 0.5px solid #eeeeee;
+    border: 0.5px solid #eee;
     } 
 
-    .current-day {
-        font-size: 700;
+    /*Style the current day container*/
+    .today-day {
+        font-weight: Bold;
     }

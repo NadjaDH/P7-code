@@ -71,9 +71,7 @@
   </div>
    
   <script> 
- 
-  //CHAT gpt
-  
+   
 
   // Dette er JS for at accordion fungerer
     document.addEventListener('DOMContentLoaded', function() {
@@ -170,6 +168,38 @@
     });
   });
     
+  function getData() {
+    // Make a fetch request to the Flask endpoint
+    fetch('/')
+        .then(response => response.json())
+        .then(data => {
+            // Handle the response data
+            console.log(data.room_info);
+
+            // Update the UI or perform other actions with the data
+            displayData(data.room_info);
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+}
+// test to see if we get data from the bookings
+// Function to display the fetched data in the container
+function displayData(roomInfo) {
+    // Clear previous data
+    document.getElementById('dataContainer').innerHTML = '';
+
+    // Example: Display data in a list
+    const dataList = document.createElement('ul');
+    roomInfo.forEach(item => {
+        const listItem = document.createElement('li');
+        listItem.textContent = `Room: ${item.room}, Status: ${item.status}`;
+        dataList.appendChild(listItem);
+    });
+
+    // Append the list to the container
+    document.getElementById('dataContainer').appendChild(dataList);
+}
 </script> 
 
 <script src = "{{ url_for('static', filename='js/BookingJavascript.js') }}"></script>
