@@ -32,7 +32,12 @@ def home():
 
 @app.route('/booking')
 def booking():
-    return render_template("BookRoom.html")
+    conn = sqlite3.connect('booking.db')
+    c = conn.cursor()
+    c.execute("SELECT Time, RoomNO, Day FROM bookings WHERE is_booked = 1")
+    booking_info = [{'room': room, 'timeslot': timeslot, 'date': date,} for room, timeslot, date in c.fetchall()]
+    conn.close()
+    return render_template("BookRoom.html", booking_info=booking_info, is_timeslot_booked=is_timeslot_booked)
 
 def cancel_booking(booking_id):
     conn = sqlite3.connect('booking.db')
@@ -86,13 +91,32 @@ def contact():
 class DoubleBookingError(Exception): #This class is used to create a custom exception that is raised when a double booking is detected.
     pass
 
+@app.route('/is_timeslot_booked', methods=['POST']) #This function is used to handle a POST request when a user submits a booking form. It takes the room number and timeslot from the form data, generates a fake booking ID and user ID, and inserts these into the bookings table in the database.
+def is_timeslot_booked_route():
+    try:
+        data = request.get_json()
+        timeslot = data.get('timeslot')
+        room = data.get('room')
+        date = data.get('date')
+
+        return jsonify({'message': is_timeslot_booked(timeslot, room, date)}), 200
+    except ValueError as e: #This exception is raised when a double booking is detected.
+        return jsonify({'error': str(e)}), 400 #Return 400 for bad request
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+    
+
 def is_timeslot_booked(timeslot, room, date):
+    print(timeslot, room, date)
     conn = sqlite3.connect('booking.db')
     cursor = conn.cursor()
 
     try:
         # Check if there is any booking with the specified timeslot, room, and date
-        cursor.execute("SELECT COUNT(*) FROM bookings WHERE Time = ? AND RoomNO = ? AND Day = ?", (timeslot, room, date))
+        print(f"timeslot: {timeslot}, room: {room}, date: {date}")
+        query = "SELECT COUNT(*) FROM bookings WHERE Time = '{timeslot}' AND RoomNO = '{room}' AND Day = '{date}' AND is_booked = 1".format(timeslot=timeslot, room=room, date=date)
+        print(query)
+        cursor.execute(query)
         count = cursor.fetchone()[0]
 
         if count >0:
@@ -233,8 +257,6 @@ def check_out_route(roomNumber):
         return jsonify({'message': message}), 200
     else:
         return jsonify({'error': message}), 500  # Return 500 for server error
-
-   
 
 @app.route('/submit_booking', methods=['POST']) #This function is used to handle a POST request when a user submits a booking form. It takes the room number and timeslot from the form data, generates a fake booking ID and user ID, and inserts these into the bookings table in the database.
 def submit_booking():
