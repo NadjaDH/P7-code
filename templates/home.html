@@ -15,29 +15,6 @@
       <li><a href="{{ url_for('information') }}">Information</a></li>
   </ul>
   <h1>Home</h1>
-  
-  <!-- CAN MAYBE BE USED FOR CONTENT ON HOME PAGE
-  <button class="accordion" id="4118">Room 4.118</button>
-  <div class="panel">
-      <p>
-          <table style="width:65%">
-          <tr>
-            <th>Name</th>
-            <th>Telephone</th>
-            <th>Telephone</th>
-          </tr>
-          <tr>
-            <td>Bill Gates</td>
-            <td>555 77 854</td>
-            <td>555 77 855</td>
-          </tr>
-        </table>
-        Current Status: Available--> <!-- TODO: Her skal vi implementere en availability status funktion -->
-        <!-- <br> Next Booking: Tue 10:00 --><!-- TODO: Her skal vi implementere en 'next booking' funktion-->
-        <!--<br> 
-      </p>
-  </div>
-  -->
 
   {% for room in room_info %}
   <button class="accordion">
@@ -50,7 +27,7 @@
       <p><br>Status: {{ "Available" if room.status else "Reserved" }}
         <br> Next Booking: </p> 
     </div>
-{% endfor %}
+  {% endfor %}
   
   <div class="container">
     <input type="checkbox" name="" id="zoom_img" />
@@ -83,10 +60,8 @@
             });
         });
     });
-
-    
 </script> 
 <script src = "{{ url_for('static', filename='js/BookingJavascript.js') }}"></script>
-</body>
 
+</body>
 </html>
