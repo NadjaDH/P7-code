@@ -140,13 +140,18 @@ function resetCheckboxes() {
     var checkboxes = document.querySelectorAll('input[type="checkbox"]');
     checkboxes.forEach(async (checkbox) => {
         var booked = await isTimeslotBooked(checkbox.value, selectedRoomNumber, selectedDate);
-        if (booked){
-            checkbox.disabled = true;
+        if (booked) {
+            document.getElementById('label-' + checkbox.id.split('-')[1]).innerText = 'Reserved'; // Copilot
+            checkbox.style.display = 'none'; // Hide the checkbox
+            checkbox.disabled = true; // Disable the checkbox
+        } else {
+            document.getElementById('label-' + checkbox.id.split('-')[1]).innerText = '';
+            checkbox.style.display = 'inline'; // Show the checkbox
         }
-        else checkbox.disabled = false;
         checkbox.checked = false;
     });
 }
+
 
 function hasDayPassed(daysOfWeek) { //Function to check if the day of the week is before the current day
     var now = new Date();
@@ -191,8 +196,8 @@ function SelectRoom(room) {
 
 //Function to check if any checkboxes are checked
 function checkboxChecked() { 
-    var checkboxes = document.querySelectorAll('input[type="checkbox"]');
-    return Array.from(checkboxes).some(checkbox => checkbox.checked); //ChatGPT
+    var checkboxes = document.querySelectorAll('input[type="checkbox"]'); 
+    return Array.from(checkboxes).some(checkbox => checkbox.checked); // ChatGPT
 }
 
 // javascript for when the user clicks on the dropdown button, toggle between hiding and showing the dropdown content
