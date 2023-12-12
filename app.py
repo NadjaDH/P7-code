@@ -34,8 +34,8 @@ def home():
 def booking():
     conn = sqlite3.connect('booking.db')
     c = conn.cursor()
-    c.execute("SELECT Time, RoomNO, Day FROM bookings WHERE is_booked = 1")
-    booking_info = [{'room': room, 'timeslot': timeslot, 'date': date,} for room, timeslot, date in c.fetchall()]
+    c.execute("SELECT StartTime, EndTime, RoomNO, Day FROM bookings WHERE is_booked = 1")
+    booking_info = [{'room': room, 'timeslot': f'{start_time} - {end_time}', 'date': date} for room, start_time, end_time, date in c.fetchall()]
     conn.close()
     return render_template("BookRoom.html", booking_info=booking_info, is_timeslot_booked=is_timeslot_booked)
 
@@ -114,9 +114,11 @@ def is_timeslot_booked(timeslot, room, date):
     try:
         # Check if there is any booking with the specified timeslot, room, and date
         print(f"timeslot: {timeslot}, room: {room}, date: {date}")
-        query = "SELECT COUNT(*) FROM bookings WHERE Time = '{timeslot}' AND RoomNO = '{room}' AND Day = '{date}' AND is_booked = 1".format(timeslot=timeslot, room=room, date=date)
+        query = "SELECT COUNT(*) FROM bookings WHERE StartTime <= ? AND EndTime >= ? AND RoomNO = ? AND Day = ? AND is_booked = 1"
+
         print(query)
-        cursor.execute(query)
+        start_time, end_time = timeslot.split(' - ')
+        cursor.execute(query, (start_time, end_time, room, date))
         count = cursor.fetchone()[0]
 
         if count >0:
