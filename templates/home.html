@@ -74,100 +74,99 @@
    
 
   // Dette er JS for at accordion fungerer
-    document.addEventListener('DOMContentLoaded', function() {
-        var accordions = document.querySelectorAll('.accordion');
+  document.addEventListener('DOMContentLoaded', function() {
+    var accordions = document.querySelectorAll('.accordion');
 
-        // Add click event listeners to each accordion
-        accordions.forEach(function(accordion) {
-            accordion.addEventListener('click', function() {
-                // Check if the clicked accordion is already active
-                var isActive = this.classList.contains('active');
+    // Add click event listeners to each accordion
+    accordions.forEach(function(accordion) {
+        accordion.addEventListener('click', function() {
+            // Check if the clicked accordion is already active
+            var isActive = this.classList.contains('active');
 
-                // Close all accordions
-                accordions.forEach(function(otherAccordion) {
-                    otherAccordion.classList.remove('active');
-                    otherAccordion.nextElementSibling.style.display = 'none';
-                });
-
-                // Toggle the active class and show/hide the panel
-                this.classList.toggle('active', !isActive);
-                var panel = this.nextElementSibling;
-                panel.style.display = isActive ? 'none' : 'block';
+            // Close all accordions
+            accordions.forEach(function(otherAccordion) {
+                otherAccordion.classList.remove('active');
+                otherAccordion.nextElementSibling.style.display = 'none';
             });
+
+            // Toggle the active class and show/hide the panel
+            this.classList.toggle('active', !isActive);
+            var panel = this.nextElementSibling;
+            panel.style.display = isActive ? 'none' : 'block';
         });
     });
- 
-    function generateWeeklyCalendar(roomNumber, availabilityStatus) {
-      const container = document.getElementById(`daysContainer${roomNumber}`);
+});
 
-      // Get the days of the week (Monday through Friday)
-      const daysOfWeek = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'];
+function generateWeeklyCalendar(roomNumber, availabilityStatus) {
+  const container = document.getElementById(`daysContainer${roomNumber}`);
 
-      // Display only the days for the current week
-      const currentDate = new Date();
-      const currentDayOfWeek = currentDate.getDay(); // 0 for Sunday, 1 for Monday, etc.
+  // Get the days of the week (Monday through Friday)
+  const daysOfWeek = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'];
 
-      // Clear previous content in the container
-      container.innerHTML = '';
+  // Display only the days for the current week
+  const currentDate = new Date();
+  const currentDayOfWeek = currentDate.getDay(); // 0 for Sunday, 1 for Monday, etc.
 
-      // Display the days in the HTML
-      daysOfWeek.forEach((day) => {
-        const dayElement = document.createElement('div');
-        dayElement.className = 'day';
-        dayElement.textContent = day;
+  // Clear previous content in the container
+  container.innerHTML = '';
 
-        // Set background color based on availability status
-       dayElement.style.backgroundColor = getBackgroundColor(availabilityStatus);
+  // Display the days in the HTML
+  daysOfWeek.forEach((day) => {
+    const dayElement = document.createElement('div');
+    dayElement.className = 'day';
+    dayElement.textContent = day;
 
-        container.appendChild(dayElement);
-      });
-    }
+    // Set background color based on availability status
+   dayElement.style.backgroundColor = getBackgroundColor(availabilityStatus);
 
-    // Function to determine background color based on availability status
-    function getBackgroundColor(day, availabilityStatus){
-      if (availabilityStatus === 'booked') {
-        // Check if all timeslots for the day are booked
-        if (allTimeslotsBookedForDay(day)) {
-          return '#F16B5C'; // Red for fully booked
-        } else {
-          return '#FFD700'; // Yellow for partially booked
-        }
-      } else {
-        return '#B3D93A'; // Green for available
-      }
-    }  
-
-   
-    /*function getBackgroundColor(availabilityStatus) {
-      if (availabilityStatus === 'booked') {
-        return '#F16B5C'; // Red for fully booked
-      } else if (allTimesSlotBookedForDay === 'partial') {
-        return '#FFD700'; // Yellow for partially booked
-      } else {
-        return '#B3D93A'; // Green for available
-      }
-    }*/ //old code assuming the new doesn't work
-
-    // Generate calendars for each room
-    {% for room in room_info|sort(attribute='status', reverse=True) %}
-      generateWeeklyCalendar('{{ room.room }}', '{{ room.availability }}');
-    {% endfor %}
-
-    // Highlight the current day in each calendar
-    const currentDate = new Date();
-    const currentDayOfWeek = currentDate.getDay();
-   // const currentDay = currentDate.toLocaleDateString('en-US', { weekday: 'short' });
-
-   document.querySelectorAll('.days-container').forEach(container => {
-    const days = container.querySelectorAll('.day');
-    days.forEach((day, index) => {
-      const dayIndex = (currentDayOfWeek + index) % 7;
-      if (dayIndex === currentDayOfWeek) {
-        day.classList.add('current-day');
-      }
-    });
+    container.appendChild(dayElement);
   });
-  
+}
+
+// Function to determine background color based on availability status
+function getBackgroundColor(day, availabilityStatus){
+  if (availabilityStatus === 'booked') {
+    // Check if all timeslots for the day are booked
+    if (allTimeslotsBookedForDay(day)) {
+      return '#F16B5C'; // Red for fully booked
+    } else {
+      return '#FFD700'; // Yellow for partially booked
+    }
+  } else {
+    return '#B3D93A'; // Green for available
+  }
+}  
+
+
+/*function getBackgroundColor(availabilityStatus) {
+  if (availabilityStatus === 'booked') {
+    return '#F16B5C'; // Red for fully booked
+  } else if (allTimesSlotBookedForDay === 'partial') {
+    return '#FFD700'; // Yellow for partially booked
+  } else {
+    return '#B3D93A'; // Green for available
+  }
+}*/ //old code assuming the new doesn't work
+
+// Generate calendars for each room
+{% for room in room_info|sort(attribute='status', reverse=True) %}
+  generateWeeklyCalendar('{{ room.room }}', '{{ room.availability }}');
+{% endfor %}
+
+// Highlight the current day in each calendar
+const currentDate = new Date();
+const currentDayOfWeek = currentDate.getDay();
+// const currentDay = currentDate.toLocaleDateString('en-US', { weekday: 'short' });
+
+document.querySelectorAll('.days-container').forEach(container => {
+const days = container.querySelectorAll('.day');
+days.forEach((day, index) => {
+  const dayIndex = (currentDayOfWeek + index) % 7;
+  if (dayIndex === currentDayOfWeek) {
+    day.classList.add('current-day');
+  }
+});
+});
 
 </script> 
 
