@@ -267,6 +267,7 @@ function submitBooking(checkedValues, selectedRoomNumber, selectedDate, bookingI
         .catch((error) => {  // Catch any errors and log them to the console
             console.error('Error:', error); // Log the error to the console
         });
+        resetCheckboxes();
 }
 
 // JavaScript function to change background color
