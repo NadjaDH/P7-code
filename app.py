@@ -277,9 +277,9 @@ def submit_booking():
             if is_timeslot_booked(timeslot, room, date):
                 return jsonify({'error': 'One or more selected timeslots are already booked'}), 400
         # Insert the booking into the database if there are no double bookings
-        insert_booking(timeslots, room, date, BookID)
-        print(f'BookID: {insert_booking(timeslots, room, date, BookID)}')
-        return jsonify({'message': 'Booking submitted successfully'}), 200
+        booking_id = insert_booking(timeslots, room, date, BookID)
+        #print(f'BookID: {insert_booking(timeslots, room, date, BookID)}')
+        return jsonify({'message': 'Booking submitted successfully', 'booking_id': booking_id}), 200
     except ValueError as e: #This exception is raised when a double booking is detected.
         return jsonify({'error': str(e)}), 400 #Return 400 for bad request
     except Exception as e:
