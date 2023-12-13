@@ -237,7 +237,13 @@ function cancelBooking(event) {
     })
         // TODO: Mangler alert.
         .then(response => response.json())
-        .then(data => console.log(data))
+        .then(data => { 
+            if (data.message) {
+                alert(data.message);
+            } else {
+                alert(data.error);
+            }
+        })
         .catch(error => console.error('Error:', error));
 }
 
