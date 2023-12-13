@@ -4,10 +4,18 @@ let selectedDate; // Variable to store the selected date
 var bookedTimeslots = []; // Array to store the booked timeslots
 var bookButton = document.getElementById('bookButton'); // Get the book button
 
-function isTimeslotBooked(timeslot) { //The function isTimeslotBooked(timeslot) checks if a given timeslot is already booked.
+// Made variables since we did the same in html where we hardcoded dates, used in weeklyCalendar()
+var dates = new Map();
+dates.set('Mon', '2023-11-20')
+dates.set('Tue', '2023-11-21')
+dates.set('Wed', '2023-11-22')
+dates.set('Thu', '2023-11-23')
+dates.set('Fri', '2023-11-24')
+
+/*function isTimeslotBooked(timeslot) { //The function isTimeslotBooked(timeslot) checks if a given timeslot is already booked.
     alert(bookedTimeslots);
     return bookedTimeslots.includes(timeslot);
-}
+}*/
 
 async function isTimeslotBooked(timeslot, room, selected_date) {
     var booked = false;
@@ -32,33 +40,63 @@ async function isTimeslotBooked(timeslot, room, selected_date) {
                 if(data.message) booked = true;
             }
         })
-        .catch((error) => {  // Catch any errors and log them to the console
+        .catch((error) => {  // Catch any errors 
             console.error('Error:', error); // Log the error to the console
         });
         return booked;
 }
 
 function displayCheckbox() {
-    // Get all checkboxes on the page
+    // get all checkboxes on the page
     var checkboxes = document.querySelectorAll('input[type="checkbox"]');
     
-    // Check if any checkbox is checked and store the number of checked checkboxes
+    // check if any checkbox is checked and store the number of checked checkboxes
     var checkedCount = Array.from(checkboxes).filter(checkbox => checkbox.checked).length;
     
-    // Get the button element
+    // get the button element
     var button = document.getElementById('bookButton');
     
-    // Enable or disable the button based on how many checkboxes are checked
+    // enable or disable the button based on how many checkboxes are checked
     button.disabled = checkedCount === 0 || checkedCount > 4 || !selectedRoomNumber;
     
-    // set the value of the hidden input field for each checkbox
-    checkboxes.forEach((checkbox, index) => {
+    // set the value of the hidden input field for each checkbox ***WHAT DOES THIS DO IT GAVE ME ERRORS 
+    /*checkboxes.forEach((checkbox, index) => {
         var timeslotInput = document.getElementById('timeslot-' + (index + 1));
         if (checkbox.checked) {
             timeslotInput.value = checkbox.getAttribute('data-timeslot');
         } else {
             timeslotInput.value = '';
         }
+    });*/
+}
+
+async function weeklyCalendar(){
+    var slots = ['07:00 - 08:00', '08:00 - 09:00', '09:00 - 10:00', '10:00 - 11:00', '11:00 - 12:00',
+                '12:00 - 13:00', '13:00 - 14:00', '14:00 - 15:00', '15:00 - 16:00']; // needed to make timeslots because I wasn't sure how to make it work with starttime endtime
+    var daysContainers = document.querySelectorAll('div[class="days-container"]'); // Select all elements with class "days-container", which is only our weeklycalendar
+
+    Array.from(daysContainers).forEach( async (container) => {     // Iterate over each "days-container" and extract the room number from the container's ID and the child nodes (days of the week) of the container
+        var roomNumber = "Room " + container.id.substring(container.id.lastIndexOf(" ") + 1);
+        var daysOfWeek = container.childNodes;
+       // console.log(roomNumber);
+        daysOfWeek.forEach(async (day) => {
+            day.style.backgroundColor = '#B3D93A'; // Green for 3 or less bookings
+            var checkedCount = 0; // Counter for checked bookings
+            slots.forEach( async (slot) => { // Iterate over each time slot
+                var booked = await isTimeslotBooked(slot, roomNumber, dates.get(day.textContent)); // Check if the current time slot is booked for the specific room and date
+
+                if (booked){
+                    checkedCount++;
+                    if (checkedCount <= 3) {
+                        day.style.backgroundColor = '#B3D93A'; // Green for 3 or less bookings
+                    } else if (checkedCount <= 8) {
+                        day.style.backgroundColor = '#FFD700'; // Yellow for partially booked (4-8 bookings)
+                    } else {
+                        day.style.backgroundColor = '#F16B5C'; // Red for fully booked
+                    }
+                }
+            });
+        });
     });
 }
 
@@ -93,8 +131,7 @@ function displayAlert() { // This function is called when the big blue bookbutto
     
 }
 
-// javascript for tabbar
-function OpenDay(evt, day, selectedDate) {
+function OpenDay(evt, day, selectedDate) { // Tabbar functionality
     var i, tabcontent, tablinks; 
     
     var dayOfWeek = (parseInt(day) - 1) % 7; //Convert the day of the week to a number between 0 and 6
@@ -135,10 +172,10 @@ function selectDate(date) {
     selectedDateInput.value = date;
 }
 
-// Reset the checkboxes when a new tab is opened
-function resetCheckboxes() {
+function resetCheckboxes() { // Reset the checkboxes when a new tab is opened
     var checkboxes = document.querySelectorAll('input[type="checkbox"]');
     checkboxes.forEach(async (checkbox) => {
+        console.log(checkbox.value);
         var booked = await isTimeslotBooked(checkbox.value, selectedRoomNumber, selectedDate);
         if (booked){
             checkbox.disabled = true;
@@ -316,6 +353,7 @@ function updateClock() {
     document.getElementById('daynum').textContent = daynum;
     document.getElementById('year').textContent = year;
 }
+weeklyCalendar();
 updateClock();
 setInterval(updateClock, 1000);
 setInterval(updateClock, 1000);

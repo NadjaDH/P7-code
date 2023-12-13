@@ -30,15 +30,13 @@
         <div class="days-container" id="daysContainer{{ room.room }}">
         </div>
       </div>
-      <p><br>Status: {{ "Available" if room.status else "Reserved" }}
-        <br> Next Booking: </p> 
+      <p><br>Status: {{ "Available" if room.status else "Reserved" }}</p> 
         
     </div>
     <script>
- 
 
-      // Function to determine background color based on availability status
-     function getBackgroundColor(StatusIndicator) {
+      // Function to determine background color based on availability status **we dont need dis no more, refer to weeklyCalendar()
+     /*function getBackgroundColor(StatusIndicator) {
           if (StatusIndicator === 'booking') {
             return '#FFD700';
               // Check if all timeslots for the day are booked
@@ -48,11 +46,11 @@
                 return '#FFD700'; // Yellow for partially booked
               }
           } else {
-            return '#B3D93A'; // Green for available */
+            return '#B3D93A'; // Green for available 
           } else {
             return '#B3D93A';
           }
-      }
+      }*/
 
 
       // Function to generate weekly calendar
@@ -76,7 +74,7 @@
               dayElement.textContent = day;
 
               // Set background color based on availability status
-              dayElement.style.backgroundColor = getBackgroundColor(StatusIndicator);
+              //dayElement.style.backgroundColor = getBackgroundColor(StatusIndicator);
 
               container.appendChild(dayElement);
           });
