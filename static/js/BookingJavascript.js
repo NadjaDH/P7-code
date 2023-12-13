@@ -257,7 +257,6 @@ function submitBooking(checkedValues, selectedRoomNumber, selectedDate, bookingI
             timeslots: checkedValues, // Include the array of checked values
             Room: selectedRoomNumber, // Include the room number
             date: selectedDate, // Include the date
-            BookID: bookingID // Include the bookingID
         })
     })
         .then(response => response.json()) // Parse the response as JSON
@@ -267,7 +266,7 @@ function submitBooking(checkedValues, selectedRoomNumber, selectedDate, bookingI
             } else {
                 //If there's no error message, the booking was successful
                 console.log('Success:', data);
-                alert("Room booked!");
+                alert("Room booked! Booking ID: " + data.booking_id);
             }
         })
         .catch((error) => {  // Catch any errors and log them to the console
