@@ -26,7 +26,9 @@
     <div class="panel">
       <p><br>Status: {{ "Available" if room.status else "Reserved" }}
         <br> Next Booking: </p> 
+        
     </div>
+
   {% endfor %}
   
 
@@ -37,6 +39,7 @@
       <img src="{{ url_for('static', filename='images/K3map.png') }}" alt="Map">
     </label>
   </div>
+ 
    
   <script> 
   // Dette er JS for at accordion fungerer
@@ -64,60 +67,7 @@
     });
 </script> 
 
-<script>
- // CALENDAR VIA CHAT GPT
 
-  // Function to determine background color based on availability status
- function getBackgroundColor(StatusIndicator) {
-      if (StatusIndicator === 'booking') {
-        return '#FFD700';
-          // Check if all timeslots for the day are booked
-          /*if (allTimeslotsBookedForDay()) {
-              return '#F16B5C'; // Red for fully booked
-          } else {
-            return '#FFD700'; // Yellow for partially booked
-          }
-      } else {
-        return '#B3D93A'; // Green for available */
-      } else {
-        return '#B3D93A';
-      }
-  }
-
-
-  // Function to generate weekly calendar
-  function generateWeeklyCalendar(roomNumber, StatusIndicator) {
-      const container = document.getElementById(`daysContainer${roomNumber}`);
-
-      // Get the days of the week (Monday through Friday)
-      const daysOfWeek = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'];
-
-      // Display only the days for the current week
-      const currentDate = new Date();
-      const currentDayOfWeek = (currentDate.getDay() + 6) % 7; // 0 for Sunday, 1 for Monday, etc.
-
-      // Clear previous content in the container
-      container.innerHTML = '';
-
-      // Display the days in the HTML
-      daysOfWeek.forEach((day, index) => {
-          const dayElement = document.createElement('div');
-          dayElement.className = 'day';
-          dayElement.textContent = day;
-
-          // Set background color based on availability status
-          dayElement.style.backgroundColor = getBackgroundColor(StatusIndicator);
-
-          container.appendChild(dayElement);
-      });
-
-      // Highlight the current day
-      container.querySelectorAll('.day')[currentDayOfWeek].classList.add('current-day');
-  }
-
-  // Generate calendars for each room
-  generateWeeklyCalendar('{{ room.room }}', '{{ room.availability }}');
-</script>
 
 <script src = "{{ url_for('static', filename='js/BookingJavascript.js') }}"></script>
 
