@@ -11,7 +11,7 @@ function isTimeslotBooked(timeslot) { //The function isTimeslotBooked(timeslot) 
 
 async function isTimeslotBooked(timeslot, room, selected_date) {
     var booked = false;
-    const response = await fetch('/is_timeslot_booked', {
+    const response = await fetch('/is_timeslot_booked', { 
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',

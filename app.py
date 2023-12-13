@@ -169,6 +169,7 @@ def from_Timeslots_To_Booking (room, date, timeslots): #Define one booking as on
 #    return timeslots, room og date
        
 def insert_booking(timeslots, room, date, BookID):
+
     #OBS: BookID har ingen værdi, men værdi sættes i tabellen ved INSERT
     conn = sqlite3.connect('booking.db')
     cursor = conn.cursor()
@@ -184,24 +185,25 @@ def insert_booking(timeslots, room, date, BookID):
         sql = f"DELETE FROM bookings WHERE Day = '{date}' AND RoomNO = '{room}'"
         print(sql)
         cursor.execute(sql)
-        
+    
         # Gem bookings i database
         for booking in bookings:
             # Check if the timeslot is already booked
           #TODO:  if is_timeslot_booked(timeslot, room, date):
            #     raise ValueError(f'Timeslot {timeslot} for Room {room} on {date} is already booked.')
-           cursor.execute("INSERT INTO bookings (RoomNO, Day, StartTime, EndTime, is_booked) VALUES(?, ?, ?, ?, 1)", (room, date, booking[2], booking[3]))
-
+            cursor.execute("INSERT INTO bookings (RoomNO, Day, StartTime, EndTime, is_booked) VALUES(?, ?, ?, ?, 1)", (room, date, booking[2], booking[3]))
+            booking_id = cursor.lastrowid
             # If the timeslot is not booked, insert the booking and set is_booked to 1
             #cursor.execute("INSERT INTO bookings (BookingID, Time, RoomNO, Day, is_booked) VALUES (?, ?, ?, ?, 1)", (BookID, timeslot, room, date))
-    
+        
+
         # Commit the changes
         conn.commit()
+        return booking_id
     except Exception as e:
         print('Error inserting booking:', e)
     finally:
         conn.close()
-
 # Update the 'check_in_room' and 'check_out_room' functions as follows
 
 def check_in_room(roomNumber):
@@ -269,12 +271,14 @@ def submit_booking():
         date = data.get('date')
         BookID = data.get('BookID')
 
+        
+
         for timeslot in timeslots:
             if is_timeslot_booked(timeslot, room, date):
                 return jsonify({'error': 'One or more selected timeslots are already booked'}), 400
         # Insert the booking into the database if there are no double bookings
         insert_booking(timeslots, room, date, BookID)
-
+        print(f'BookID: {insert_booking(timeslots, room, date, BookID)}')
         return jsonify({'message': 'Booking submitted successfully'}), 200
     except ValueError as e: #This exception is raised when a double booking is detected.
         return jsonify({'error': str(e)}), 400 #Return 400 for bad request
