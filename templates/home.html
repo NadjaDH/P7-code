@@ -24,6 +24,12 @@
     <p id="Textindicator"> Status: {{ "Available" if room.status else "Reserved" }} </p>
   </button>
     <div class="panel">
+       <!--Calendar goes here -->
+       <div id="calendarContainer{{ room.room }}">
+        <h2>Weekly Calendar</h2>
+        <div class="days-container" id="daysContainer{{ room.room }}">
+        </div>
+      </div>
       <p><br>Status: {{ "Available" if room.status else "Reserved" }}
         <br> Next Booking: </p> 
         
