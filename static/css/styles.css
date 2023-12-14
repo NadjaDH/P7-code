@@ -750,6 +750,18 @@ input[type=checkbox]:checked~label>img {
     cursor: zoom-out;
 }
 
+input[type=checkbox]:disabled {
+    display: none;
+}
+
+.reserved-label {
+    display: none;
+}
+
+input[type=checkbox]:disabled + .reserved-label {
+    display: inline;
+}
+
 /* Not sure if we need this anymore because it relate to the original contact page
 But should be confirmed by other group members before it get deleted */
 /*

@@ -192,6 +192,7 @@ def insert_booking(timeslots, room, date, BookID):
           #TODO:  if is_timeslot_booked(timeslot, room, date):
            #     raise ValueError(f'Timeslot {timeslot} for Room {room} on {date} is already booked.')
             cursor.execute("INSERT INTO bookings (RoomNO, Day, StartTime, EndTime, is_booked) VALUES(?, ?, ?, ?, 1)", (room, date, booking[2], booking[3]))
+            # Get the booking ID of the last inserted booking
             booking_id = cursor.lastrowid
             # If the timeslot is not booked, insert the booking and set is_booked to 1
             #cursor.execute("INSERT INTO bookings (BookingID, Time, RoomNO, Day, is_booked) VALUES (?, ?, ?, ?, 1)", (BookID, timeslot, room, date))
@@ -199,7 +200,7 @@ def insert_booking(timeslots, room, date, BookID):
 
         # Commit the changes
         conn.commit()
-        return booking_id
+        return booking_id #Return the booking ID
     except Exception as e:
         print('Error inserting booking:', e)
     finally:
@@ -277,7 +278,7 @@ def submit_booking():
             if is_timeslot_booked(timeslot, room, date):
                 return jsonify({'error': 'One or more selected timeslots are already booked'}), 400
         # Insert the booking into the database if there are no double bookings
-        booking_id = insert_booking(timeslots, room, date, BookID)
+        booking_id = insert_booking(timeslots, room, date, BookID) 
         #print(f'BookID: {insert_booking(timeslots, room, date, BookID)}')
         return jsonify({'message': 'Booking submitted successfully', 'booking_id': booking_id}), 200
     except ValueError as e: #This exception is raised when a double booking is detected.

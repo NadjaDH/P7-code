@@ -52,8 +52,9 @@
                     <tr>
                         <td>{{ timeslot }}</td>
                         <td>
-                            <input type="checkbox" id="checkbox-{{ loop.index }}" name="timeslots" value="{{ timeslot }}"
-                            data-timeslot="{{ timeslot }}" onclick="displayCheckbox()">
+                            <input type="checkbox" id="checkbox-{{loop.index}}" name="timeslots" value="{{ timeslot }}"
+                                   data-time="{{ timeslot }}" onclick="displayCheckbox()">
+                            <span class="reserved-label" id="reserved-{{loop.index}}">Reserved</span>
                         </td>
                     </tr>
                     {% endfor %}
@@ -71,8 +72,11 @@
                 <tr>
                     <td>{{ timeslot }}</td>
                     <!-- Display the timeslot. And create a checkbox with the value of the timeslot  -->
-                    <td><input type="checkbox" id="checkbox-{{loop.index}}" name="timeslots" value="{{ timeslot }}"
-                            data-time="{{ timeslot }}" onclick="displayCheckbox()"></td>
+                    <td>
+                        <input type="checkbox" id="checkbox-{{loop.index}}" name="timeslots" value="{{ timeslot }}"
+                               data-time="{{ timeslot }}" onclick="displayCheckbox()">
+                        <span class="reserved-label" id="reserved-{{loop.index}}">Reserved</span>
+                    </td>
                     <!-- Checkbox to enable the button -->
                 </tr>
                 {% endfor %}
@@ -88,8 +92,11 @@
                 '12:00 - 13:00', '13:00 - 14:00', '14:00 - 15:00', '15:00 - 16:00'] %}
                 <tr>
                     <td>{{ timeslot }}</td>
-                    <td><input type="checkbox" id="checkbox-{{loop.index}}" name="timeslots" value="{{ timeslot }}"
-                            data-time="{{ timeslot }}" onclick="displayCheckbox()"></td>
+                    <td>
+                        <input type="checkbox" id="checkbox-{{loop.index}}" name="timeslots" value="{{ timeslot }}"
+                               data-time="{{ timeslot }}" onclick="displayCheckbox()">
+                        <span class="reserved-label" id="reserved-{{loop.index}}">Reserved</span>
+                    </td>
                     <!-- Checkbox to enable the button --></td>
                 </tr>{% endfor %}
             </table>
@@ -104,9 +111,11 @@
                 '12:00 - 13:00', '13:00 - 14:00', '14:00 - 15:00','15:00 - 16:00'] %}
                 <tr>
                     <td>{{ timeslot }}</td>
-                    <td><input type="checkbox" id="checkbox-{{loop.index}}" name="timeslots" value="{{ timeslot }}"
-                            data-time="{{ timeslot }}" onclick="displayCheckbox()"></td>
-                    <!-- Checkbox to enable the button --></td>
+                    <td>
+                        <input type="checkbox" id="checkbox-{{loop.index}}" name="timeslots" value="{{ timeslot }}"
+                               data-time="{{ timeslot }}" onclick="displayCheckbox()">
+                        <span class="reserved-label" id="reserved-{{loop.index}}">Reserved</span>
+                    </td>
                 </tr>{% endfor %}
             </table>
         </div>
