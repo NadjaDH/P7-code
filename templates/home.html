@@ -21,7 +21,7 @@
     {{ room.room }}
     <span id="StatusIndicator{{ room.room }}" class="accordion-status-indicator"
     style="background-color: {{'green' if room.status else 'red'}}"></span>
-    <p id="Textindicator"> Status: {{ "Available" if room.status else "Reserved" }} </p>
+    <p id="Textindicator"> Status: {{ "Available" if room.status else "Occupied" }} </p>
   </button>
     <div class="panel">
        <!--Calendar goes here -->
@@ -29,9 +29,7 @@
         <h2>Weekly Calendar</h2>
         <div class="days-container" id="daysContainer{{ room.room }}">
         </div>
-      </div>
-      <p><br>Status: {{ "Available" if room.status else "Reserved" }}</p> 
-        
+      </div>        
     </div>
     <script>
       // Function to generate weekly calendar
