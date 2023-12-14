@@ -3,9 +3,15 @@ from accordion import accordion_function
 import sqlite3
 from dateutil.parser import parse
 import traceback
+import logging
 
+class NoHttpRequestsFilter(logging.Filter):
+    def filter(self, record):
+        return '"POST /is_timeslot_booked' not in record.getMessage()
 
 app = Flask(__name__)
+log = logging.getLogger('werkzeug')
+log.addFilter(NoHttpRequestsFilter()) #disables the logging of HTTP requests in the console. This is done to avoid cluttering the console with unnecessary information.
 
 @app.route('/')
 def home():
@@ -14,7 +20,7 @@ def home():
     c = conn.cursor()
     #manually adding a list with room numbers
     all_rooms = ['Room 4.118', 'Room 4.120', 'Room 4.122', 'Room 4.124', 'Room 4.125']
-   # Fetch the status for each room from the database
+    # Fetch the status for each room from the database
     c.execute("SELECT RoomNO, status FROM bookings")
     room_statuses = dict(c.fetchall())
 
@@ -107,16 +113,16 @@ def is_timeslot_booked_route():
     
 
 def is_timeslot_booked(timeslot, room, date):
-    print(timeslot, room, date)
+    #print(timeslot, room, date)
     conn = sqlite3.connect('booking.db')
     cursor = conn.cursor()
 
     try:
         # Check if there is any booking with the specified timeslot, room, and date
-        print(f"timeslot: {timeslot}, room: {room}, date: {date}")
+        #print(f"timeslot: {timeslot}, room: {room}, date: {date}")
         query = "SELECT COUNT(*) FROM bookings WHERE StartTime <= ? AND EndTime >= ? AND RoomNO = ? AND Day = ? AND is_booked = 1"
 
-        print(query)
+        #print(query)
         start_time, end_time = timeslot.split(' - ')
         cursor.execute(query, (start_time, end_time, room, date))
         count = cursor.fetchone()[0]
@@ -126,13 +132,14 @@ def is_timeslot_booked(timeslot, room, date):
         
         return False #Return false if the timeslot is available
     except Exception as e:
-        print('Error checking if timeslot is booked:', e)
+        #print('Error checking if timeslot is booked:', e)
         return True  # Assume the timeslot is booked in case of an error
     finally:
         conn.close()
         
 def from_Timeslots_To_Booking (room, date, timeslots): #Define one booking as one booking only
     bookings = []
+    timeslots.sort()
     if len(timeslots) > 0:
         lastBookingPosition = -1 #ingen bookinger gemt i liste endnu
         
@@ -175,8 +182,23 @@ def insert_booking(timeslots, room, date, BookID):
     cursor = conn.cursor()
     # Check om brugerens antal bookings er lovlige (Hent users gyldige bookinger ..)
     try:
+        # get booked time slots 
+        sql = f"SELECT StartTime, EndTime FROM bookings WHERE Day = '{date}' AND RoomNO = '{room}' AND is_booked = 1"
+        print(sql)
+        cursor.execute(sql)
+        bookedTimeslots = cursor.fetchall()
+        #print(f'bookedTimeslots {bookedTimeslots[0]}')
+        #print(f'timeslots {timeslots}')
+
+        # we add the existing booking to the newly booked timeslot
+        for row in bookedTimeslots:
+            print(row)
+            timeslots.append(row[0]+" - "+row[1])
+        
+        #print(f'new timeslots {timeslots}')
+        
         # Omsæt timeslots til bookings
-        bookings = from_Timeslots_To_Booking( room, date, timeslots  )
+        bookings = from_Timeslots_To_Booking( room, date, timeslots )
         #print(f'BookId {BookID}')
         # Check if the timeslot is already booked
         # (senere) Hent brugerens valide bookinger og check om brugeren samlet set overholder krav
