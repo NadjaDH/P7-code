@@ -15,7 +15,7 @@ def home():
     #manually adding a list with room numbers
     all_rooms = ['Room 4.118', 'Room 4.120', 'Room 4.122', 'Room 4.124', 'Room 4.125']
    # Fetch the status for each room from the database
-    c.execute("SELECT RoomNO, status FROM bookings")
+    c.execute("SELECT RoomNO, status FROM room_status")
     room_statuses = dict(c.fetchall())
 
     # Create room_info list with default status values
@@ -61,6 +61,22 @@ def cancel_booking(booking_id):
         return False, 'Error cancelling the booking'
     finally:
         conn.close()
+
+def insert_roomNO():
+# Connect to the SQLite database
+    conn = sqlite3.connect('booking.db')
+    c = conn.cursor()
+
+    # List of room numbers
+    all_rooms = ['Room 4.118', 'Room 4.120', 'Room 4.122', 'Room 4.124', 'Room 4.125']
+
+    # Insert each room number into the room_status table
+    for room in all_rooms:
+        c.execute("INSERT INTO room_status (RoomNO) VALUES (?)", (room,))
+
+    # Commit the changes and close the connection
+    conn.commit()
+    conn.close()
 
 @app.route('/cancel_booking_route', methods=['POST'])
 def cancel_booking_route():
@@ -213,7 +229,7 @@ def check_in_room(roomNumber):
         c = conn.cursor()
 
         # Update the status of the room to 'checked in'
-        query = "UPDATE bookings SET status = ? WHERE RoomNO = ?"
+        query = "UPDATE room_status SET status = ? WHERE RoomNO = ?"
         params = (False, roomNumber)
         c.execute(query, params)
         print(f"Executing query: {query} with params: {params}")  # Add this line
@@ -242,7 +258,7 @@ def check_out_room(roomNumber):
         conn = sqlite3.connect('booking.db')
     
         # Update the status of the room to 'checked out'
-        conn.cursor().execute("UPDATE bookings SET status = ? WHERE RoomNO = ?", (True, roomNumber,)) # Update the status of the room to 'checked out'
+        conn.cursor().execute("UPDATE room_status SET status = ? WHERE RoomNO = ?", (True, roomNumber,)) # Update the status of the room to 'checked out'
 
         conn.commit() # to update the database
         print(f"checking out room {roomNumber}")
