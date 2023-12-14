@@ -43,7 +43,7 @@ def booking():
     c.execute("SELECT StartTime, EndTime, RoomNO, Day FROM bookings WHERE is_booked = 1")
     booking_info = [{'room': room, 'timeslot': f'{start_time} - {end_time}', 'date': date} for room, start_time, end_time, date in c.fetchall()]
     conn.close()
-    return render_template("BookRoom.html", booking_info=booking_info, is_timeslot_booked=is_timeslot_booked)
+    return render_template("BookRoom.html", booking_info=booking_info)
 
 def cancel_booking(booking_id):
     conn = sqlite3.connect('booking.db')
