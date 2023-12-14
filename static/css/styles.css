@@ -5,6 +5,7 @@ var, b, u, i, center, dl, dt, dd, li, fieldset, form, label,
 legend, table, tbody, tfoot, thead, tr, th, td, aside, 
 canvas, details, figure, footer, header, hgroup, menu, nav,
 
+/*IMPORTANT Changes booking tabbar*/
 section {
     margin: 0;
     padding: 0;
@@ -13,9 +14,8 @@ section {
     font: inherit;
     vertical-align: baseline;
 }
-
-article, aside, details, figcaption, figure, footer,
-header, hgroup, menu, nav, section {
+/*Change size, position at front page*/
+details, figcaption, figure, header, hgroup, menu, nav, section {
     display: block
 }
 
@@ -54,6 +54,7 @@ body {
     font-size: 12px;
     line-height: 1;
     color: #354450;
+    background: #e3e8ec
 }
 
 h1, .h1 {
@@ -86,49 +87,6 @@ p {
     font-weight: normal;
     font-size: 9px;
     color: #a2acb6
-}
-
-.circle {
-    border-radius: 50%;
-    width: 110px;
-    height: 110px;
-    margin: 18px auto;
-    overflow: hidden;
-    text-align: center;
-    background-color: white;
-    color: #211a52
-}
-
-.smallButton {
-    background: 0;
-    border: 0;
-    cursor: pointer;
-    display: block;
-    text-align: center;
-    letter-spacing: .18333333333em;
-    line-height: 100%;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 12px;
-    font-family: "DIN Next W01 Regular", "Helvetica", sans-serif;
-    text-transform: uppercase;
-    margin: 6px auto 0;
-    clear: both
-}
-
-.smallButton:after {
-    text-transform: none;
-    font-family: "aauother";
-    font-size: 35px;
-    display: block;
-    text-align: center;
-    line-height: 100%;
-    margin: 6px auto 0;
-    content: 'y'
-}
-
-body {
-    background: #e3e8ec
 }
 
 .columned a:hover,
