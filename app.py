@@ -3,9 +3,15 @@ from accordion import accordion_function
 import sqlite3
 from dateutil.parser import parse
 import traceback
+import logging
 
+class NoHttpRequestsFilter(logging.Filter):
+    def filter(self, record):
+        return '"POST /is_timeslot_booked' not in record.getMessage()
 
 app = Flask(__name__)
+log = logging.getLogger('werkzeug')
+log.addFilter(NoHttpRequestsFilter()) #disables the logging of HTTP requests in the console. This is done to avoid cluttering the console with unnecessary information.
 
 @app.route('/')
 def home():
@@ -14,7 +20,7 @@ def home():
     c = conn.cursor()
     #manually adding a list with room numbers
     all_rooms = ['Room 4.118', 'Room 4.120', 'Room 4.122', 'Room 4.124', 'Room 4.125']
-   # Fetch the status for each room from the database
+    # Fetch the status for each room from the database
     c.execute("SELECT RoomNO, status FROM bookings")
     room_statuses = dict(c.fetchall())
 
@@ -188,7 +194,7 @@ def insert_booking(timeslots, room, date, BookID):
             print(row)
             timeslots.append(row[0]+" - "+row[1])
         
-        print(f'new timeslots {timeslots}')
+        #print(f'new timeslots {timeslots}')
         
         # Omsæt timeslots til bookings
         bookings = from_Timeslots_To_Booking( room, date, timeslots )
@@ -204,8 +210,8 @@ def insert_booking(timeslots, room, date, BookID):
         # Gem bookings i database
         for booking in bookings:
             # Check if the timeslot is already booked
-          #TODO:  if is_timeslot_booked(timeslot, room, date):
-           #     raise ValueError(f'Timeslot {timeslot} for Room {room} on {date} is already booked.')
+            # TODO: if is_timeslot_booked(timeslot, room, date):
+            # raise ValueError(f'Timeslot {timeslot} for Room {room} on {date} is already booked.')
            cursor.execute("INSERT INTO bookings (RoomNO, Day, StartTime, EndTime, is_booked) VALUES(?, ?, ?, ?, 1)", (room, date, booking[2], booking[3]))
 
             # If the timeslot is not booked, insert the booking and set is_booked to 1
