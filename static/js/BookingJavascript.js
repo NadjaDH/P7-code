@@ -151,7 +151,12 @@ function resetCheckboxes() {
 function hasDayPassed(daysOfWeek) { //Function to check if the day of the week is before the current day
     var now = new Date();
     var currentDay = now.getDay();
-    return currentDay > daysOfWeek;
+
+    if (currentDay === 0 || currentDay === 6) {
+        return false; //If it's Saturday or Sunday, return false
+    }
+
+    return currentDay > daysOfWeek; //Return true if the current day is after the day of the week
 }
 
 // javascript for closing the dropdown menu when a room is selected
