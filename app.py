@@ -62,22 +62,6 @@ def cancel_booking(booking_id):
     finally:
         conn.close()
 
-def insert_roomNO():
-# Connect to the SQLite database
-    conn = sqlite3.connect('booking.db')
-    c = conn.cursor()
-
-    # List of room numbers
-    all_rooms = ['Room 4.118', 'Room 4.120', 'Room 4.122', 'Room 4.124', 'Room 4.125']
-
-    # Insert each room number into the room_status table
-    for room in all_rooms:
-        c.execute("INSERT INTO room_status (RoomNO) VALUES (?)", (room,))
-
-    # Commit the changes and close the connection
-    conn.commit()
-    conn.close()
-
 @app.route('/cancel_booking_route', methods=['POST'])
 def cancel_booking_route():
     try:
@@ -304,3 +288,4 @@ def submit_booking():
 
 if __name__ == '__main__':
     app.run(debug=True) #debug=True means that the server will reload itself each time you make a change to the code
+    
