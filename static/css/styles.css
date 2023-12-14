@@ -127,6 +127,7 @@ header {
 .navbar li a {
     /* styling af links i navigation bar */
     display: block;
+    float: center;
     color: #211a52;
     font-family: "DIN Next W01 Bold", "Helvetica", sans-serif;
     text-transform: uppercase;
@@ -204,8 +205,9 @@ header {
 }
 
 .tab button {
-    background-color: #ab9e9e;
-    border: 1px solid black;
+    font-weight: bold;
+    background-color: #fff;
+    border: 2px solid black;
     border-radius: none;
     padding: 14px 16px;
     transition: 0.3s;
@@ -237,6 +239,7 @@ header {
     position: absolute;
     left: 45px;
     top: 345px; /*Change position of the table*/
+    
 }
 
 /*Table is affecting the booking table*/
