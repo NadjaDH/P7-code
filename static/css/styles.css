@@ -180,57 +180,7 @@ header {
     left: 800px; /* Gør at knappen er 800px fra venstre side af siden */
 }
 
-.BookButton:hover {
-    /* hover effekt på knappen */
-    background-color: #ab9e9e;
-    color: white; /*Book text*/
-}
 
-.BookButton:disabled {
-    /* hvordan knappen ser ud når den er disabled */
-    background-color: #cccccc;
-    color: #666666; /*Book Text*/
-}
-
-/* style the cancel form*/
-#cancelBookingForm { /* # is used when you want to style a ID*/
-    position: absolute;
-    top: 500px;
-    left: 800px;
-}
-
-/* Styling for the check-in and check-out buttons */
-.checkInOutButton {
-    background-color: #154e74; /* Blue color */
-    color: #fff; /* White text color */
-    padding: 10px 15px; /* Padding for the button */
-    border: none; /* No border */
-    border-radius: 5px; /* Rounded corners */
-    cursor: pointer; /* Cursor style on hover */
-
-}
-
-.checkInOutButton:hover {
-    background-color: #636567; /* Dark blue color */
-}
-#checkInButton {
-    position: relative;
-    top: 420px;
-    left: 800px;
-}
-#checkOutButton {
-    position: relative;
-    top: 420px;
-    left: 825px;
-}
-
-.bookingInfo {
-    display: inline-block;
-    width: 350px;
-    position: absolute;
-    top: 355px;
-    left: 800px;
-}
 
 /* end of styling of the booking button on the booking page */
 .tab {
@@ -263,8 +213,9 @@ header {
 
 .tab button.active {
     border-bottom: none;
-    background-color: #211a52;
-    color: white;
+    background-color: #e2e2e9;
+    /*background-color: #211a52;*/
+    /*color: white;*/
     height: 45px;
 }
 
@@ -288,7 +239,8 @@ table {
 }
 thead {
    padding: 30px; 
-   background-color: #211a52;
+   background-color: #aeabc5;
+   /*background-color: #211a52;*/
 }
 td {
     
@@ -301,10 +253,11 @@ td {
 
 th {
     height: 48px;
-    background-color: #211a52;
+    background-color: #e2e2e9;
+    /*background-color: #211a52;*/
     font-size: medium;
     font-weight: bold;
-    color: white;
+    color: #211a52;
     padding-top: 20px;
 }
 
@@ -334,6 +287,8 @@ th:nth-child(2) {
 tr:nth-child(odd) { /*define every other row in the datatable*/
     background-color: #eee;
 }
+
+
 /* Style the buttons that are used to open and close the accordion panel - w3 */
 .accordion {
     background-color: #eee;
@@ -530,4 +485,54 @@ input[type=checkbox]:disabled + .reserved-label {
         text-align: left;
     }
 
-
+    .BookButton:hover {
+        /* hover effekt på knappen */
+        background-color: #ab9e9e;
+        color: white; /*Book text*/
+    }
+    
+    .BookButton:disabled {
+        /* hvordan knappen ser ud når den er disabled */
+        background-color: #cccccc;
+        color: #666666; /*Book Text*/
+    }
+    
+    /* style the cancel form*/
+    #cancelBookingForm { /* # is used when you want to style a ID*/
+        position: absolute;
+        top: 500px;
+        left: 800px;
+    }
+    
+    /* Styling for the check-in and check-out buttons */
+    .checkInOutButton {
+        background-color: #154e74; /* Blue color */
+        color: #fff; /* White text color */
+        padding: 10px 15px; /* Padding for the button */
+        border: none; /* No border */
+        border-radius: 5px; /* Rounded corners */
+        cursor: pointer; /* Cursor style on hover */
+    
+    }
+    
+    .checkInOutButton:hover {
+        background-color: #636567; /* Dark blue color */
+    }
+    #checkInButton {
+        position: relative;
+        top: 420px;
+        left: 800px;
+    }
+    #checkOutButton {
+        position: relative;
+        top: 420px;
+        left: 825px;
+    }
+    
+    .bookingInfo {
+        display: inline-block;
+        width: 350px;
+        position: absolute;
+        top: 355px;
+        left: 800px;
+    }
