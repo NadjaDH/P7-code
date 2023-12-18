@@ -20,8 +20,8 @@ def home():
     c = conn.cursor()
     #manually adding a list with room numbers
     all_rooms = ['Room 4.118', 'Room 4.120', 'Room 4.122', 'Room 4.124', 'Room 4.125']
-   # Fetch the status for each room from the database
-    c.execute("SELECT RoomNO, status FROM room_status")
+    # Fetch the status for each room from the database
+    c.execute("SELECT RoomNO, status FROM bookings")
     room_statuses = dict(c.fetchall())
 
     # Create room_info list with default status values
@@ -235,7 +235,7 @@ def check_in_room(roomNumber):
         c = conn.cursor()
 
         # Update the status of the room to 'checked in'
-        query = "UPDATE room_status SET status = ? WHERE RoomNO = ?"
+        query = "UPDATE bookings SET status = ? WHERE RoomNO = ?"
         params = (False, roomNumber)
         c.execute(query, params)
         print(f"Executing query: {query} with params: {params}")  # Add this line
@@ -264,7 +264,7 @@ def check_out_room(roomNumber):
         conn = sqlite3.connect('booking.db')
     
         # Update the status of the room to 'checked out'
-        conn.cursor().execute("UPDATE room_status SET status = ? WHERE RoomNO = ?", (True, roomNumber,)) # Update the status of the room to 'checked out'
+        conn.cursor().execute("UPDATE bookings SET status = ? WHERE RoomNO = ?", (True, roomNumber,)) # Update the status of the room to 'checked out'
 
         conn.commit() # to update the database
         print(f"checking out room {roomNumber}")
@@ -310,4 +310,3 @@ def submit_booking():
 
 if __name__ == '__main__':
     app.run(debug=True) #debug=True means that the server will reload itself each time you make a change to the code
-    
