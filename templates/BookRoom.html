@@ -3,20 +3,23 @@
 
 <head>
 
-    <title>Home</title>
+   <title>Home</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
     <!--link to cssSheet-->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/Style_Dropdown.css') }}">
 </head>
 
 <body>
-    <ul class="navbar">
-        <li><a href="{{ url_for('home') }}">Home</a></li>
-        <li><a class="active" href="{{ url_for('booking') }}">Book Room</a></li>
-        <li><a href="{{ url_for('contact') }}">Contact</a></li>
-        <li><a href="{{ url_for('information') }}">Information</a></li>
-    </ul>
-    <h1>Room Booking</h1>
+    <header>
+        <div><img src="static/images/1358x756PX_AAUBLue_logo_Uniroom.png" alt="Logo" class="logo"></div>
+            <ul class="navbar">
+                <li><a href="{{ url_for('home') }}">Home</a></li>
+                <li><a class="active" href="{{ url_for('booking') }}">Book Room</a></li>
+                <li><a href="{{ url_for('contact') }}">Contact</a></li>
+                <li><a href="{{ url_for('information') }}">Information</a></li>
+            </ul>
+    </header>
+    <!--<h1>Room Booking</h1>-->
 
     <!--Create links to change the page in the tab bar - give each day id to allow auto-opening on given day -->
     <div class="tab">
@@ -44,11 +47,14 @@
 
             <div id="Monday" class="tabcontent">
                 <table class="tableAvailability">
+                    <thead>
+                    <tr>
                     <th>Time</th>
                     <th>Availability</th>
                     {% for timeslot in ['07:00 - 08:00', '08:00 - 09:00', '09:00 - 10:00', '10:00 - 11:00', '11:00 - 12:00',
                     '12:00 - 13:00', '13:00 - 14:00', '14:00 - 15:00', '15:00 - 16:00'] %}
                     <!-- Loop through the timeslots -->
+                    </thead>
                     <tr>
                         <td>{{ timeslot }}</td>
                         <td>

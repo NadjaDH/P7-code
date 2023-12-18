@@ -2,19 +2,22 @@
 <html lang="en">
 
 <head>
-    <title>Home</title>
+   <!-- <title>Home</title> -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
 
 </head>
 
 <body>
-  <ul class="navbar">
-      <li><a class="active" href="{{ url_for('home') }}">Home</a></li>
-      <li><a href="{{ url_for('booking') }}">Book Room</a></li>
-      <li><a href="{{ url_for('contact') }}">Contact</a></li>
-      <li><a href="{{ url_for('information') }}">Information</a></li>
-  </ul>
-  <h1>Home</h1>
+  <header>
+    <div><img src="static/images/1358x756PX_AAUBLue_logo_Uniroom.png" alt="Logo" class="logo"></div>
+      <ul class="navbar">
+        <li><a class="active" href="{{ url_for('home') }}">Home</a></li>
+        <li><a href="{{ url_for('booking') }}">Book Room</a></li>
+        <li><a href="{{ url_for('contact') }}">Contact</a></li>
+        <li><a href="{{ url_for('information') }}">Information</a></li>   
+      </ul>
+</header>
+ <!--<h1>Home</h1>-->
 
   {% for room in room_info %}
   <button class="accordion">

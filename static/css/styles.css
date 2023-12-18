@@ -5,6 +5,7 @@ var, b, u, i, center, dl, dt, dd, li, fieldset, form, label,
 legend, table, tbody, tfoot, thead, tr, th, td, aside, 
 canvas, details, figure, footer, header, hgroup, menu, nav,
 
+/*IMPORTANT Changes booking tabbar*/
 section {
     margin: 0;
     padding: 0;
@@ -13,9 +14,8 @@ section {
     font: inherit;
     vertical-align: baseline;
 }
-
-article, aside, details, figcaption, figure, footer,
-header, hgroup, menu, nav, section {
+/*Change size, position at front page*/
+details, figcaption, figure, header, hgroup, menu, nav, section {
     display: block
 }
 
@@ -37,23 +37,18 @@ img {
     width: 100%
 }
 
-#main {
-    padding-bottom: 100px
-}
-
 html {
     overflow-y: scroll
 }
 
-#top {
-    margin: 15px 0
-}
-
 body {
     font-family: "Helvetica", sans-serif;
-    font-size: 12px;
+    font-size: 12px; /*should consider to change it to 16pt which is the standard*/
     line-height: 1;
     color: #354450;
+    background: #FCFCFD;
+    /*background: #fff /*Set background color for whole web*/
+   /*background: #e3e8ec*/
 }
 
 h1, .h1 {
@@ -79,107 +74,6 @@ p {
     font-weight: normal
 }
 
-.navigationTitle {
-    font-family: "DIN Next W01 Bold", "Helvetica", sans-serif;
-    text-transform: uppercase;
-    letter-spacing: 3px;
-    font-weight: normal;
-    font-size: 9px;
-    color: #a2acb6
-}
-
-.circle {
-    border-radius: 50%;
-    width: 110px;
-    height: 110px;
-    margin: 18px auto;
-    overflow: hidden;
-    text-align: center;
-    background-color: white;
-    color: #211a52
-}
-
-.smallButton {
-    background: 0;
-    border: 0;
-    cursor: pointer;
-    display: block;
-    text-align: center;
-    letter-spacing: .18333333333em;
-    line-height: 100%;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 12px;
-    font-family: "DIN Next W01 Regular", "Helvetica", sans-serif;
-    text-transform: uppercase;
-    margin: 6px auto 0;
-    clear: both
-}
-
-.smallButton:after {
-    text-transform: none;
-    font-family: "aauother";
-    font-size: 35px;
-    display: block;
-    text-align: center;
-    line-height: 100%;
-    margin: 6px auto 0;
-    content: 'y'
-}
-
-body {
-    background: #e3e8ec
-}
-
-.columned a:hover,
-.twoColumned a:hover {
-    color: #4306dd
-}
-
-.color {
-    background-color: #211a52;
-    color: white
-}
-
-.color a,
-.color h1,
-.color h2,
-.color h3,
-.color .leadin {
-    color: inherit
-}
-
-.color a:hover {
-    color: #aeabc5
-}
-
-.muted {
-    color: #999
-}
-
-.smallButton:after,
-.smallButton,
-.pagination a {
-    color: #211a52
-}
-
-.smallButton:hover,
-.smallButton:hover:after,
-.pagination a:hover {
-    color: #4306dd
-}
-
-.color .smallButton:hover,
-.color .smallButton:hover:after,
-.color .pagination a:hover {
-    color: #aeabc5
-}
-
-.color .smallButton,
-.color .smallButton:after,
-.color .pagination a {
-    color: white
-}
 
 .color .fade:after {
     background: -moz-linear-gradient(top, rgba(33, 26, 82, 0) 72%, rgba(33, 26, 82, 1) 100%);
@@ -191,311 +85,65 @@ body {
 }
 
 /* Overvej fancybox til billede at kort */
-/*! fancyBox v2.1.5 fancyapps.com | fancyapps.com/fancybox/#license */
-.fancybox-wrap,
-.fancybox-skin,
-.fancybox-outer,
-.fancybox-inner,
-.fancybox-image,
-.fancybox-wrap iframe,
-.fancybox-wrap object,
-.fancybox-nav,
-.fancybox-nav span,
-.fancybox-tmp {
-    padding: 0;
-    margin: 0;
-    border: 0;
-    outline: 0;
-    vertical-align: top
-}
 
-.fancybox-wrap {
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 8020
-}
+/*.navigationTitle {
+    font-family: "DIN Next W01 Bold", "Helvetica", sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-weight: normal;
+    font-size: 9px;
+    color: #a2acb6
+}*/
 
-.fancybox-skin {
-    position: relative;
-    background: #f9f9f9;
-    color: #444;
-    text-shadow: none;
-    -webkit-border-radius: 4px;
-    -moz-border-radius: 4px;
-    border-radius: 4px
-}
+header {
+    display: flex; /*flex align logo and navbar*/
+    align-items: center;
+    background-color: #e3e8ec;
+    /*background-color: #fff;*/
+    size: 100;
+    border-bottom: 1px solid grey; 
 
-.fancybox-opened {
-    z-index: 8030
-}
-
-.fancybox-opened .fancybox-skin {
-    -webkit-box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
-    -moz-box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5)
-}
-
-.fancybox-outer,
-.fancybox-inner {
-    position: relative
-}
-
-.fancybox-inner {
-    overflow: hidden
-}
-
-.fancybox-type-iframe .fancybox-inner {
-    -webkit-overflow-scrolling: touch
-}
-
-.fancybox-image,
-.fancybox-iframe {
-    display: block;
-    width: 100%;
-    height: 100%
-}
-
-.fancybox-image {
-    max-width: 100%;
-    max-height: 100%
-}
-
-#fancybox-loading,
-.fancybox-close,
-.fancybox-prev span,
-.fancybox-next span {
-    background-image: url('fancybox_sprite.png')
-}
-
-#fancybox-loading {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    margin-top: -22px;
-    margin-left: -22px;
-    background-position: 0 -108px;
-    opacity: .8;
-    cursor: pointer;
-    z-index: 8060
-}
-
-#fancybox-loading div {
-    width: 44px;
-    height: 44px;
-    background: url('fancybox_loading.gif') center center no-repeat
-}
-
-.fancybox-close {
-    position: absolute;
-    top: -18px;
-    right: -18px;
-    width: 36px;
-    height: 36px;
-    cursor: pointer;
-    z-index: 8040
-}
-
-.fancybox-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    overflow: hidden;
-    display: none;
-    z-index: 8010;
-    background: url('fancybox_overlay.png')
-}
-
-.fancybox-overlay-fixed {
-    position: fixed;
-    bottom: 0;
-    right: 0
-}
-
-.fancybox-lock .fancybox-overlay {
-    overflow: auto;
-    overflow-y: scroll
-}
-
-.fancybox-title {
-    visibility: hidden;
-    font: normal 13px/20px "Helvetica Neue", Helvetica, Arial, sans-serif;
-    position: relative;
-    text-shadow: none;
-    z-index: 8050
-}
-
-.fancybox-opened .fancybox-title {
-    visibility: visible
-}
-
-.fancybox-title-float-wrap {
-    position: absolute;
-    bottom: 0;
-    right: 50%;
-    margin-bottom: -35px;
-    z-index: 8050;
-    text-align: center
-}
-
-.fancybox-title-float-wrap .child {
-    display: inline-block;
-    margin-right: -100%;
-    padding: 2px 20px;
-    background: transparent;
-    background: rgba(0, 0, 0, 0.8);
-    -webkit-border-radius: 15px;
-    -moz-border-radius: 15px;
-    border-radius: 15px;
-    text-shadow: 0 1px 2px #222;
-    color: #FFF;
-    font-weight: bold;
-    line-height: 24px;
-    white-space: nowrap
-}
-
-.fancybox-title-outside-wrap {
-    position: relative;
-    margin-top: 10px;
-    color: #fff
-}
-
-.fancybox-title-inside-wrap {
-    padding-top: 10px
-}
-
-.fancybox-title-over-wrap {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    color: #fff;
-    padding: 10px;
-    background: #000;
-    background: rgba(0, 0, 0, .8)
-}
-
-@media only screen and (-webkit-min-device-pixel-ratio: 1.5),
-only screen and (min--moz-device-pixel-ratio:1.5),
-only screen and (min-device-pixel-ratio:1.5) {
-
-    #fancybox-loading,
-    .fancybox-close,
-    .fancybox-prev span,
-    .fancybox-next span {
-        background-image: url('fancybox_sprite@2x.png');
-        background-size: 44px 152px
-    }
-
-    #fancybox-loading div {
-        background-image: url('fancybox_loading@2x.gif');
-        background-size: 24px 24px
-    }
-}
-
-/* Overvej til oversigt */
-.flex-section {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex
-}
-
-.flex-section .box {
-    margin: 0 0 6px 6px;
-    padding: 20px;
-    display: block;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-    height: 100%
-}
-
-.flex-section .spotCon .section {
-    height: 100%;
-    margin: 0 0 6px 0
-}
-
-.column1-1.flex-section {
-    width: 100%
-}
-
-.flex-section .spotCon {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    -ms-flex-flow: column;
-    flex-flow: column
-}
-
-.flex-section .g8 {
-    -webkit-box-flex: 1;
-    -ms-flex: 1 0 66.6666666666666667%;
-    flex: 1 0 66.6666666666666667%
-}
-
-.flex-section .g4 {
-    -webkit-box-flex: 1;
-    -ms-flex: 1 1 33.3333333333333333%;
-    flex: 1 1 33.3333333333333333%
-}
-
-.flex-section .spotCon {
-    padding: 0;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-    margin: 0 auto
-}
-
-.flex-section .article {
-    height: 100%;
-    margin-bottom: 6px
-}
-
-.flex-section .handbook .article {
-    height: auto
-}
-
-.flex-section .handbookAddons {
-    height: auto
-}
-
-.flex-section .box {
-    height: 100%
-}
-
-@media all and (-ms-high-contrast:none),
-(-ms-high-contrast:active) {
-    .flex-section .box {
-        height: auto !important
-    }
-}
-
+    
+  }
+  
 /* styling af navigation bar*/
+.logo {
+    vertical-align: top;
+    width: 90px;
+    height: 50px;
+    float: center;
+    margin: 10px 15px 
+}
 .navbar {
+    display: flex;
     list-style-type: none;
     margin: 0;
     padding: 0;
     overflow: hidden;/
+    
 }
 
+
 .navbar li {
-    float: left;
-    /* Float links side by side */
+    float: left; /* Float links side by side */
+    align-items: center;
 }
 
 .navbar li a {
     /* styling af links i navigation bar */
     display: block;
-    color: rgb(0, 0, 0);
-    text-align: center;
+    float: center;
+    color: #211a52;
+    font-family: "DIN Next W01 Bold", "Helvetica", sans-serif;
+    text-transform: uppercase;
     padding: 14px 16px;
     text-decoration: none;
     position: relative;
 }
 
 .navbar li a::after {
-    /* styling af border på navigation bar */
-    content: "";
+
+    content: "";  /* styling af border på navigation bar */
     /* Tilføjer border til hvert element */
     position: absolute;
     right: 0;
@@ -507,8 +155,7 @@ only screen and (min-device-pixel-ratio:1.5) {
 }
 
 .navbar li:last-child a::after {
-    border-right: none;
-    /* Fjerner border på sidste element */
+    border-right: none; /* Fjerner border på sidste element */
 }
 
 .navbar li a:hover {
@@ -519,69 +166,41 @@ only screen and (min-device-pixel-ratio:1.5) {
     background-color: #0476aa;
     border: 2px solid black;
     color: rgb(0, 0, 0);
-    padding: 15px 32px;
-    /* Gør at knappen er 15px fra toppen og bunden og 32px fra venstre og højre side */
-    text-align: center;
-    /* Gør at teksten er centreret */
-    text-decoration: none;
-    /* Fjerner understregning på teksten */
-    display: inline-block;
-    /* Gør at knappen er på samme linje som som det stående ved siden af (Skal måske fjernes) */
-    font-size: 16px;
-    /* Gør at teksten er 16px stor */
-    font-weight: bold;
-    /* Gør at teksten er bold */
-    transition-duration: 0.4s;
-    /* Gør bare at der er en delay på når man hover med musen over knappen*/
-    width: 350px;
-    /* Gør at knappen er 350px bred */
-    height: 100px;
-    /* Gør at knappen er 100px høj */
-    position: absolute;
-    /* ikke helt sikker, men den gør at positionen er relativ til den omkringliggende tekst */
-    top: 250px;
-    /* Gør at knappen er 250px fra toppen af siden */
-    left: 800px;
-    /* Gør at knappen er 800px fra venstre side af siden */
+    padding: 15px 32px; /* Gør at knappen er 15px fra toppen og bunden og 32px fra venstre og højre side */
+    text-align: center; /* Gør at teksten er centreret */
+    text-decoration: none; /* Fjerner understregning på teksten */
+    display: inline-block; /* Gør at knappen er på samme linje som som det stående ved siden af (Skal måske fjernes) */
+    font-size: 16px; /* Gør at teksten er 16px stor */
+    font-weight: bold; /* Gør at teksten er bold */
+    transition-duration: 0.4s; /* Gør bare at der er en delay på når man hover med musen over knappen*/
+    width: 350px; /* Gør at knappen er 350px bred */
+    height: 100px; /* Gør at knappen er 100px høj */
+    position: absolute; /* ikke helt sikker, men den gør at positionen er relativ til den omkringliggende tekst */
+    top: 250px; /* Gør at knappen er 250px fra toppen af siden */
+    left: 800px; /* Gør at knappen er 800px fra venstre side af siden */
 }
 
-.BookButton:hover {
-    /* hover effekt på knappen */
-    background-color: #ab9e9e;
-    color: white;
-}
 
-.BookButton:disabled {
-    /* hvordan knappen ser ud når den er disabled */
-    background-color: #cccccc;
-    color: #666666;
-}
-
-.bookingInfo {
-    display: inline-block;
-    width: 350px;
-    position: absolute;
-    top: 355px;
-    left: 800px;
-}
 
 /* end of styling of the booking button on the booking page */
 .tab {
     overflow: hidden;
-    background-color: #e3e8ec;
+    /*background-color: #e3e8ec; The background behind the tabs - not sure that we need it though*/ 
+   /* background-color: #fff;*/
     width: 50%;
     position: relative;
     top: 205px;
 }
 
 .tab button {
-    background-color: #ab9e9e;
-    border: 1px solid black;
-    border-radius: 4px;
+    font-weight: bold;
+    background-color: #fff; /*color of the tab labels*/
+    border: 2px solid black;
+    border-radius: none;
     padding: 14px 16px;
     transition: 0.3s;
     position: relative;
-    left: 50px;
+    left: 45px; /*align tabs and table*/
 }
 
 .tab button:hover {
@@ -594,8 +213,9 @@ only screen and (min-device-pixel-ratio:1.5) {
 
 .tab button.active {
     border-bottom: none;
-    background-color: #211a52;
-    color: white;
+    background-color: #e2e2e9;
+    /*background-color: #211a52;*/
+    /*color: white;*/
     height: 45px;
 }
 
@@ -607,14 +227,24 @@ only screen and (min-device-pixel-ratio:1.5) {
     width: 35%;
     position: absolute;
     left: 45px;
-    top: 315px;
+    top: 315px; /*Change position of the table*/
+    
 }
 
-table,
-th,
+/*Table is affecting the booking table*/
+table {
+    border-collapse: collapse; /*merge the table rows*/
+    box-shadow: 0 5px  8px #aeabc5; /*set shadow if needed*/
+    width: 100%; /*define legth on table*/
+}
+thead {
+   padding: 30px; 
+   background-color: #aeabc5;
+   /*background-color: #211a52;*/
+}
 td {
-    border: 1px solid black;
-    border-top: none;
+    
+    /*border: 1px solid black;*/
     border-collapse: collapse;
     width: 100%;
     text-align: center;
@@ -622,15 +252,19 @@ td {
 }
 
 th {
-    height: 50px;
-    background-color: #211a52;
+    height: 48px;
+    background-color: #e2e2e9;
+    /*background-color: #211a52;*/
     font-size: medium;
     font-weight: bold;
-    color: white;
+    color: #211a52;
+    padding-top: 20px;
 }
 
 td {
+    /*border-top: 1px solid #aeabc5;*/
     height: 30px;
+    padding: 5pt;
 }
 
 /*Targets the width of the first and second column in the table*/
@@ -649,6 +283,11 @@ td:nth-child(2) {
 th:nth-child(2) {
     width: 70%;
 }
+
+tr:nth-child(odd) { /*define every other row in the datatable*/
+    background-color: #eee;
+}
+
 
 /* Style the buttons that are used to open and close the accordion panel - w3 */
 .accordion {
@@ -762,36 +401,6 @@ input[type=checkbox]:disabled + .reserved-label {
     display: inline;
 }
 
-/* Not sure if we need this anymore because it relate to the original contact page
-But should be confirmed by other group members before it get deleted */
-/*
-.left_info {
-    float: left;
-    margin-left: 37%;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 15px;
-}
-
-.right_info {
-    float: right;
-    margin-right: 37%;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 15px;
-    
-}
-
-.contact_text {
-    text-align: center;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 16px;
-}
-
-.techlib {
-    text-align: center;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 15px;
-    font-weight: bold;
-}*/
 
 /* This CSS part relate to the contactpage*/
 .contactTxt {
@@ -853,15 +462,7 @@ But should be confirmed by other group members before it get deleted */
         margin: 0 auto; /* indikerer at containeren er i center*/
         top: 40px; /*create space between navbar and container*/
     }
-    /*.Infotxt img{
-        position: absolute;
-        z-index: 5;
-        top: -20%;
-        right: -30px;
-        height: 200px;
-        width: 300px;
-    }
-    */ 
+    
     
      /*Information title*/
      /*This layout is responsible, meaning that it follow the page size*/
@@ -883,37 +484,6 @@ But should be confirmed by other group members before it get deleted */
         font: normal 13px/20px "Helvetica Neue", Helvetica, Arial, sans-serif;
         text-align: left;
     }
-/* style the cancel form*/
-#cancelBookingForm { /* # is used when you want to style a ID*/
-    position: absolute;
-    top: 500px;
-    left: 800px;
-}
-
-/* Styling for the check-in and check-out buttons */
-.checkInOutButton {
-    background-color: #154e74; /* Blue color */
-    color: #fff; /* White text color */
-    padding: 10px 15px; /* Padding for the button */
-    border: none; /* No border */
-    border-radius: 5px; /* Rounded corners */
-    cursor: pointer; /* Cursor style on hover */
-
-}
-
-.checkInOutButton:hover {
-    background-color: #636567; /* Dark blue color */
-}
-#checkInButton {
-    position: relative;
-    top: 50px;
-    left: 800px;
-}
-#checkOutButton {
-    position: relative;
-    top: 50px;
-    left: 825px;
-}
 
 /*Calendar*/
 
@@ -952,4 +522,54 @@ But should be confirmed by other group members before it get deleted */
     .current-day {
         font-weight: Bold; /*Test to check if the calendar now the current day*/
         border: 1px solid #000; /*Same test*/
+    .BookButton:hover {
+        /* hover effekt på knappen */
+        background-color: #ab9e9e;
+        color: white; /*Book text*/
+    }
+    
+    .BookButton:disabled {
+        /* hvordan knappen ser ud når den er disabled */
+        background-color: #cccccc;
+        color: #666666; /*Book Text*/
+    }
+    
+    /* style the cancel form*/
+    #cancelBookingForm { /* # is used when you want to style a ID*/
+        position: absolute;
+        top: 500px;
+        left: 800px;
+    }
+    
+    /* Styling for the check-in and check-out buttons */
+    .checkInOutButton {
+        background-color: #154e74; /* Blue color */
+        color: #fff; /* White text color */
+        padding: 10px 15px; /* Padding for the button */
+        border: none; /* No border */
+        border-radius: 5px; /* Rounded corners */
+        cursor: pointer; /* Cursor style on hover */
+    
+    }
+    
+    .checkInOutButton:hover {
+        background-color: #636567; /* Dark blue color */
+    }
+    #checkInButton {
+        position: relative;
+        top: 420px;
+        left: 800px;
+    }
+    #checkOutButton {
+        position: relative;
+        top: 420px;
+        left: 825px;
+    }
+    
+    .bookingInfo {
+        display: inline-block;
+        width: 350px;
+        position: absolute;
+        top: 355px;
+        left: 800px;
     }

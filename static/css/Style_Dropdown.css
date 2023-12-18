@@ -4,14 +4,15 @@
     color: black;
     padding: 16px;
     font-size: 16px;
-    border: none;
+    border: 1pt solid black;
     cursor: pointer;
     position: absolute;
     top: 170px;
     left: 50px;
-    border-radius: 10px;
+    border-radius: none;
     width: 150px;
     height: 70px;
+    
 }
 
 .dropbtn::after {
@@ -42,7 +43,7 @@
     background-color: #f1f1f1;
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    border-radius: 5px;
+    border-radius: none;
     left: 50px;
     top: 240px;
     z-index: 1;

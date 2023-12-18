@@ -7,12 +7,15 @@
 </head>
 
 <body>
-    <ul class="navbar">
-        <li><a href="{{ url_for('home') }}">Home</a></li>
-        <li><a href="{{ url_for('booking') }}">Book Room</a></li>
-        <li><a href="{{ url_for('contact') }}">Contact</a></li>
-        <li><a class="active" href="{{ url_for('information') }}">Information</a></li>
-    </ul>
+    <header>
+        <div><img src="static/images/1358x756PX_AAUBLue_logo_Uniroom.png" alt="Logo" class="logo"></div>
+            <ul class="navbar">
+                <li><a href="{{ url_for('home') }}">Home</a></li>
+                <li><a href="{{ url_for('booking') }}">Book Room</a></li>
+                <li><a href="{{ url_for('contact') }}">Contact</a></li>
+                <li><a class="active" href="{{ url_for('information') }}">Information</a></li>
+            </ul>
+    </header>
     
     
 <!--Information text container-->
