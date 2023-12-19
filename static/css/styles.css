@@ -536,3 +536,41 @@ input[type=checkbox]:disabled + .reserved-label {
         top: 355px;
         left: 800px;
     }
+
+    /*Calendar*/
+
+.DaysOfWeek{
+    text-align: center;
+    margin: 20px;
+    display: flex; 
+    justify-content: space-around;
+    text-align: center;
+}
+
+/*Calendar function*/ /*taken from chat GPT*/
+#calendarContainer{
+    text-align: center;
+    margin: 20px;
+    
+}
+
+/*make it possible to align the day of weeks*/
+.days-container{
+    display: flex; 
+    justify-content: space-around;
+    text-align: center;
+}
+
+/*Style the day box in the calendar*/
+.day {
+    display: inline-block;
+    width: 100px;
+    padding: 10px;
+    margin: 5px;
+    border: 0.5px solid #eee;
+    } 
+
+    /*Style the current day container*/
+    .current-day {
+        font-weight: Bold; /*Test to check if the calendar now the current day*/
+        border: 1px solid #000; /*Same test*/
