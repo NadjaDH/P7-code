@@ -1,5 +1,4 @@
 from flask import Flask, render_template, request, redirect, url_for, jsonify
-from accordion import accordion_function
 import sqlite3
 from dateutil.parser import parse
 import traceback
