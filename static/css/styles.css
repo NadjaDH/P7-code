@@ -574,3 +574,4 @@ input[type=checkbox]:disabled + .reserved-label {
     .current-day {
         font-weight: Bold; /*Test to check if the calendar now the current day*/
         border: 1px solid #000; /*Same test*/
+    }
