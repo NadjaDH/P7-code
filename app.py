@@ -19,8 +19,8 @@ def home():
     c = conn.cursor()
     #manually adding a list with room numbers
     all_rooms = ['Room 4.118', 'Room 4.120', 'Room 4.122', 'Room 4.124', 'Room 4.125']
-    # Fetch the status for each room from the database
-    c.execute("SELECT RoomNO, status FROM bookings")
+   # Fetch the status for each room from the database
+    c.execute("SELECT RoomNO, status FROM room_status")
     room_statuses = dict(c.fetchall())
 
     # Create room_info list with default status values
@@ -42,7 +42,7 @@ def booking():
     c.execute("SELECT StartTime, EndTime, RoomNO, Day FROM bookings WHERE is_booked = 1")
     booking_info = [{'room': room, 'timeslot': f'{start_time} - {end_time}', 'date': date} for room, start_time, end_time, date in c.fetchall()]
     conn.close()
-    return render_template("BookRoom.html", booking_info=booking_info)
+    return render_template("BookRoom.html", booking_info=booking_info, is_timeslot_booked=is_timeslot_booked)
 
 def cancel_booking(booking_id):
     conn = sqlite3.connect('booking.db')
@@ -112,16 +112,16 @@ def is_timeslot_booked_route():
     
 
 def is_timeslot_booked(timeslot, room, date):
-    #print(timeslot, room, date)
+    print(timeslot, room, date)
     conn = sqlite3.connect('booking.db')
     cursor = conn.cursor()
 
     try:
         # Check if there is any booking with the specified timeslot, room, and date
-        #print(f"timeslot: {timeslot}, room: {room}, date: {date}")
+        print(f"timeslot: {timeslot}, room: {room}, date: {date}")
         query = "SELECT COUNT(*) FROM bookings WHERE StartTime <= ? AND EndTime >= ? AND RoomNO = ? AND Day = ? AND is_booked = 1"
 
-        #print(query)
+        print(query)
         start_time, end_time = timeslot.split(' - ')
         cursor.execute(query, (start_time, end_time, room, date))
         count = cursor.fetchone()[0]
@@ -131,14 +131,13 @@ def is_timeslot_booked(timeslot, room, date):
         
         return False #Return false if the timeslot is available
     except Exception as e:
-        #print('Error checking if timeslot is booked:', e)
+        print('Error checking if timeslot is booked:', e)
         return True  # Assume the timeslot is booked in case of an error
     finally:
         conn.close()
         
 def from_Timeslots_To_Booking (room, date, timeslots): #Define one booking as one booking only
     bookings = []
-    timeslots.sort()
     if len(timeslots) > 0:
         lastBookingPosition = -1 #ingen bookinger gemt i liste endnu
         
@@ -181,32 +180,27 @@ def insert_booking(timeslots, room, date, BookID):
     cursor = conn.cursor()
     # Check om brugerens antal bookings er lovlige (Hent users gyldige bookinger ..)
     try:
+        # Omsæt timeslots til bookings
+        bookings = from_Timeslots_To_Booking( room, date, timeslots  )
+        #print(f'BookId {BookID}')
+        # Check if the timeslot is already booked
+        # (senere) Hent brugerens valide bookinger og check om brugeren samlet set overholder krav
+        
+        #Slet brugerens nuværende bookings for dette rum og denne dato - de skal overskrives af de nye bookings
+        #sql = f"DELETE FROM bookings WHERE Day = '{date}' AND RoomNO = '{room}'"
+        #print(sql)
+        #cursor.execute(sql)
         # get booked time slots 
         sql = f"SELECT StartTime, EndTime FROM bookings WHERE Day = '{date}' AND RoomNO = '{room}' AND is_booked = 1"
         print(sql)
         cursor.execute(sql)
         bookedTimeslots = cursor.fetchall()
-        #print(f'bookedTimeslots {bookedTimeslots[0]}')
-        #print(f'timeslots {timeslots}')
 
         # we add the existing booking to the newly booked timeslot
         for row in bookedTimeslots:
             print(row)
             timeslots.append(row[0]+" - "+row[1])
         
-        #print(f'new timeslots {timeslots}')
-        
-        # Omsæt timeslots til bookings
-        bookings = from_Timeslots_To_Booking( room, date, timeslots )
-        #print(f'BookId {BookID}')
-        # Check if the timeslot is already booked
-        # (senere) Hent brugerens valide bookinger og check om brugeren samlet set overholder krav
-        
-        #Slet brugerens nuværende bookings for dette rum og denne dato - de skal overskrives af de nye bookings
-        sql = f"DELETE FROM bookings WHERE Day = '{date}' AND RoomNO = '{room}'"
-        print(sql)
-        cursor.execute(sql)
-    
         # Gem bookings i database
         for booking in bookings:
             # Check if the timeslot is already booked
@@ -234,7 +228,7 @@ def check_in_room(roomNumber):
         c = conn.cursor()
 
         # Update the status of the room to 'checked in'
-        query = "UPDATE bookings SET status = ? WHERE RoomNO = ?"
+        query = "UPDATE room_status SET status = ? WHERE RoomNO = ?"
         params = (False, roomNumber)
         c.execute(query, params)
         print(f"Executing query: {query} with params: {params}")  # Add this line
@@ -263,7 +257,7 @@ def check_out_room(roomNumber):
         conn = sqlite3.connect('booking.db')
     
         # Update the status of the room to 'checked out'
-        conn.cursor().execute("UPDATE bookings SET status = ? WHERE RoomNO = ?", (True, roomNumber,)) # Update the status of the room to 'checked out'
+        conn.cursor().execute("UPDATE room_status SET status = ? WHERE RoomNO = ?", (True, roomNumber,)) # Update the status of the room to 'checked out'
 
         conn.commit() # to update the database
         print(f"checking out room {roomNumber}")
@@ -309,3 +303,4 @@ def submit_booking():
 
 if __name__ == '__main__':
     app.run(debug=True) #debug=True means that the server will reload itself each time you make a change to the code
+    
